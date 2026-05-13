@@ -5,6 +5,7 @@
     [ 
       ./hardware-configuration.nix
     ];
+  
   # Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -56,24 +57,46 @@
   
   # Programs
   environment.systemPackages = with pkgs; [
-    neovim 
-    wget
-    curl
+    # Neovim shits
+    neovim
+    lua51Packages.luarocks
+    lua51Packages.lua
+    unzip
+    elmPackages.nodejs
+    nodejs
+    php
+    graalvmPackages.graalvm-ce
+    python313
+    python313Packages.pip
+    ruby
+    go
+    php82Packages.composer
+
+
+    # Hyprland shits
     waybar
     rofi
     awww
     kitty
+    vesktop
+    
+    # Zsh shits
     eza
     zoxide
     fastfetch
     fzf
     bat
-    pavucontrol
     git
-    psmisc
-    gamemode
     gh
-    vesktop
+
+    # Game shits
+    gamemode
+
+    # Shits
+    wget
+    curl
+    pavucontrol
+    psmisc
   ];
   programs.firefox.enable = true;
   programs.hyprland = {
