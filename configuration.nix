@@ -71,7 +71,9 @@
     ruby
     go
     php82Packages.composer
-
+    cargo
+    julia
+    tree-sitter
 
     # Hyprland shits
     waybar
