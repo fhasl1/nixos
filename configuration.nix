@@ -95,7 +95,6 @@
     gh
 
     # Game shits
-    gamemode
     gpu-screen-recorder-gtk
 
     # Shits
@@ -117,6 +116,7 @@
     enable = true;
   };
   programs.gpu-screen-recorder.enable = true;
+  programs.gamemode.enable = true;
 
   # Services
   services.openssh.enable = true;
