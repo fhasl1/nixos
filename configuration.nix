@@ -113,6 +113,7 @@
   programs.steam = {
     enable = true;
   };
+  programs.gpu-screen-recorder.enable = true;
 
   # Services
   services.openssh.enable = true;
