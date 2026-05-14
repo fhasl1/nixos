@@ -13,7 +13,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelModules = [ "uinput" ];
+  boot.initrd.kernelModules = [ "uinput" "amdgpu" ];
   boot.kernelParams = [ "8250.nr_uarts=0" ];
   systemd.network.wait-online.enable = false;
   boot.initrd.systemd.network.wait-online.enable = false;
