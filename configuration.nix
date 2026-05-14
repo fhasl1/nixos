@@ -83,6 +83,7 @@
     awww
     kitty
     vesktop
+    nautilus
     
     # Zsh shits
     eza
@@ -102,6 +103,7 @@
     curl
     pavucontrol
     psmisc
+    vlc
   ];
   programs.firefox.enable = true;
   programs.hyprland = {
