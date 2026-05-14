@@ -95,6 +95,7 @@
 
     # Game shits
     gamemode
+    gpu-screen-recorder-gtk
 
     # Shits
     wget
