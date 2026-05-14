@@ -103,6 +103,7 @@
     pavucontrol
     psmisc
     vlc
+    duf
   ];
   programs.firefox.enable = true;
   programs.hyprland = {
