@@ -129,6 +129,7 @@
   };
   services.tailscale.enable = true;
   services.pulseaudio.enable = false;
+  services.flatpak.enable = true;
  
   # Misc
   hardware.opentabletdriver.enable = true;
