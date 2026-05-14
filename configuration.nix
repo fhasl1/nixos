@@ -8,6 +8,7 @@
   
   # Boot
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -135,6 +136,7 @@
     enable = true;
     memoryPercent = 50;
   };
+  
   # NixOS shits
   system.stateVersion = "25.11";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
