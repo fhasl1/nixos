@@ -84,6 +84,8 @@
     kitty
     vesktop
     nautilus
+    hyprpicker
+    hyprshot
     
     # Zsh shits
     eza
