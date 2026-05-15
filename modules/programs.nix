@@ -9,7 +9,10 @@
   };
   programs.zsh.enable = true;
   programs.steam.enable = true;
-  programs.gpu-screen-recorder.enable = true;
+  programs.gpu-screen-recorder = {
+    enable = true;
+    ui.enable = true;
+  };
   programs.gamemode.enable = true;
   programs.appimage.enable = true;
 }

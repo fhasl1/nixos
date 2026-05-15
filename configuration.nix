@@ -5,6 +5,7 @@
     [ 
       ./hardware-configuration.nix
       inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
+      inputs.gsr-ui-nix.nixosModules.default
       ./modules/boot.nix
       ./modules/networking.nix
       ./modules/locale.nix
