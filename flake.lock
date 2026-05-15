@@ -8,15 +8,16 @@
         "snowfall-lib": "snowfall-lib"
       },
       "locked": {
-        "lastModified": 1777769084,
-        "narHash": "sha256-eVz1s7FyZxy1qDfj51sbv0ukHl54vT3Gue3InvcrcQg=",
-        "owner": "LotusInputMethod",
+        "lastModified": 1778807802,
+        "narHash": "sha256-XTAJwe9YNlTbmad9yfUL1xbm+DBVxka/hgzGAUxC3T8=",
+        "owner": "justanoobcoder",
         "repo": "fcitx5-lotus",
-        "rev": "86dcc72e78a4fe719d052701c14c5524b5538b27",
+        "rev": "da6b9526ff7df5fc11592acb7a8a79baef9d8a66",
         "type": "github"
       },
       "original": {
-        "owner": "LotusInputMethod",
+        "owner": "justanoobcoder",
+        "ref": "fix-extra-cmake-modules",
         "repo": "fcitx5-lotus",
         "type": "github"
       }

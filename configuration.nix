@@ -133,6 +133,10 @@
   services.tailscale.enable = true;
   services.pulseaudio.enable = false;
   services.flatpak.enable = true;
+  services.fcitx5-lotus = {
+    enable = true;
+    users = [ "fhasl" ];
+  };
  
   # Misc
   hardware.opentabletdriver.enable = true;

@@ -4,7 +4,7 @@
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 		 fcitx5-lotus = {
-			 url = "github:LotusInputMethod/fcitx5-lotus";
+			 url = "github:justanoobcoder/fcitx5-lotus/fix-extra-cmake-modules";
 			 inputs.nixpkgs.follows = "nixpkgs";
 		 };
 	};
