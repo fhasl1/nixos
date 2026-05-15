@@ -11,4 +11,5 @@
   programs.steam.enable = true;
   programs.gpu-screen-recorder.enable = true;
   programs.gamemode.enable = true;
+  programs.appimage.enable = true;
 }
