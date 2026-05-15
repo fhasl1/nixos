@@ -21,5 +21,6 @@
     builtins.elem (lib.getName pkg) [
       "steam"
       "steam-unwrapped"
+      "osu-lazer-bin"
     ];
 }

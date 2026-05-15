@@ -41,6 +41,7 @@
 
     # Game shits
     gpu-screen-recorder-gtk
+    osu-lazer-bin
 
     # Shits
     wget
