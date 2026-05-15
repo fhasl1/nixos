@@ -4,6 +4,7 @@
   imports =
     [ 
       ./hardware-configuration.nix
+      inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
     ];
   
   # Boot

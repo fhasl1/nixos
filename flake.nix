@@ -2,7 +2,7 @@
 	description = "Hyprland";
 
 	inputs = {
-		nixpkgs.url = "nixpkgs/nixos-unstable";
+		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 		 fcitx5-lotus = {
 			 url = "github:LotusInputMethod/fcitx5-lotus";
 			 inputs.nixpkgs.follows = "nixpkgs";
