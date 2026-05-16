@@ -19,4 +19,5 @@
     enable = true;
     wrapperFeatures.gtk = true;
   };
+  programs.nix-ld.enable = true;
 }
