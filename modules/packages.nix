@@ -54,5 +54,6 @@
     swayfx
     zathuraPkgs.zathura_pdf_mupdf
     zathura
+    easyeffects
   ];
 }
