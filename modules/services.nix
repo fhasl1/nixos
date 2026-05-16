@@ -16,4 +16,5 @@
     users = [ "fhasl" ];
   };
   services.gnome.gnome-keyring.enable = true;
+  services.getty.autologinUser = "fhasl";
 }
