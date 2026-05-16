@@ -15,4 +15,5 @@
     enable = true;
     users = [ "fhasl" ];
   };
+  services.gnome.gnome-keyring.enable = true;
 }

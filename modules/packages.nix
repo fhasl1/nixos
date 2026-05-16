@@ -29,6 +29,7 @@
     nautilus
     hyprpicker
     hyprshot
+    wl-clipboard
     
     # Zsh shits
     eza

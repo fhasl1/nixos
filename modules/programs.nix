@@ -15,9 +15,8 @@
   };
   programs.gamemode.enable = true;
   programs.appimage.enable = true;
-  programs.niri = {
+  programs.sway = {
     enable = true;
-    package = pkgs.niri;
-    useNautilus = true;
+    wrapperFeatures.gtk = true;
   };
 }
