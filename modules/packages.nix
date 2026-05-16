@@ -50,5 +50,6 @@
     psmisc
     vlc
     duf
+    swayfx
   ];
 }
