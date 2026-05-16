@@ -20,7 +20,7 @@
     julia
     tree-sitter
 
-    # Hyprland shits
+    # WM shits
     waybar
     rofi
     awww
@@ -30,6 +30,7 @@
     hyprpicker
     hyprshot
     wl-clipboard
+    autotiling
     
     # Zsh shits
     eza
