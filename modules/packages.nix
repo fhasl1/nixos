@@ -53,5 +53,6 @@
     duf
     swayfx
     zathuraPkgs.zathura_pdf_mupdf
+    zathura
   ];
 }
