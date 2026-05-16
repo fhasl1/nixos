@@ -15,4 +15,9 @@
   };
   programs.gamemode.enable = true;
   programs.appimage.enable = true;
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri;
+    useNautilus = true;
+  };
 }
