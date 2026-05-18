@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   services.openssh.enable = true;
@@ -18,4 +18,11 @@
   services.gnome.gnome-keyring.enable = true;
   services.getty.autologinUser = "fhasl";
   services.fstrim.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
+  };
 }
