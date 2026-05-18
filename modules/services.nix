@@ -25,4 +25,5 @@
       xdg-desktop-portal-gtk
     ];
   };
+  services.cloudflare-warp.enable = true;
 }
