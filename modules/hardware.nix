@@ -1,11 +1,13 @@
 { ... }:
 
 {
-  hardware.opentabletdriver.enable = true;
-  hardware.uinput.enable = true;
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  hardware = {
+    opentabletdriver.enable = true;
+    uinput.enable = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
   };
   security.rtkit.enable = true;
   zramSwap = {

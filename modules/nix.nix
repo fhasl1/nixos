@@ -1,20 +1,22 @@
 { lib, inputs, ... }:
 
 {
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix = {
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
 
-  nix.optimise = {
-    automatic = true;
-    dates = [ "weekly" ];
+    optimise = {
+      automatic = true;
+      dates = [ "weekly" ];
+    };
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 }

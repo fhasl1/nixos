@@ -1,25 +1,28 @@
 { pkgs, ... }:
 
 {
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 5;
-  boot.loader.timeout = 1;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      systemd-boot.configurationLimit = 5;
+      timeout = 1;
 
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+      efi.canTouchEfiVariables = true;
+      efi.efiSysMountPoint = "/boot/efi";
+    };
+    kernelPackages = pkgs.linuxPackages_latest;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+    initrd.kernelModules = [
+      "uinput"
+      "amdgpu"
+    ];
 
-  boot.initrd.kernelModules = [
-    "uinput"
-    "amdgpu"
-  ];
-
-  boot.kernelParams = [
-    "8250.nr_uarts=0"
-  ];
+    kernelParams = [
+      "8250.nr_uarts=0"
+    ];
+    initrd.systemd.network.wait-online.enable = false;
+  };
 
   systemd.network.wait-online.enable = false;
-  boot.initrd.systemd.network.wait-online.enable = false;
   systemd.services.NetworkManager-wait-online.enable = false;
 }
