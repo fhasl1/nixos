@@ -20,6 +20,8 @@
     julia
     tree-sitter
     nixd
+    shellcheck
+    statix
 
     # WM shits
     waybar
