@@ -55,5 +55,7 @@
     zathuraPkgs.zathura_pdf_mupdf
     zathura
     easyeffects
+    warp-terminal
   ];
+  nixpkgs.config.allowUnfree = true;
 }
