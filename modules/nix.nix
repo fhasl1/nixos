@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, inputs, ... }:
 
 {
   nix.settings.experimental-features = [
@@ -16,11 +16,5 @@
     automatic = true;
     dates = [ "weekly" ];
   };
-
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "steam"
-      "steam-unwrapped"
-      "osu-lazer-bin"
-    ];
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 }

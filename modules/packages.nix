@@ -19,7 +19,7 @@
     cargo
     julia
     tree-sitter
-    nixfmt
+    nixd
 
     # WM shits
     waybar
