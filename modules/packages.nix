@@ -55,6 +55,7 @@
     zathuraPkgs.zathura_pdf_mupdf
     zathura
     easyeffects
+    appimage-run
   ];
   nixpkgs.config.allowUnfree = true;
 }
