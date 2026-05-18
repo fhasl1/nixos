@@ -13,8 +13,11 @@
 			url = "github:rPlakama/gsr-ui-nix";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		nvf = {
+			url = "github:notashelf/nvf";
+		};
 	};
-	outputs = inputs@{ self, nixpkgs, ... }: {
+	outputs = inputs@{ self, nixpkgs, nvf, ... }: {
 		nixosConfigurations.amalthea = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = {
@@ -22,6 +25,7 @@
 			};
 			modules = [
 				./configuration.nix
+				nvf.nixosModules.default
 			];
 		};
 	};

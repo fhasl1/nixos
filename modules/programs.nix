@@ -20,4 +20,7 @@
     wrapperFeatures.gtk = true;
   };
   programs.nix-ld.enable = true;
+  programs.nvf = {
+    enable = true;
+  };
 }
