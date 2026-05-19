@@ -22,6 +22,7 @@
     nixd
     shellcheck
     statix
+    clang-tools
 
     # WM shits
     waybar
