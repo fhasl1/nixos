@@ -15,6 +15,8 @@
          user = "fhasl";
       };
       dbus.enable = true;
+      openssh.enable = true;
+      tailscale.enable = true;
       fstrim.enable = true;
       fwupd = {
          enable = true;

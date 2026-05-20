@@ -55,6 +55,7 @@
     swayfx
     easyeffects
     appimage-run
+    obsidian
   ];
   nixpkgs.config.allowUnfree = true;
 }
