@@ -7,5 +7,7 @@
          devices = [ "/dev/nvme0n1" ];
          configurationLimit = 5;
       };
+      kernelPackages = pkgs.linuxPackages_latest;
+      kernelParams = [ "psmouse.synaptis_intertouch=1" ];
    };
 }
