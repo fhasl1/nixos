@@ -6,6 +6,7 @@
          enable = true;
          devices = [ "/dev/nvme0n1" ];
          configurationLimit = 5;
+         kernelParams = [ "psmouse.synaptics_intertouch=1" ];
       };
 <<<<<<< HEAD
       kernelPackages = pkgs.linuxPackages_latest;
