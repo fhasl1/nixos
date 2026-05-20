@@ -36,6 +36,7 @@
     wl-clipboard
     autotiling
     wl-gammactl
+    nwg-look
     
     # Zsh shits
     eza
