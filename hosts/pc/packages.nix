@@ -36,6 +36,9 @@
     wl-clipboard
     autotiling
     wl-gammactl
+    xdg-desktop-portal
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-gtk
     
     # Zsh shits
     eza
