@@ -35,6 +35,7 @@
     hyprshot
     wl-clipboard
     autotiling
+    wl-gammactl
     
     # Zsh shits
     eza
