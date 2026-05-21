@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   services = {
@@ -21,8 +21,21 @@
     fstrim.enable = true;
     cloudflare-warp.enable = true;
   };
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
+  xdg = {
+    portal = {
+      enable = true;
+      config = {
+        common = {
+          default = [ "gtk" ];
+        };
+      };
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+      ];
+      wlr.enable = true;
+    };
+    mime.enable = true;
+    icons.enable = true;
+    menus.enable = true;
   };
 }
