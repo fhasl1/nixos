@@ -17,6 +17,10 @@
       enable = true;
       wrapperFeatures.gtk = true;
     };
+    labwc = {
+      enable = true;
+      package = pkgs.labwc;
+    };
     nix-ld.enable = true;
   };
 }
