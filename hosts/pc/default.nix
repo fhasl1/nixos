@@ -9,6 +9,7 @@
       ./packages.nix
       ./services.nix
       ./obs.nix
+      ./hardware.nix
       ../../modules/locale.nix
       ../../modules/users.nix
       ../../modules/programs.nix
