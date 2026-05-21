@@ -17,9 +17,9 @@
       enable = true;
       wrapperFeatures.gtk = true;
     };
-    labwc = {
+    hyprland = {
       enable = true;
-      package = pkgs.labwc;
+      xwayland.enable = true;
     };
     nix-ld.enable = true;
   };
