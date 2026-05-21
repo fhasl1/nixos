@@ -62,6 +62,7 @@
     zathura
     easyeffects
     appimage-run
+    hakuneko
   ];
   nixpkgs.config.allowUnfree = true;
 }
