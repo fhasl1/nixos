@@ -9,7 +9,10 @@
       enable = true;
     };
     gamemode.enable = true;
-    appimage.enable = true;
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
     sway = {
       enable = true;
       wrapperFeatures.gtk = true;
