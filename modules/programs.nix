@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   programs = {
@@ -7,6 +7,8 @@
     steam.enable = true;
     gpu-screen-recorder = {
       enable = true;
+      package = inputs.gsr-ui-nix.packages.${pkgs.stdenv.hostPlatform.system}.gpu-screen-recorder;
+      ui.enable = true;
     };
     gamemode.enable = true;
     appimage = {
