@@ -46,6 +46,7 @@
 					./hosts/laptop/default.nix
 					nixos-hardware.nixosModules.lenovo-thinkpad-t480
 					inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
+					inputs.gsr-ui-nix.nixosModules.default
 				];
 			};
 		};

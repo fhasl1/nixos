@@ -35,6 +35,7 @@
     hyprshot
     wl-clipboard
     autotiling
+    nwg-look
     
     # Zsh shits
     eza
