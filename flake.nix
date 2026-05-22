@@ -16,8 +16,11 @@
 		nixos-hardware = {
 			url = "github:NixOS/nixos-hardware";
 		};
+		nix-cachyos-kernel = {
+			url = "github:xddxdd/nix-cachyos-kernel/release";
+		};
 	};
-	outputs = inputs@{ self, nixpkgs, nixos-hardware, gsr-ui-nix, ... }: {
+	outputs = inputs@{ self, nixpkgs, nixos-hardware, gsr-ui-nix, nix-cachyos-kernel, ... }: {
                 nixosConfigurations = {
 			amalthea = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
@@ -25,6 +28,12 @@
 					inherit inputs;
 				};
 				modules = [
+				({ pkgs, ... }:
+				{
+					nixpkgs.overlays = [
+						nix-cachyos-kernel.overlays.default
+					];
+				})
 					./hosts/pc/default.nix
 				];
 			};

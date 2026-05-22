@@ -10,6 +10,7 @@
       ./services.nix
       ./obs.nix
       ./hardware.nix
+      ./nix.nix
       ../../modules/locale.nix
       ../../modules/users.nix
       ../../modules/programs.nix
