@@ -63,6 +63,7 @@
     easyeffects
     appimage-run
     hakuneko
+    gimp
   ];
   nixpkgs.config.allowUnfree = true;
 }

@@ -19,8 +19,9 @@
     };
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     settings = {
-      substituters = [ "https://attic.xuyh0120.win/lantian" ];
-      trusted-public-keys = [ "lantian:EeAUQ+W+6r8EtwnmYjeVwx5kOGEBpjlzGlTNvHc=" ];
+      trusted-users = [ "fhasl" ];
+      substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" "https://cache.nixos.org" ];
+      trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
     };
   };
 }
