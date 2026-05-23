@@ -62,8 +62,8 @@
     zathura
     easyeffects
     appimage-run
-    hakuneko
     gimp
+    onlyoffice-desktopeditors
   ];
   nixpkgs.config.allowUnfree = true;
 }
