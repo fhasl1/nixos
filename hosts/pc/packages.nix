@@ -64,6 +64,7 @@
     appimage-run
     gimp
     onlyoffice-desktopeditors
+    localsend
   ];
   nixpkgs.config.allowUnfree = true;
 }
