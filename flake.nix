@@ -6,8 +6,7 @@
 			url = "github:NixOS/nixpkgs/nixos-unstable";
 		};
 		fcitx5-lotus = {
-			# url = "github:justanoobcoder/fcitx5-lotus/fix-extra-cmake-modules";
-			url = "github:justanoobcoder/fcitx5-lotus/ecm";
+			url = "github:LotusInputMethod/fcitx5-lotus";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		gsr-ui-nix = {

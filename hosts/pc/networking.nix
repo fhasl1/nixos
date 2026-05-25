@@ -3,7 +3,9 @@
 {
   networking = {
     hostName = "amalthea";
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+    };
     nftables.enable = true;
     firewall = {
       enable = true;

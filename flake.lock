@@ -40,16 +40,15 @@
         "snowfall-lib": "snowfall-lib"
       },
       "locked": {
-        "lastModified": 1779520565,
-        "narHash": "sha256-3zE4jYhT8YaODDQ70ycUe/3R+mS2G9MNUmYeJz3DQ9g=",
-        "owner": "justanoobcoder",
+        "lastModified": 1779672071,
+        "narHash": "sha256-/tLTEOenyF7rsniCwp0sxuqmKvzA5VTJwrkf5wfxmWI=",
+        "owner": "LotusInputMethod",
         "repo": "fcitx5-lotus",
-        "rev": "bd0df2e7de7261f16ca530ce2857817ff3203f62",
+        "rev": "b417284c278ddf0cf24934485e0a31722b24f9d7",
         "type": "github"
       },
       "original": {
-        "owner": "justanoobcoder",
-        "ref": "ecm",
+        "owner": "LotusInputMethod",
         "repo": "fcitx5-lotus",
         "type": "github"
       }
