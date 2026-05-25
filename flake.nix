@@ -6,7 +6,8 @@
 			url = "github:NixOS/nixpkgs/nixos-unstable";
 		};
 		fcitx5-lotus = {
-			url = "github:justanoobcoder/fcitx5-lotus/fix-extra-cmake-modules";
+			# url = "github:justanoobcoder/fcitx5-lotus/fix-extra-cmake-modules";
+			url = "github:justanoobcoder/fcitx5-lotus/ecm";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		gsr-ui-nix = {
@@ -44,9 +45,6 @@
 				};
 				modules = [
 					./hosts/laptop/default.nix
-					nixos-hardware.nixosModules.lenovo-thinkpad-t480
-					inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
-					inputs.gsr-ui-nix.nixosModules.default
 				];
 			};
 		};
