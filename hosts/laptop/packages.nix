@@ -57,6 +57,7 @@
     easyeffects
     appimage-run
     obsidian
+    mpv
   ];
   nixpkgs.config.allowUnfree = true;
 }
