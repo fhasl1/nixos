@@ -7,6 +7,7 @@
       ./services.nix
       ./networking.nix
       ./boot.nix
+      ./bluetooth.nix
       ../../modules/nix.nix
       ../../modules/programs.nix
       ../../modules/users.nix
