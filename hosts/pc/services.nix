@@ -17,21 +17,21 @@
       users = [ "fhasl" ];
     };
     gnome.gnome-keyring.enable = true;
-    getty.autologinUser = "fhasl";
+    # getty.autologinUser = "fhasl";
     fstrim.enable = true;
     cloudflare-warp.enable = true;
     xserver = {
       enable = true;
       videoDrivers = [ "amdgpu" ];
+      enableTearFree = true;
       displayManager = {
-        lightdm.enable = false;
+        sddm.enable = true;
         startx = {
           enable = true;
         };
       };
       windowManager = {
         bspwm.enable = true;
-        bspwm.sxhkd.package = pkgs.sxhkd;
       };
     };
   };
