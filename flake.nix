@@ -44,6 +44,7 @@
 				};
 				modules = [
 					./hosts/laptop/default.nix
+					nixos-hardware.nixosModules.lenovo-thinkpad-t480
 				];
 			};
 		};
