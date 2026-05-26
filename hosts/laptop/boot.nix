@@ -2,10 +2,13 @@
 
 {
    boot = {
-      loader.grub = {
-         enable = true;
-         devices = [ "/dev/nvme0n1" ];
-         configurationLimit = 5;
+      loader = {
+         grub = {
+            enable = true;
+            devices = [ "/dev/nvme0n1" ];
+            configurationLimit = 5;
+         };
+         timeout = 0;
       };
       kernelPackages = pkgs.linuxPackages_latest;
       kernelParams = [ "psmouse.synaptics_intertouch=1" ];
