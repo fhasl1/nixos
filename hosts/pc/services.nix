@@ -20,6 +20,20 @@
     getty.autologinUser = "fhasl";
     fstrim.enable = true;
     cloudflare-warp.enable = true;
+    xserver = {
+      enable = true;
+      videoDrivers = [ "amdgpu" ];
+      displayManager = {
+        lightdm.enable = false;
+        startx = {
+          enable = true;
+        };
+      };
+      windowManager = {
+        bspwm.enable = true;
+        bspwm.sxhkd.package = pkgs.sxhkd;
+      };
+    };
   };
   xdg = {
     portal = {
