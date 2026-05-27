@@ -17,7 +17,6 @@
       users = [ "fhasl" ];
     };
     gnome.gnome-keyring.enable = true;
-    # getty.autologinUser = "fhasl";
     fstrim.enable = true;
     cloudflare-warp.enable = true;
     xserver = {
@@ -25,7 +24,12 @@
       videoDrivers = [ "amdgpu" ];
       enableTearFree = true;
       displayManager = {
-        sddm.enable = true;
+        setupCommands = ''
+          xrandr --output HDMI-A-0 --off
+          '';
+        sddm = {
+          enable = true;
+        };
         startx = {
           enable = true;
         };
