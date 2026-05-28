@@ -56,4 +56,5 @@
     icons.enable = true;
     menus.enable = true;
   };
+  fonts.fontDir.enable = true;
 }
