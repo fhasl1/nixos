@@ -66,7 +66,7 @@
     gimp
     onlyoffice-desktopeditors
     localsend
-    kdePackages.extra-cmake-modules
+    mpv
   ];
   nixpkgs.config.allowUnfree = true;
 }
