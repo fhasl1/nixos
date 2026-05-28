@@ -37,7 +37,7 @@
     autotiling
     wl-gammactl
     nwg-look
-    feh
+    xwallpaper
     
     # Zsh shits
     eza
