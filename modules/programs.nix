@@ -19,6 +19,10 @@
       enable = true;
       wrapperFeatures.gtk = true;
     };
+    nh = {
+      enable = true;
+      flake = "/home/fhasl/nixos";
+    };
     nix-ld.enable = true;
   };
 }
