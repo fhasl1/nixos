@@ -36,6 +36,7 @@
     wl-clipboard
     autotiling
     nwg-look
+    btop
     
     # Zsh shits
     eza
