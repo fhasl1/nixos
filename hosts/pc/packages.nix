@@ -29,7 +29,6 @@
     rofi
     awww
     kitty
-    vesktop
     nautilus
     hyprpicker
     hyprshot
@@ -38,6 +37,10 @@
     wl-gammactl
     nwg-look
     xwallpaper
+    (discord.override {
+      withVencord = true;
+      withOpenASAR = true;
+     })
     
     # Zsh shits
     eza
@@ -50,6 +53,7 @@
 
     # Game shits
     osu-lazer-bin
+    protonup-qt
 
     # Shits
     wget
