@@ -35,7 +35,7 @@
         };
       };
       windowManager = {
-        bspwm.enable = true;
+        openbox.enable = true;
       };
     };
   };

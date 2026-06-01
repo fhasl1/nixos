@@ -19,8 +19,11 @@
 		nix-cachyos-kernel = {
 			url = "github:xddxdd/nix-cachyos-kernel/release";
 		};
+		xlibre-overlay = {
+			url = "git+https://codeberg.org/takagemacoed/xlibre-overlay";
+		};
 	};
-	outputs = inputs@{ self, nixpkgs, nixos-hardware, gsr-ui-nix, nix-cachyos-kernel, ... }: {
+	outputs = inputs@{ self, nixpkgs, nixos-hardware, nix-cachyos-kernel, gsr-ui-nix, xlibre-overlay, ... }: {
                 nixosConfigurations = {
 			amalthea = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
