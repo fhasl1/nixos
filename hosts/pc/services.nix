@@ -19,21 +19,13 @@
     gnome.gnome-keyring.enable = true;
     fstrim.enable = true;
     cloudflare-warp.enable = true;
+    displayManager = {
+      sddm.enable = true;
+    };
     xserver = {
       enable = true;
       videoDrivers = [ "amdgpu" ];
       enableTearFree = true;
-      displayManager = {
-        setupCommands = ''
-          xrandr --output HDMI-A-0 --off
-          '';
-        sddm = {
-          enable = true;
-        };
-        startx = {
-          enable = true;
-        };
-      };
       windowManager = {
         openbox.enable = true;
       };
