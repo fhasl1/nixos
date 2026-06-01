@@ -29,7 +29,6 @@
     rofi
     awww
     kitty
-    vesktop
     nautilus
     hyprpicker
     hyprshot
@@ -37,6 +36,10 @@
     autotiling
     nwg-look
     btop
+    (discord.override {
+      withVencord = true;
+      withOpenASAR = true;
+    })
     
     # Zsh shits
     eza
