@@ -16,8 +16,6 @@
       ../../modules/hardware.nix
       ../../modules/nix.nix
       inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
-      inputs.xlibre-overlay.nixosModules.overlay-xlibre-xserver
-      inputs.xlibre-overlay.nixosModules.overlay-xlibre-xf86-video-amdgpu
     ];
 
   system.stateVersion = "26.05";

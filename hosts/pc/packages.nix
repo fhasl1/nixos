@@ -25,23 +25,17 @@
     clang-tools
 
     # WM shits
-    waybar
     rofi
-    awww
     kitty
     nautilus
-    hyprpicker
-    hyprshot
-    wl-clipboard
-    autotiling
-    wl-gammactl
     nwg-look
     xwallpaper
     (discord.override {
       withVencord = true;
       withOpenASAR = true;
-     })
-    
+    })
+    lxappearance
+
     # Zsh shits
     eza
     zoxide
@@ -65,9 +59,7 @@
     swayfx
     zathuraPkgs.zathura_pdf_mupdf
     zathura
-    easyeffects
     appimage-run
-    gimp
     onlyoffice-desktopeditors
     localsend
     mpv
