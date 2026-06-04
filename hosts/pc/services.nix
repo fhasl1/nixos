@@ -1,6 +1,4 @@
-{ config, inputs, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   services = {
     openssh.enable = true;
     pipewire = {
@@ -14,17 +12,17 @@
     flatpak.enable = true;
     fcitx5-lotus = {
       enable = true;
-      users = [ "fhasl" ];
+      users = ["fhasl"];
     };
     gnome.gnome-keyring.enable = true;
     fstrim.enable = true;
     cloudflare-warp.enable = true;
     displayManager = {
-      sddm.enable = true;
+      ly.enable = true;
     };
     xserver = {
       enable = true;
-      videoDrivers = [ "amdgpu" ];
+      videoDrivers = ["amdgpu"];
       enableTearFree = true;
       windowManager = {
         openbox.enable = true;
@@ -37,7 +35,7 @@
       enable = true;
       config = {
         common = {
-          default = [ "gtk" ];
+          default = ["gtk"];
         };
       };
       extraPortals = with pkgs; [
