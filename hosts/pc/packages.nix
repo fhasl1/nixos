@@ -35,6 +35,7 @@
       withOpenASAR = true;
     })
     lxappearance
+    scrot
 
     # Zsh shits
     eza

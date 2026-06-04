@@ -18,6 +18,7 @@
       dates = [ "weekly" ];
     };
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
     settings = {
       trusted-users = [ "fhasl" ];
       substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" "https://cache.nixos.org" ];
