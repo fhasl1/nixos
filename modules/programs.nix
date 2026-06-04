@@ -1,6 +1,4 @@
-{ inputs, pkgs, ... }:
-
-{
+{...}: {
   programs = {
     firefox.enable = true;
     zsh.enable = true;
@@ -9,10 +7,6 @@
     appimage = {
       enable = true;
       binfmt = true;
-    };
-    sway = {
-      enable = true;
-      wrapperFeatures.gtk = true;
     };
     nh = {
       enable = true;
