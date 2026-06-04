@@ -36,6 +36,7 @@
     })
     lxappearance
     scrot
+    xclip
 
     # Zsh shits
     eza
