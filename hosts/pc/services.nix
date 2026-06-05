@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, config, ...}: {
   services = {
     openssh.enable = true;
     pipewire = {
@@ -30,6 +30,30 @@
       displayManager.setupCommands = " xrandr --output HDMI-A-0 --off";
     };
   };
+
+  systemd.user.services = {
+    pipewire = {
+      serviceConfig = {
+        ExecStartPre = "${pkgs.coreutils}/bin/rm -f /run/user/${toString config.users.users.fhasl.uid}/pipewire-0.lock /run/user/${toString config.users.users.fhasl.uid}/pipewire-0";
+        RestartSec = "3s";
+        StartLimitBurst = 10;
+      };
+    };
+    pipewire-pulse = {
+      serviceConfig = {
+        ExecStartPre = "${pkgs.coreutils}/bin/rm -f /run/user/${toString config.users.users.fhasl.uid}/pipewire-pulse-0.lock /run/user/${toString config.users.users.fhasl.uid}/pipewire-pulse-0";
+        RestartSec = "3s";
+        StartLimitBurst = 10;
+      };
+    };
+    wireplumber = {
+      serviceConfig = {
+        RestartSec = "3s";
+        StartLimitBurst = 10;
+      };
+    };
+  };
+
   xdg = {
     portal = {
       enable = true;
