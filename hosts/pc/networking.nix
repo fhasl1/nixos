@@ -1,6 +1,4 @@
-{ config, ... }:
-
-{
+{config, ...}: {
   networking = {
     hostName = "amalthea";
     networkmanager = {
@@ -10,12 +8,8 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [80 443];
-      allowedUDPPortRanges = [
-        { from = 4000; to = 4007; }
-        { from = 8000; to = 8010; }
-      ];
-      trustedInterfaces = [ "tailscale0" ];
-      allowedUDPPorts = [ config.services.tailscale.port ];
+      trustedInterfaces = ["tailscale0"];
+      allowedUDPPorts = [config.services.tailscale.port];
     };
   };
   systemd.services.tailscaled.serviceConfig.Environment = [
