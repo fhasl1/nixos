@@ -14,6 +14,7 @@
     ../../modules/nix.nix
     ../../modules/security.nix
     inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
+    inputs.gsr-ui-nix.nixosModules.default
   ];
 
   system.stateVersion = "26.05";

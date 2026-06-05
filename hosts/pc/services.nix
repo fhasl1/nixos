@@ -1,4 +1,8 @@
-{pkgs, config, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   services = {
     openssh.enable = true;
     pipewire = {
@@ -30,7 +34,6 @@
       displayManager.setupCommands = " xrandr --output HDMI-A-0 --off";
     };
   };
-
   systemd.user.services = {
     pipewire = {
       serviceConfig = {
@@ -53,7 +56,6 @@
       };
     };
   };
-
   xdg = {
     portal = {
       enable = true;
