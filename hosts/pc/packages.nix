@@ -28,6 +28,7 @@
     nautilus
     nwg-look
     xwallpaper
+    awww
     (discord.override {
       withVencord = true;
       withOpenASAR = true;
