@@ -31,7 +31,6 @@
       windowManager = {
         openbox.enable = true;
       };
-      displayManager.setupCommands = " xrandr --output HDMI-A-0 --off";
     };
   };
   systemd.user.services = {
