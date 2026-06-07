@@ -37,6 +37,7 @@
     xclip
     libx11
     libXinerama
+    gcc
     libgcc
     gnumake
 
