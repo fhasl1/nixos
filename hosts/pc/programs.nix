@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs = {
     mangowc = {
-      enable = true;
+      enable = false;
       package = pkgs.mangowc;
     };
   };
