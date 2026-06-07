@@ -35,6 +35,10 @@
     lxappearance
     scrot
     xclip
+    libx11
+    libXinerama
+    libgcc
+    gnumake
 
     # Zsh shits
     eza
