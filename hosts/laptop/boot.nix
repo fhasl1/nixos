@@ -7,6 +7,7 @@
             enable = true;
             devices = [ "/dev/nvme0n1" ];
             configurationLimit = 5;
+            gfxmodeBios = "1920x1080x32";
          };
          timeout = 0;
       };
