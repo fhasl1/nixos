@@ -22,6 +22,7 @@
     nixd
     shellcheck
     statix
+    clang
     clang-tools
     gcc
     libgcc
