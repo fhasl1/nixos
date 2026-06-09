@@ -23,6 +23,10 @@
     shellcheck
     statix
     clang-tools
+    gcc
+    libgcc
+    stylua
+    prettier
 
     # WM shits
     waybar
