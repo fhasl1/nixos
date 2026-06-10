@@ -1,6 +1,4 @@
-{ lib, inputs, ... }:
-
-{
+{inputs, ...}: {
   nix = {
     settings.experimental-features = [
       "nix-command"
@@ -15,14 +13,14 @@
 
     optimise = {
       automatic = true;
-      dates = [ "weekly" ];
+      dates = ["weekly"];
     };
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
     settings = {
-      trusted-users = [ "fhasl" ];
-      substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" "https://cache.nixos.org" ];
-      trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
+      trusted-users = ["fhasl"];
+      substituters = ["https://mirror.sjtu.edu.cn/nix-channels/store" "https://cache.nixos.org"];
+      trusted-public-keys = ["cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="];
     };
   };
 }
