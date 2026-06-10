@@ -30,7 +30,6 @@
       enableTearFree = true;
       windowManager = {
         openbox.enable = true;
-        awesome.enable = true;
       };
     };
   };
