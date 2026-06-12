@@ -28,7 +28,8 @@ in {
       statusline-lua
       plenary-nvim
       mason-nvim-dap-nvim
-    ] ++ [ lackluster ];
+      lackluster
+   ];
 
     extraPackages = with pkgs; [
       stylua
