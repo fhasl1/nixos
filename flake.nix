@@ -77,6 +77,20 @@
         modules = [
           ./hosts/laptop/default.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t480
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.fhasl = {
+                imports = [
+                  inputs.nixvim.homeModules.nixvim
+                  ./home-manager/home.nix
+                ];
+              };
+              backupFileExtension = "backup";
+            };
+          }
         ];
       };
     };
