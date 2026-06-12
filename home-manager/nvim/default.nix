@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./options.nix
     ./keymaps.nix
@@ -21,11 +25,11 @@
       mapleader = " ";
     };
 
-    colorscheme = "lackluster";
+    colorscheme = "lackluster-dark";
 
     highlight = {
-      Normal = { bg = "none"; };
-      NonText = { bg = "none"; };
+      Normal = {bg = "none";};
+      NonText = {bg = "none";};
     };
 
     diagnostic.settings = {
