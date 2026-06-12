@@ -28,7 +28,7 @@ in {
       statusline-lua
       plenary-nvim
       mason-nvim-dap-nvim
-      lackluster
+      lackluster-nvim
    ];
 
     extraPackages = with pkgs; [
