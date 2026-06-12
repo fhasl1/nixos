@@ -18,6 +18,7 @@
     };
 
     colorscheme = "lackluster";
+    extraPlugins = [ pkgs.vimPlugins.lackluster-nvim ];
 
     highlight = {
       Normal = { bg = "none"; };
