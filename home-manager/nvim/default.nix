@@ -9,6 +9,8 @@
 
   programs.nixvim = {
     enable = true;
+    vimAlias = true;
+    viAlias = true;
     nixpkgs.useGlobalPackages = true;
 
     globals = {

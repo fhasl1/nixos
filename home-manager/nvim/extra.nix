@@ -1,7 +1,9 @@
-{ pkgs, lib, ... }:
-
-let
-  monochrome = pkgs.vimUtils.buildVimPlugin {
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  lackluster = pkgs.vimUtils.buildVimPlugin {
     name = "lackluster-nvim";
     src = pkgs.fetchFromGitHub {
       owner = "slugbyte";
@@ -23,11 +25,10 @@ let
 in {
   programs.nixvim = {
     extraPlugins = with pkgs.vimPlugins; [
-      monochrome
       statusline-lua
       plenary-nvim
       mason-nvim-dap-nvim
-    ];
+    ] ++ [ lackluster ];
 
     extraPackages = with pkgs; [
       stylua
@@ -109,6 +110,15 @@ in {
 
       -- LuaSnip vscode loader
       require("luasnip.loaders.from_vscode").lazy_load()
+
+      -- Transparent background
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "*",
+        callback = function()
+          vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+          vim.api.nvim_set_hl(0, "NonText", { bg = "none" })
+        end,
+      })
 
       -- Statusline
       require("statusline").setup({
