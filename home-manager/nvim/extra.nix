@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   lackluster = pkgs.vimUtils.buildVimPlugin {
     name = "lackluster-nvim";
     src = pkgs.fetchFromGitHub {
@@ -29,7 +25,7 @@ in {
       plenary-nvim
       mason-nvim-dap-nvim
       lackluster-nvim
-   ];
+    ];
 
     extraPackages = with pkgs; [
       stylua
@@ -50,6 +46,15 @@ in {
       capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
       vim.lsp.config("*", {
         capabilities = capabilities,
+      })
+
+      -- Global diagnostics
+      vim.diagnostic.config({
+        virtual_text = true,
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = true,
       })
 
       -- Lua Language Server
