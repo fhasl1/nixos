@@ -20,6 +20,14 @@
   };
 in {
   programs.nixvim = {
+    highlight = {
+"Normal" = {
+        bg = "none";
+      };
+"NonText" = {
+        bg = "none";
+      };
+    };
     extraPlugins = with pkgs.vimPlugins; [
       statusline-lua
       plenary-nvim
@@ -116,15 +124,6 @@ in {
 
       -- LuaSnip vscode loader
       require("luasnip.loaders.from_vscode").lazy_load()
-
-      -- Transparent background
-      vim.api.nvim_create_autocmd("ColorScheme", {
-        pattern = "*",
-        callback = function()
-          vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-          vim.api.nvim_set_hl(0, "NonText", { bg = "none" })
-        end,
-      })
 
       -- Statusline
       require("statusline").setup({
