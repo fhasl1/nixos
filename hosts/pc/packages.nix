@@ -21,6 +21,9 @@
     shellcheck
     statix
     clang-tools
+    gcc
+    libgcc
+    clang
 
     # WM shits
     rofi
