@@ -11,7 +11,6 @@
     {
       event = "TextYankPost";
       desc = "Highlight when yanking (copying) text";
-      group = "kickstart-highlight-yank";
       callback.__raw = ''
         function()
           vim.hl.on_yank()
@@ -22,7 +21,6 @@
       event = "BufWritePre";
       desc = "Format before save";
       pattern = "*";
-      group = "FormatConfig";
       callback.__raw = ''
         function(ev)
           local conform_opts = { bufnr = ev.buf, lsp_format = "fallback", timeout_ms = 2000 }
