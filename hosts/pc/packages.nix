@@ -67,6 +67,10 @@
     onlyoffice-desktopeditors
     localsend
     mpv
+    davinci-resolve
   ];
+  environment.variables = {
+    RUSTICL_ENABLE = "radeonsi";
+  };
   nixpkgs.config.allowUnfree = true;
 }
