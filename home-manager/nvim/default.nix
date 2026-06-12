@@ -24,7 +24,7 @@
       NonText = { bg = "none"; };
     };
 
-    diagnostics = {
+    diagnostic.settings = {
       virtual_text = true;
       virtual_lines = true;
       signs = true;
