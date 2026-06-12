@@ -1,9 +1,9 @@
 {inputs, ...}: {
+  imports = [
+    ./nvim
+  ];
+
   programs.home-manager.enable = true;
-  programs.nixvim = {
-    enable = true;
-    nixpkgs.useGlobalPackages = true;
-  };
 
   home = {
     username = "fhasl";
