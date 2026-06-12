@@ -28,7 +28,7 @@
     {
       "type": "command",
       "key": "  ",
-      "text": "sh -c 'if command -v hyprctl >/dev/null; then hyprctl version | head -n1 | awk \"{print \\$1}\"; elif command -v swaymsg >/dev/null; then echo sway; else echo unknown; fi' | tr \"A-Z\" \"a-z\""
+      "text": "echo \"${XDG_CURRENT_DESKTOP:-unknown}\" | awk -F+ '{print tolower($NF)}'"
     },
     {
       "type": "custom",

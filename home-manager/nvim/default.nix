@@ -26,6 +26,7 @@
 
     diagnostics = {
       virtual_text = true;
+      virtual_lines = true;
       signs = true;
       underline = true;
       update_in_insert = false;
