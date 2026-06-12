@@ -31,7 +31,7 @@
     nixpkgs,
     nixos-hardware,
     nix-cachyos-kernel,
-    xlibre-overlay,
+    home-manager,
     ...
   }: {
     nixosConfigurations = {
@@ -47,6 +47,15 @@
             ];
           })
           ./hosts/pc/default.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.fhasl = import ./home-manager/home.nix;
+              backupFileExtension = "backup";
+            };
+          }
           inputs.xlibre-overlay.nixosModules.overlay-xlibre-xserver
           inputs.xlibre-overlay.nixosModules.overlay-xlibre-xf86-video-amdgpu
         ];

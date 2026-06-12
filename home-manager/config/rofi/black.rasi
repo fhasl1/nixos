@@ -1,0 +1,4 @@
+* {
+    dark: #000000;
+    light: #ffffff;
+}

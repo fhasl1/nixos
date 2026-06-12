@@ -1,0 +1,16 @@
+* {
+    dark1:  #2d353b;
+    dark2:  #343f44;
+    dark3:  #3d484d;
+    dark4:  #475258;
+
+    light:  #d3c6aa;
+
+    red:    #e67e80;
+    orange: #e69875;
+    yellow: #dbbc7f;
+    green:  #a7c080;
+    blue1:  #83c092;
+    blue2:  #7fbbb3;
+    purple: #d699b6;
+}

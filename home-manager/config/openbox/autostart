@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+xset r rate 300 35 &
+xrandr --output HDMI-A-0 --pos 1920x67 --auto &
+xinput set-prop "ATK NK mouse NANO dongle" "libinput Accel Profile Enabled" 0 1 0 &
+xwallpaper --output DisplayPort-2 --maximize ~/Downloads/wp12478763-monochrome-4k-wallpapers.jpg --output HDMI-A-0 --center ~/Pictures/bruh2/Black.png &
+fcitx5 -d &
+xset -dpms &
+xset s off &
+xset s noblank &

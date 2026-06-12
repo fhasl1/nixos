@@ -1,0 +1,114 @@
+@import "black.rasi"
+configuration {
+	modi:							"drun";
+	font:							"SF Pro Display Regular 10";
+	drun-display-format: 	"{name}";
+	sidebar-mode:				false;
+	display-drun:				"Apps";
+}
+
+* {
+	border-radius: 5px;
+	margin: 0;
+	padding: 5px 5px;
+	spacing: 5;
+}
+
+window {
+	width: 600px;
+	// transparency: "real";
+	location: center;
+	anchor: center;
+	border: 1px solid;
+	border-color: @light;
+	background-color: @dark;
+	border-radius: 5px;
+}
+
+mainbox {
+	enabled: true;
+	spacing: 10px;
+	padding: 10px;
+	margin: 0px;
+	background-color: transparent;
+	border: 0px solid;
+	border-radius: 0px;
+}
+
+inputbar {
+	enabled: true;
+	spacing: 10px;
+	margin: 0px;
+	color: @light;
+}
+
+prompt {
+	background-color: inherit;
+	text-color: @light;
+}
+
+textbox-prompt-colon {
+    enabled:                     false;
+}
+
+entry {
+	enabled: true;
+	background-color: inherit;
+	text-color: inherit;
+	cursor: text;
+	placeholder: "Search... ";
+}
+
+listview {
+	enabled: true;
+	columns: 1;
+	lines: 8;
+	cycle: true;
+	dynamic: true;
+	scrollbar: false;
+	layout: vertical;
+	reverse: false;
+	count: false;
+	background-color: transparent;
+	spacing: 0px;
+	padding: 0px;
+	margin: 0px;
+	border: 0px solid;
+}
+
+message {
+	enabled: false;
+}
+
+element {
+	enabled: true;
+	spacing: 10px;
+	background-color: transparent;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+element normal.normal {
+	background-color: transparent;
+	text-color: @light;
+}
+
+// element normal.urgent {
+// 	background-color: transparent;
+// 	text-color: @on-error;
+// }
+//
+// element normal.active {
+// 	background-color: transparent;
+// 	text-color: @on-surface;
+// }
+
+element selected.normal {
+	background-color: @light; 
+	text-color: @dark;
+}
+
+element alternate.normal {
+	background-color: transparent;
+	text-color: @light;
+}

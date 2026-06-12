@@ -1,0 +1,44 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "source": "~/.config/fastfetch/ascii.txt"
+  },
+  "display": {
+    "separator": " -  ",
+  },
+  "modules": [
+    {
+      "type": "title",
+      "keyWidth": 10
+    },
+    {
+      "type": "custom",
+      "format": "----------------------"
+    },
+    {
+      "type": "command",
+      "key": "󰌽  ",
+      "text": "grep '^ID=' /etc/os-release | cut -d= -f2 | tr -d '\"' | tr 'A-Z' 'a-z'"
+    },
+    {
+      "type": "command",
+      "key": "  ",
+      "text": "zsh --version | awk '{print tolower($1)}'"
+    },
+    {
+      "type": "command",
+      "key": "  ",
+      "text": "sh -c 'if command -v hyprctl >/dev/null; then hyprctl version | head -n1 | awk \"{print \\$1}\"; elif command -v swaymsg >/dev/null; then echo sway; else echo unknown; fi' | tr \"A-Z\" \"a-z\""
+    },
+    {
+      "type": "custom",
+      "format": "----------------------"
+    },
+    "break",
+    {
+      "type": "colors",
+      "paddingLeft": 6,
+      "symbol": "circle"
+    }
+  ]
+}
