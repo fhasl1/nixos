@@ -13,6 +13,10 @@
     viAlias = true;
     nixpkgs.useGlobalPackages = true;
 
+    lazyLoading = {
+      enable = true;
+    };
+
     globals = {
       mapleader = " ";
     };
