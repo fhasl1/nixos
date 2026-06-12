@@ -68,6 +68,8 @@
     localsend
     mpv
     davinci-resolve
+    ffmpeg-full
+    handbrake
   ];
   environment.variables = {
     RUSTICL_ENABLE = "radeonsi";
