@@ -26,12 +26,16 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+    };
   };
   outputs = inputs @ {
     nixpkgs,
     nixos-hardware,
     nix-cachyos-kernel,
     home-manager,
+    nixvim,
     ...
   }: {
     nixosConfigurations = {
@@ -52,7 +56,12 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.fhasl = import ./home-manager/home.nix;
+              users.fhasl = {
+                imports = [
+                  inputs.nixvim.homeModules.nixvim
+                  ./home-manager/home.nix
+                ];
+              };
               backupFileExtension = "backup";
             };
           }
