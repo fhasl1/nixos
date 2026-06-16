@@ -7,13 +7,9 @@
     ./boot.nix
     ./bluetooth.nix
     ./programs.nix
-    ../../modules/nix.nix
-    ../../modules/users.nix
-    ../../modules/locale.nix
-    ../../modules/programs.nix
-    ../../modules/packages.nix
     inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
     inputs.gsr-ui-nix.nixosModules.default
   ];
-  system.stateVersion = "25.11";
+
+  system.stateVersion = "26.05";
 }
