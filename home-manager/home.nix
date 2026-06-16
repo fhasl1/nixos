@@ -1,9 +1,16 @@
-{inputs, ...}: {
+{pkgs, ...}: {
   imports = [
     ./nvim
   ];
 
   programs.home-manager.enable = true;
+
+  services = {
+    sxhkd = {
+      enable = true;
+      package = pkgs.sxhkd;
+    };
+  };
 
   home = {
     username = "fhasl";
