@@ -44,15 +44,19 @@
       (map (f: dir + "/${f}") nixFiles)
       ++ builtins.concatMap (d: collectModules (dir + "/${d}")) subdirs;
 
-    sharedModules = collectModules ./modules;
+    sharedModules = collectModules ./modules/shared;
+    amaltheaModules = collectModules ./modules/hosts/amalthea;
+    artemisModules = collectModules ./modules/hosts/artemis;
   in {
     nixosConfigurations = {
       amalthea = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules =
-          sharedModules
+          sharedModules ++ amaltheaModules
           ++ [
+            inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
+            inputs.gsr-ui-nix.nixosModules.default
             ({pkgs, ...}: {
               nixpkgs.overlays = [nix-cachyos-kernel.overlays.default];
             })
@@ -79,8 +83,10 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules =
-          sharedModules
+          sharedModules ++ artemisModules
           ++ [
+            inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
+            inputs.gsr-ui-nix.nixosModules.default
             ./hosts/laptop
             nixos-hardware.nixosModules.lenovo-thinkpad-t480
             home-manager.nixosModules.home-manager
