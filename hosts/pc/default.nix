@@ -14,6 +14,7 @@
     ../../modules/nix.nix
     ../../modules/security.nix
     ../../modules/packages.nix
+    ../../modules/virtualization.nix
     inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
     inputs.gsr-ui-nix.nixosModules.default
   ];
