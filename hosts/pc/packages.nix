@@ -1,11 +1,9 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # Neovim shits
-    neovim
+    # Dev tools
     lua51Packages.luarocks
     lua51Packages.lua
     unzip
-    elmPackages.nodejs
     nodejs
     php
     graalvmPackages.graalvm-ce
@@ -16,13 +14,7 @@
     php82Packages.composer
     cargo
     julia
-    tree-sitter
-    nixd
-    shellcheck
-    statix
-    clang-tools
     gcc
-    libgcc
     clang
 
     # WM shits
