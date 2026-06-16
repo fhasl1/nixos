@@ -30,6 +30,7 @@
       enableTearFree = true;
       windowManager = {
         openbox.enable = true;
+        berry.enable = true;
       };
     };
   };
