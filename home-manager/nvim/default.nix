@@ -17,9 +17,7 @@
     viAlias = true;
     nixpkgs.useGlobalPackages = true;
 
-    lazyLoading = {
-      enable = true;
-    };
+    plugins.lz-n.enable = true;
 
     globals = {
       mapleader = " ";

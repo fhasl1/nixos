@@ -28,10 +28,7 @@
       enable = true;
       videoDrivers = ["amdgpu"];
       enableTearFree = true;
-      windowManager = {
-        openbox.enable = true;
-        berry.enable = true;
-      };
+      windowManager.openbox.enable = true;
     };
   };
   systemd.user.services = {

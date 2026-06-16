@@ -7,7 +7,6 @@
     oil = {
       enable = true;
       settings = {};
-      lazy = false;
     };
 
     auto-save = {
