@@ -6,6 +6,7 @@
     ./lint.nix
     ./dap.nix
     ./misc.nix
+    ./opencode.nix
     ./treesitter.nix
     ./ui.nix
   ];
