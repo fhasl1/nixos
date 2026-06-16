@@ -12,6 +12,10 @@
       ui.enable = true;
     };
     steam.enable = true;
+    virt-manager = {
+      enable = true;
+      package = pkgs.virt-manager;
+    };
     gamemode.enable = true;
     appimage = {
       enable = true;
