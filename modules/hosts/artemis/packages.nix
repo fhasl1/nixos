@@ -7,27 +7,18 @@
     lua51Packages.luarocks
     lua51Packages.lua
     unzip
-    elmPackages.nodejs
     nodejs
     php
     graalvmPackages.graalvm-ce
     python313
-    python313Packages.pip
     ruby
     go
     php82Packages.composer
     cargo
     julia
     tree-sitter
-    nixd
-    shellcheck
-    statix
     clang
-    clang-tools
     gcc
-    libgcc
-    stylua
-    prettier
 
     # WM shits
     waybar
