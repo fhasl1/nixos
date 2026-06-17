@@ -1,11 +1,11 @@
 {pkgs, ...}: let
-  lackluster = pkgs.vimUtils.buildVimPlugin {
-    name = "lackluster-nvim";
+  vim-256noir = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-256noir";
     src = pkgs.fetchFromGitHub {
-      owner = "slugbyte";
-      repo = "lackluster.nvim";
+      owner = "andreasvc";
+      repo = "vim-256noir";
       rev = "master";
-      hash = "sha256-OxeY+0Q07zD6FHa0BRhz/1k4HyJeB8/j+vrzXVSbe/4=";
+      hash = "sha256-HeS5nSnPk95YBaBEGIcEf6dfqQ3NvHHW0+u14tIZ9s4=";
     };
   };
 
@@ -25,7 +25,7 @@ in {
       plenary-nvim
       mason-nvim
       mason-nvim-dap-nvim
-      lackluster-nvim
+      vim-256noir
     ];
 
     extraPackages = with pkgs; [
