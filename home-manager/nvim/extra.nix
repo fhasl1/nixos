@@ -23,6 +23,7 @@ in {
     extraPlugins = with pkgs.vimPlugins; [
       statusline-lua
       plenary-nvim
+      mason-nvim
       mason-nvim-dap-nvim
       lackluster-nvim
     ];
@@ -93,6 +94,9 @@ in {
         },
       })
       vim.lsp.enable("nixd")
+
+      -- Mason
+      require("mason").setup()
 
       -- DAP setup with mason-nvim-dap
       require("mason-nvim-dap").setup({
