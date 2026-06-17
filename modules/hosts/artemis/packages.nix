@@ -43,8 +43,6 @@
     fastfetch
     fzf
     bat
-    git
-    gh
 
     # Shits
     wget
