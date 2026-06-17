@@ -28,7 +28,10 @@
       enable = true;
       videoDrivers = ["amdgpu"];
       enableTearFree = true;
-      windowManager.openbox.enable = true;
+      windowManager = {
+        openbox.enable = true;
+        cwm.enable = true;
+      };
     };
   };
   systemd.user.services = {
