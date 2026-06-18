@@ -65,7 +65,18 @@ in {
           "ColorColumn",
         }
         for _, g in ipairs(groups) do
-          vim.api.nvim_set_hl
+          vim.api.nvim_set_hl(0, g, { bg = "none" })
+        end
+        vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none", fg = "#767676" })
+      end
+      set_transparent()
+
+      vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "none" })
+      vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+      vim.api.nvim_set_hl(0, "NvimTreeSignColumn", { bg = "none" })
+      vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })
+      vim.api.nvim_set_hl(0, "NvimTreeWinSeparator", { bg = "none", fg = "#2a2a2a" })
+      vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { bg = "none" })
 
       -- Lua Language Server
       vim.lsp.config("lua_ls", {
