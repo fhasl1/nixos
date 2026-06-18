@@ -1,11 +1,11 @@
 {pkgs, ...}: let
-  lackluster = pkgs.vimUtils.buildVimPlugin {
-    name = "lackluster-nvim";
+  koda-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "koda-nvim";
     src = pkgs.fetchFromGitHub {
-      owner = "slugbyte";
-      repo = "lackluster.nvim";
+      owner = "oskarnurm";
+      repo = "koda.nvim";
       rev = "master";
-      hash = "sha256-OxeY+0Q07zD6FHa0BRhz/1k4HyJeB8/j+vrzXVSbe/4=";
+      hash = "sha256-OiWW7c+cd/MioepNN40pFO3hTAm9ov80I1mVYmTW428=";
     };
   };
 
@@ -25,7 +25,7 @@ in {
       plenary-nvim
       mason-nvim
       mason-nvim-dap-nvim
-      lackluster-nvim
+      koda-nvim
     ];
 
     extraPackages = with pkgs; [
@@ -48,6 +48,24 @@ in {
       vim.lsp.config("*", {
         capabilities = capabilities,
       })
+
+      local function set_transparent()
+        local groups = {
+          "Normal",
+          "NormalNC",
+          "EndOfBuffer",
+          "NormalFloat",
+          "FloatBorder",
+          "SignColumn",
+          "StatusLine",
+          "StatusLineNC",
+          "TabLine",
+          "TabLineFill",
+          "TabLineSel",
+          "ColorColumn",
+        }
+        for _, g in ipairs(groups) do
+          vim.api.nvim_set_hl
 
       -- Lua Language Server
       vim.lsp.config("lua_ls", {

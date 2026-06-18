@@ -23,7 +23,7 @@
       mapleader = " ";
     };
 
-    colorscheme = "lackluster-dark";
+    colorscheme = "koda";
 
     highlight = {
       Normal = {bg = "none";};
