@@ -10,9 +10,8 @@
     blueman.enable = true;
     fcitx5-lotus = {
       enable = true;
-      user = "fhasl";
+      users = ["fhasl"];
     };
-    dbus.enable = true;
     openssh.enable = true;
     tailscale.enable = true;
     fstrim.enable = true;

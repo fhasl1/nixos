@@ -32,9 +32,9 @@
     collectModules = dir: let
       entries = builtins.readDir dir;
       nixFiles =
-        builtins.filter
+        builtins.sort builtins.lessThan (builtins.filter
         (n: builtins.match ".*\\.nix" n != null && n != "default.nix")
-        (builtins.attrNames entries);
+        (builtins.attrNames entries));
       subdirs =
         builtins.filter
         (n: entries.${n} == "directory")
