@@ -26,7 +26,6 @@
     nixos-hardware,
     nix-cachyos-kernel,
     home-manager,
-    nixvim,
     ...
   }: let
     # Recursively collect all .nix files (except default.nix) from a directory
@@ -53,14 +52,14 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules =
-          sharedModules ++ amaltheaModules
+          sharedModules
+          ++ amaltheaModules
           ++ [
             inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
             inputs.gsr-ui-nix.nixosModules.default
             ({pkgs, ...}: {
               nixpkgs.overlays = [nix-cachyos-kernel.overlays.default];
             })
-            ./hosts/pc
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -83,11 +82,11 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules =
-          sharedModules ++ artemisModules
+          sharedModules
+          ++ artemisModules
           ++ [
             inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
             inputs.gsr-ui-nix.nixosModules.default
-            ./hosts/laptop
             nixos-hardware.nixosModules.lenovo-thinkpad-t480
             home-manager.nixosModules.home-manager
             {
