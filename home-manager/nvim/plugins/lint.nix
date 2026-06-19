@@ -4,7 +4,6 @@
     lintersByFt = {
       sh = [ "shellcheck" ];
       bash = [ "shellcheck" ];
-      nix = [ "statix" ];
     };
   };
 }

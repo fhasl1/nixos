@@ -31,8 +31,7 @@
     # Recursively collect all .nix files (except default.nix) from a directory
     collectModules = dir: let
       entries = builtins.readDir dir;
-      nixFiles =
-        builtins.sort builtins.lessThan (builtins.filter
+      nixFiles = builtins.sort builtins.lessThan (builtins.filter
         (n: builtins.match ".*\\.nix" n != null && n != "default.nix")
         (builtins.attrNames entries));
       subdirs =
@@ -57,7 +56,7 @@
           ++ [
             inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
             inputs.gsr-ui-nix.nixosModules.default
-            ({pkgs, ...}: {
+            ({...}: {
               nixpkgs.overlays = [nix-cachyos-kernel.overlays.default];
             })
             home-manager.nixosModules.home-manager
@@ -76,6 +75,7 @@
             }
             inputs.xlibre-overlay.nixosModules.overlay-xlibre-xserver
             inputs.xlibre-overlay.nixosModules.overlay-xlibre-xf86-video-amdgpu
+            {system.stateVersion = "26.11";}
           ];
       };
       artemis = nixpkgs.lib.nixosSystem {
@@ -102,6 +102,7 @@
                 backupFileExtension = "backup";
               };
             }
+            {system.stateVersion = "26.11";}
           ];
       };
     };
