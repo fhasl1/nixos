@@ -31,7 +31,9 @@
     };
 
     diagnostic.settings = {
-      virtual_text = true;
+      virtual_text = {
+        source = false;
+      };
       virtual_lines = true;
       signs = true;
       underline = true;
