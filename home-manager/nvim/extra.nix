@@ -80,6 +80,7 @@ in {
 
       -- Lua Language Server
       vim.lsp.config("lua_ls", {
+        filetypes = { "lua" },
         settings = {
           Lua = {
             diagnostics = {
@@ -96,6 +97,7 @@ in {
 
       -- clangd
       vim.lsp.config("clangd", {
+        filetypes = { "c", "cpp", "objc", "objcpp" },
         cmd = {
           "clangd",
           "--query-driver=/nix/store/*/bin/gcc*,/nix/store/*/bin/g++*,/nix/store/*/bin/clang*",
