@@ -57,7 +57,7 @@
             inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
             inputs.gsr-ui-nix.nixosModules.default
             ({...}: {
-              nixpkgs.overlays = [nix-cachyos-kernel.overlays.default];
+              nixpkgs.overlays = [nix-cachyos-kernel.overlays.pinned];
             })
             home-manager.nixosModules.home-manager
             {
