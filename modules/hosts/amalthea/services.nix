@@ -32,7 +32,6 @@
       autoRepeatInterval = 35;
       windowManager = {
         openbox.enable = true;
-        cwm.enable = true;
       };
     };
   };
