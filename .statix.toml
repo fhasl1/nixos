@@ -1,0 +1,2 @@
+[checks]
+sema-unused-def-lambda-noarg-formal = false
