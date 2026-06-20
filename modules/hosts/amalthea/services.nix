@@ -28,6 +28,8 @@
       enable = true;
       videoDrivers = ["amdgpu"];
       enableTearFree = true;
+      autoRepeatDelay = 300;
+      autoRepeatInterval = 35;
       windowManager = {
         openbox.enable = true;
         cwm.enable = true;
