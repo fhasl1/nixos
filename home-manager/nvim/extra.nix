@@ -101,9 +101,11 @@ in {
           "--query-driver=/nix/store/*/bin/gcc*,/nix/store/*/bin/g++*,/nix/store/*/bin/clang*",
         },
       })
+      vim.lsp.enable("clangd")
 
       -- nixd
       vim.lsp.config("nixd", {
+        filetypes = { "nix" },
         cmd = { "nixd" },
         capabilities = require("blink.cmp").get_lsp_capabilities(),
         settings = {
