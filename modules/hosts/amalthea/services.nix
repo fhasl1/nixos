@@ -22,7 +22,10 @@
     fstrim.enable = true;
     cloudflare-warp.enable = true;
     displayManager = {
-      ly.enable = true;
+      sddm = {
+        thyx.enable = true;
+        wayland.enable = false;
+      };
     };
     xserver = {
       enable = true;

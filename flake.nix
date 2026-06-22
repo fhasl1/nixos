@@ -19,6 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim.url = "github:nix-community/nixvim";
+    thyx.url = "github:rccyx/thyx";
   };
 
   outputs = inputs @ {
@@ -26,6 +27,7 @@
     nixos-hardware,
     nix-cachyos-kernel,
     home-manager,
+    thyx,
     ...
   }: let
     # Recursively collect all .nix files (except default.nix) from a directory
@@ -56,6 +58,7 @@
           ++ [
             inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
             inputs.gsr-ui-nix.nixosModules.default
+            thyx.nixosModules.default
             ({...}: {
               nixpkgs.overlays = [nix-cachyos-kernel.overlays.pinned];
             })
