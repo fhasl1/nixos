@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     neovim
     tree-sitter
@@ -8,9 +6,11 @@
     hyprpicker
     hyprshot
     wl-clipboard
+    brightnessctl
     autotiling
     btop
     easyeffects
+    upower
     obsidian
   ];
 }
