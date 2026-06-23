@@ -44,7 +44,9 @@
       (map (f: dir + "/${f}") nixFiles)
       ++ builtins.concatMap (d: collectModules (dir + "/${d}")) subdirs;
 
-    sharedModules = collectModules ./modules/shared;
+    sharedModules = collectModules ./modules/shared ++ [
+      inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
+    ];
     amaltheaModules = collectModules ./modules/hosts/amalthea;
     artemisModules = collectModules ./modules/hosts/artemis;
   in {
@@ -56,7 +58,6 @@
           sharedModules
           ++ amaltheaModules
           ++ [
-            inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
             inputs.gsr-ui-nix.nixosModules.default
             thyx.nixosModules.default
             ({...}: {
@@ -88,7 +89,6 @@
           sharedModules
           ++ artemisModules
           ++ [
-            inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
             inputs.gsr-ui-nix.nixosModules.default
             nixos-hardware.nixosModules.lenovo-thinkpad-t480
             home-manager.nixosModules.home-manager

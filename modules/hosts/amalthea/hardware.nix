@@ -10,6 +10,9 @@
     };
   };
   security.rtkit.enable = true;
+  environment.variables = {
+    RUSTICL_ENABLE = "radeonsi";
+  };
   zramSwap = {
     enable = true;
     memoryPercent = 50;

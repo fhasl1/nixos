@@ -21,7 +21,5 @@
     ffmpeg-full
     handbrake
   ];
-  environment.variables = {
-    RUSTICL_ENABLE = "radeonsi";
-  };
+
 }

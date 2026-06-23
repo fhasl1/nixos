@@ -1,23 +1,11 @@
 {inputs, ...}: {
   nix = {
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-
-    optimise = {
-      automatic = true;
-      dates = ["weekly"];
-    };
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
-
     settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      auto-optimise-store = true;
       trusted-users = ["fhasl"];
       substituters = [
         "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
@@ -31,5 +19,13 @@
         "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
       ];
     };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   };
 }

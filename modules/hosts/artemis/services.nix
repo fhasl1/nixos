@@ -20,6 +20,7 @@
     tailscale.enable = true;
     fstrim.enable = true;
     flatpak.enable = true;
+
     fwupd = {
       enable = true;
       daemonSettings.DisabledPlugins = ["test" "invalid" "bios"];
