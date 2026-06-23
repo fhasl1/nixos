@@ -78,4 +78,8 @@
     menus.enable = true;
   };
   fonts.fontDir.enable = true;
+  programs.labwc = {
+    enable = true;
+    package = pkgs.labwc;
+  };
 }
