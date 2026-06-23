@@ -40,6 +40,12 @@
       options = {desc = "Flash Treesitter";};
     }
     {
+      mode = "i";
+      key = "<C-BS>";
+      action = "<C-W>";
+      options = {desc = "Delete word backward";};
+    }
+    {
       mode = "o";
       key = "r";
       action.__raw = "function() require('flash').remote() end";
