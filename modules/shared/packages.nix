@@ -46,6 +46,8 @@
     swayfx
     appimage-run
     mpv
+    localsend
+    kdePackages.kdenlive
   ];
 
   nixpkgs.config.allowUnfree = true;
