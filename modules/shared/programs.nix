@@ -6,6 +6,11 @@
   programs = {
     firefox.enable = true;
     zsh.enable = true;
+    localsend = {
+      enable = true;
+      package = pkgs.localsend;
+      openFirewall = true;
+    };
     gpu-screen-recorder = {
       enable = true;
       package = inputs.gsr-ui-nix.packages.${pkgs.stdenv.hostPlatform.system}.gpu-screen-recorder;
