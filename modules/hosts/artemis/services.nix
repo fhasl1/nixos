@@ -1,6 +1,10 @@
 {pkgs, ...}: {
   services = {
     libinput.enable = true;
+    upower = {
+      enable = true;
+      package = pkgs.upower;
+    };
     undervolt = {
       enable = true;
       coreOffset = -100;

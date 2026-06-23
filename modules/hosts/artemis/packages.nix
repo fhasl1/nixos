@@ -10,7 +10,6 @@
     autotiling
     btop
     easyeffects
-    upower
     obsidian
   ];
 }
