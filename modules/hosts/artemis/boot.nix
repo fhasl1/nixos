@@ -1,17 +1,16 @@
-{ pkgs, ... }:
-
-{
-   boot = {
-      loader = {
-         grub = {
-            enable = true;
-            devices = [ "/dev/nvme0n1" ];
-            configurationLimit = 5;
-            gfxmodeBios = "1920x1080x32";
-         };
-         timeout = 0;
+{pkgs, ...}: {
+  boot = {
+    loader = {
+      grub = {
+        enable = true;
+        devices = ["/dev/nvme0n1"];
+        configurationLimit = 5;
+        gfxmodeBios = "1920x1080x32";
       };
-      kernelPackages = pkgs.linuxPackages_latest;
-      kernelParams = [ "psmouse.synaptics_intertouch=1" ];
-   };
+      timeout = 0;
+    };
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = ["psmouse.synaptics_intertouch=1"];
+    extraModprobeConfig = "options psmouse synaptics_intertouch=1";
+  };
 }
