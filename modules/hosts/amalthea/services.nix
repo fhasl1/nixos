@@ -41,14 +41,14 @@
   systemd.user.services = {
     pipewire = {
       serviceConfig = {
-        ExecStartPre = "-${pkgs.coreutils}/bin/rm -f %t/pipewire-0.lock %t/pipewire-0";
+        ExecStartPre = "-${pkgs.coreutils}/bin/rm -f %t/pipewire-0.lock";
         RestartSec = "3s";
         StartLimitBurst = 10;
       };
     };
     pipewire-pulse = {
       serviceConfig = {
-        ExecStartPre = "-${pkgs.coreutils}/bin/rm -f %t/pipewire-pulse-0.lock %t/pipewire-pulse-0";
+        ExecStartPre = "-${pkgs.coreutils}/bin/rm -f %t/pipewire-pulse-0.lock";
         RestartSec = "3s";
         StartLimitBurst = 10;
       };
