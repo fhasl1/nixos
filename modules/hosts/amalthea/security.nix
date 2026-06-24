@@ -1,14 +1,11 @@
 {...}: {
   security = {
     sudo = {
-      enable = false;
-    };
-    sudo-rs = {
       enable = true;
       execWheelOnly = true;
       wheelNeedsPassword = true;
       extraConfig = ''
-        Defaults env_keep += SUDO_PROMPT
+        Defaults passprompt="\e[1;35m[%u]\e[0m password: "
       '';
     };
   };
