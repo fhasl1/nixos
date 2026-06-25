@@ -23,6 +23,7 @@
       wrap = false;
       linebreak = true;
 
+      hidden = true;
       swapfile = false;
       backup = false;
       clipboard = "unnamedplus";

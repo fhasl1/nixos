@@ -152,6 +152,10 @@ in {
         lsp_diagnostics = true,
         ale_diagnostics = false,
       })
+
+      -- Remove any command-line abbreviations that remap :w or :q
+      pcall(vim.cmd, "cunabbrev w")
+      pcall(vim.cmd, "cunabbrev q")
     '';
   };
 }

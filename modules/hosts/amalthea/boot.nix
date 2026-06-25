@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -9,7 +7,6 @@
       efi.canTouchEfiVariables = true;
       efi.efiSysMountPoint = "/boot/efi";
     };
-    # kernelPackages = pkgs.linuxPackages_latest;
     kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
     initrd.kernelModules = [
       "uinput"
