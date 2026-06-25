@@ -22,7 +22,7 @@
       cmdline = {
         keymap = {
           "<Tab>" = ["show" "accept"];
-          "<CR>" = ["accept_and_enter" "fallback"];
+          "<CR>" = ["fallback"];
         };
         completion = {
           menu = {
