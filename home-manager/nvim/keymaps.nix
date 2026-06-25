@@ -11,6 +11,31 @@
       action = "\"+y";
     }
     {
+      mode = "n";
+      key = "<leader>X";
+      action = "<cmd>!chmod +x %<CR>";
+    }
+    {
+      mode = "n";
+      key = "n";
+      action = "nzzzv";
+    }
+    {
+      mode = "n";
+      key = "N";
+      action = "Nzzzv";
+    }
+    {
+      mode = "n";
+      key = "<";
+      action = "<gv";
+    }
+    {
+      mode = "n";
+      key = ">";
+      action = ">gv";
+    }
+    {
       mode = "v";
       key = "J";
       action = ":m '>+1<CR>gv=gv";

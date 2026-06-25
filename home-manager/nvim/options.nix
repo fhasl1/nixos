@@ -36,7 +36,9 @@
       undofile = true;
 
       showmode = false;
-      completeopt = "menu,menuone,noselect";
+      completeopt = "nosort,fuzzy,menuone,noselect";
+      cmdheight = 0;
+      guicursor = "";
     };
   };
 }
