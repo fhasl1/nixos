@@ -95,11 +95,11 @@ in {
       })
       vim.lsp.enable("lua_ls")
 
-      -- clangd
+      -- clangd (use Nix-wrapped clangd for correct include paths on NixOS)
       vim.lsp.config("clangd", {
         filetypes = { "c", "cpp", "objc", "objcpp" },
         cmd = {
-          "clangd",
+          "${pkgs.clang-tools}/bin/clangd",
           "--query-driver=/nix/store/*/bin/gcc*,/nix/store/*/bin/g++*,/nix/store/*/bin/clang*",
         },
       })
