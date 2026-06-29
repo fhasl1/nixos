@@ -20,7 +20,6 @@
     };
     gnome.gnome-keyring.enable = true;
     fstrim.enable = true;
-
     displayManager = {
       sddm = {
         thyx.enable = true;
@@ -78,8 +77,4 @@
     menus.enable = true;
   };
   fonts.fontDir.enable = true;
-  programs.labwc = {
-    enable = true;
-    package = pkgs.labwc;
-  };
 }

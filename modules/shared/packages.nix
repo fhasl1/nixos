@@ -48,6 +48,7 @@
     mpv
     localsend
     kdePackages.kdenlive
+    udiskie
   ];
 
   nixpkgs.config.allowUnfree = true;
