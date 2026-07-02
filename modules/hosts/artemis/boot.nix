@@ -10,7 +10,7 @@
       timeout = 0;
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = ["psmouse.synaptics_intertouch=1"];
+    kernelParams = ["psmouse.synaptics_intertouch=1" "iomem=relaxed"];
     extraModprobeConfig = "options psmouse synaptics_intertouch=1";
   };
 }
