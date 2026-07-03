@@ -28,6 +28,7 @@
       withVencord = true;
       withOpenASAR = true;
     })
+    mate-polkit
 
     # Zsh tools
     eza
