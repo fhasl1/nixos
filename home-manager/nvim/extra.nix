@@ -39,6 +39,7 @@ in {
       alejandra
       shellcheck
       statix
+      ripgrep
     ];
 
     extraConfigLua = ''
