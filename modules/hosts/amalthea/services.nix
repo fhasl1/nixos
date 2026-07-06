@@ -30,6 +30,12 @@
       autoRepeatInterval = 35;
       windowManager = {
         openbox.enable = true;
+        dwm = {
+          enable = true;
+          package = pkgs.dwm.overrideAttrs {
+            src = ../../../home-manager/config/dwm;
+          };
+        };
       };
     };
   };
