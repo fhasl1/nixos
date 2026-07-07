@@ -14,7 +14,7 @@ static int smartgaps =
 static const int showbar = 0; /* 0 means no bar */
 static const int topbar = 1;  /* 0 means bottom bar */
 static const char *fonts[] = {"Iosevka Nerd Font:size=10"};
-static const char dmenufont[] = "monospace:size=10";
+static const char dmenufont[] = "Iosevka Nerd Font:size=10";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#bbbbbb";
@@ -45,7 +45,7 @@ static const int nmaster = 1;    /* number of clients in master area */
 static const int resizehints =
     1; /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen =
-    1; /* 1 will force focus on the fullscreen window */
+    0; /* 1 will force focus on the fullscreen window */
 #define FORCE_VSPLIT                                                           \
   1 /* nrowgrid layout: force two clients to always split                      \
         vertically */
@@ -92,8 +92,6 @@ static char dmenumon[2] =
 static const char *dmenucmd[] = {
     "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
     "-nf",       col_gray3, "-sb",    col_cyan, "-sf",     col_gray4, NULL};
-static const char *rofi[] = {
-    "$HOME/nixos/home-manager/config/dwm/scripts/rofi.sh", NULL};
 static const char *termcmd[] = {"kitty", NULL};
 
 static const Key keys[] = {
