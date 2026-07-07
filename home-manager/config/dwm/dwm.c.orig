@@ -1285,6 +1285,14 @@ void resizeclient(Client *c, int x, int y, int w, int h) {
   c->oldh = c->h;
   c->h = wc.height = h;
   wc.border_width = c->bw;
+  if (((nexttiled(c->mon->clients) == c && !nexttiled(c->next)) ||
+       &monocle == c->mon->lt[c->mon->sellt]->arrange) &&
+      !c->isfullscreen && !c->isfloating &&
+      NULL != c->mon->lt[c->mon->sellt]->arrange) {
+    c->w = wc.width += c->bw * 2;
+    c->h = wc.height += c->bw * 2;
+    wc.border_width = 0;
+  }
   if (solitary(c)) {
     c->w = wc.width += c->bw * 2;
     c->h = wc.height += c->bw * 2;
@@ -1315,8 +1323,8 @@ void resizemouse(const Arg *arg) {
   ocy = c->y;
   ocx2 = c->x + c->w;
   ocy2 = c->y + c->h;
-if (XGrabPointer(dpy, root, False, MOUSEMASK, GrabModeAsync, GrabModeAsync,
-                     None, cursor[CurResize]->cursor, CurrentTime) != GrabSuccess)
+  if (XGrabPointer(dpy, root, False, MOUSEMASK, GrabModeAsync, GrabModeAsync,
+                   None, cursor[CurResize]->cursor, CurrentTime) != GrabSuccess)
     return;
   if (!XQueryPointer(dpy, c->win, &dummy, &dummy, &di, &di, &nx, &ny, &dui))
     return;
