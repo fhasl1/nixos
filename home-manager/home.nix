@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./nvim
   ];
@@ -24,5 +24,11 @@
     username = "fhasl";
     homeDirectory = "/home/fhasl";
     stateVersion = "26.05";
+    packages = with pkgs; [
+      (pkgs.dmenu.overrideAttrs (_: {
+        src = ./config/dmenu;
+        patches = [];
+      }))
+    ];
   };
 }
