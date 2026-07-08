@@ -93,6 +93,10 @@ static const char *dmenucmd[] = {
     "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
     "-nf",       col_gray3, "-sb",    col_cyan, "-sf",     col_gray4, NULL};
 static const char *termcmd[] = {"kitty", NULL};
+static const char *scrot[] = {
+    "scrot",      "-s", "-e",        "'xclip",       "-selection",
+    "clipboard",  "-t", "image/png", "-i",           "$f",
+    "&amp;&amp;", "mv", "$f",        "~/Pictures/'", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
@@ -126,6 +130,7 @@ static const Key keys[] = {
     {MODKEY | Mod4Mask, XK_0, togglegaps, {0}},
     {MODKEY | Mod4Mask | ShiftMask, XK_0, defaultgaps, {0}},
     {MODKEY, XK_Tab, view, {0}},
+    {MODKEY | ShiftMask, XK_s, spawn, {.v = scrot}},
     {MODKEY | ShiftMask, XK_q, killclient, {0}},
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
