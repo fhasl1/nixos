@@ -26,6 +26,7 @@ in {
       mason-nvim
       mason-nvim-dap-nvim
       koda-nvim
+      nvim-colorizer-lua
     ];
 
     extraPackages = with pkgs; [
@@ -145,6 +146,9 @@ in {
 
       -- LuaSnip vscode loader
       require("luasnip.loaders.from_vscode").lazy_load()
+
+      -- Colorizer
+      require("colorizer").setup()
 
       -- Statusline
       require("statusline").setup({
