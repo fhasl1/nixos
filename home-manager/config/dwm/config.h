@@ -96,12 +96,11 @@ static const char *termcmd[] = {"kitty", NULL};
 static const char *roficmd[] = {"rofi", "-show", "drun", NULL};
 static const char *scrotcmd[] = {
     "scrot", "-s", "-e",
-    "xclip -selection clipboard -t image/png -i $f && mv $f ~/Pictures/",
-    NULL};
+    "xclip -selection clipboard -t image/png -i $f && mv $f ~/Pictures/", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
-    {MODKEY, XK_d, spawn, {.v = dmenucmd}},
+    {MODKEY, XK_d, spawn, {.v = roficmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
@@ -131,7 +130,6 @@ static const Key keys[] = {
     {MODKEY | Mod4Mask, XK_0, togglegaps, {0}},
     {MODKEY | Mod4Mask | ShiftMask, XK_0, defaultgaps, {0}},
     {MODKEY, XK_Tab, view, {0}},
-    {MODKEY, XK_p, spawn, {.v = roficmd}},
     {MODKEY | ShiftMask, XK_s, spawn, {.v = scrotcmd}},
     {MODKEY | ShiftMask, XK_q, killclient, {0}},
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
