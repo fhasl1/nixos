@@ -1,12 +1,13 @@
 {pkgs, ...}: let
-  koda-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "koda-nvim";
+  zenbones-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "zenbones-nvim";
     src = pkgs.fetchFromGitHub {
-      owner = "oskarnurm";
-      repo = "koda.nvim";
-      rev = "master";
-      hash = "sha256-OiWW7c+cd/MioepNN40pFO3hTAm9ov80I1mVYmTW428=";
+      owner = "zenbones-theme";
+      repo = "zenbones.nvim";
+      rev = "v4.12.0";
+      hash = "sha256-Bh+OW1qyOYSgl3WbYnQ3HLem+AKChqwGYfn04ifyfAw=";
     };
+    doCheck = false;
   };
 
   statusline-lua = pkgs.vimUtils.buildVimPlugin {
@@ -25,7 +26,8 @@ in {
       plenary-nvim
       mason-nvim
       mason-nvim-dap-nvim
-      koda-nvim
+      zenbones-nvim
+      lush-nvim
       nvim-colorizer-lua
     ];
 

@@ -19,7 +19,7 @@
       mapleader = " ";
     };
 
-    colorscheme = "koda";
+    colorscheme = "zenbones";
 
     highlight = {
       Normal = {bg = "none";};
