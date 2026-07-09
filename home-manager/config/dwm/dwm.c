@@ -1545,14 +1545,13 @@ void setfocus(Client *c) {
 
 void setfullscreen(Client *c, int fullscreen) {
   if (fullscreen && !c->isfullscreen) {
+    c->oldstate = c->isfloating;
+    c->isfloating = 1;
     XChangeProperty(dpy, c->win, netatom[NetWMState], XA_ATOM, 32,
                     PropModeReplace, (unsigned char *)&netatom[NetWMFullscreen],
                     1);
     c->isfullscreen = 1;
-  } else if (!fullscreen && c->isfullscreen) {
-    XChangeProperty(dpy, c->win, netatom[NetWMState], XA_ATOM, 32,
-                    PropModeReplace, (unsigned char *)0, 0);
-    c->isfullscreen = 0;
+    arrange(c->mon);
   }
 }
 
