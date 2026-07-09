@@ -150,6 +150,8 @@ in {
       -- Colorizer
       require("colorizer").setup()
 
+      require('vim._core.ui2').enable()
+
       -- Statusline
       require("statusline").setup({
         match_colorscheme = true,
