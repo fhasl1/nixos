@@ -97,7 +97,7 @@ in {
 
       -- clangd (use Nix-wrapped clangd for correct include paths on NixOS)
       vim.lsp.config("clangd", {
-        filetypes = { "c", "cpp", "objc", "objcpp" },
+        filetypes = { "c", "cpp", "objc", "objcpp", "h" },
         cmd = {
           "${pkgs.clang-tools}/bin/clangd",
           "--query-driver=/nix/store/*/bin/gcc*,/nix/store/*/bin/g++*,/nix/store/*/bin/clang*",
