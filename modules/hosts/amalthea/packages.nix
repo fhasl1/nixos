@@ -17,9 +17,7 @@
     zathura
     onlyoffice-desktopeditors
     localsend
-    davinci-resolve
     ffmpeg-full
-    handbrake
   ];
 
 }

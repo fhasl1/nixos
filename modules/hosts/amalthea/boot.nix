@@ -7,7 +7,8 @@
       efi.canTouchEfiVariables = true;
       efi.efiSysMountPoint = "/boot/efi";
     };
-    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
+    #kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
+    kernelPackages = pkgs.linuxPackages_latest;
     initrd.kernelModules = [
       "uinput"
       "amdgpu"
