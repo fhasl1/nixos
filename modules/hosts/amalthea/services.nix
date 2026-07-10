@@ -42,6 +42,10 @@ dwm = {
       };
     };
   };
+  system.activationScripts.cleanup-systemd-user-units = ''
+    find /home/fhasl/.config/systemd/user -type l ! -exec test -e {} \; -delete 2>/dev/null || true
+  '';
+
   systemd.user.services = {
     pipewire = {
       serviceConfig = {
