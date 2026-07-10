@@ -14,12 +14,12 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/ee5d8f3c-0bbe-405c-8e62-a8799dd9d93d";
-      fsType = "ext4";
+    { device = "/dev/disk/by-uuid/6c1701ac-0322-4319-96aa-eae83eb26841";
+      fsType = "xfs";
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/3252-8B27";
+    { device = "/dev/disk/by-uuid/5C36-C146";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
@@ -29,13 +29,13 @@
       fsType = "ext4";
     };
 
-  fileSystems."/home/fhasl/Steam" =
-    { device = "/dev/disk/by-uuid/bbd05b85-3049-4c49-b600-9b614be8ed7f";
+  fileSystems."/home/fhasl/Games" =
+    { device = "/dev/disk/by-uuid/52e8d1eb-f98c-4ea8-942f-133600be843b";
       fsType = "ext4";
     };
 
-  fileSystems."/home/fhasl/Games" =
-    { device = "/dev/disk/by-uuid/52e8d1eb-f98c-4ea8-942f-133600be843b";
+  fileSystems."/home/fhasl/Steam" =
+    { device = "/dev/disk/by-uuid/bbd05b85-3049-4c49-b600-9b614be8ed7f";
       fsType = "ext4";
     };
 

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   services = {
     openssh.enable = true;
     pipewire = {
@@ -34,9 +30,22 @@
       autoRepeatInterval = 35;
       windowManager = {
         openbox.enable = true;
+dwm = {
+            enable = true;
+            package = pkgs.dwm.overrideAttrs {
+              src = ../../../home-manager/config/dwm;
+              preBuild = "cp config.h config.def.h";
+              makeFlags = [ "PREFIX=$(out)" ];
+              installFlags = [ "PREFIX=$(out)" "DESTDIR=" ];
+            };
+          };
       };
     };
   };
+  system.activationScripts.cleanup-systemd-user-units = ''
+    find /home/fhasl/.config/systemd/user -type l ! -exec test -e {} \; -delete 2>/dev/null || true
+  '';
+
   systemd.user.services = {
     pipewire = {
       serviceConfig = {

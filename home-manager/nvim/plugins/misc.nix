@@ -19,6 +19,9 @@
       modules = {
         indentscope = {};
         icons = {};
+        surround = {};
+        diff = {};
+        hipatterns = {};
       };
     };
 

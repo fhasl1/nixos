@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{...}: {
   imports = [
     ./options.nix
     ./keymaps.nix
@@ -23,7 +19,7 @@
       mapleader = " ";
     };
 
-    colorscheme = "koda";
+    colorscheme = "zenbones";
 
     highlight = {
       Normal = {bg = "none";};
