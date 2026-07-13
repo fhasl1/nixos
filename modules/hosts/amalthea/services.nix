@@ -21,7 +21,11 @@
       #   thyx.enable = true;
       #   wayland.enable = false;
       # };
-      ly.enable = true;
+      ly = {
+        enable = true;
+        package = pkgs.ly;
+        x11Support = true;
+      };
     };
     xserver = {
       enable = true;
