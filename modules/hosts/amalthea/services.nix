@@ -17,9 +17,14 @@
     gnome.gnome-keyring.enable = true;
     fstrim.enable = true;
     displayManager = {
-      sddm = {
-        thyx.enable = true;
-        wayland.enable = false;
+      # sddm = {
+      #   thyx.enable = true;
+      #   wayland.enable = false;
+      # };
+      ly = {
+        enable = true;
+        package = pkgs.ly;
+        x11Support = true;
       };
     };
     xserver = {
@@ -30,15 +35,15 @@
       autoRepeatInterval = 35;
       windowManager = {
         openbox.enable = true;
-dwm = {
-            enable = true;
-            package = pkgs.dwm.overrideAttrs {
-              src = ../../../home-manager/config/dwm;
-              preBuild = "cp config.h config.def.h";
-              makeFlags = [ "PREFIX=$(out)" ];
-              installFlags = [ "PREFIX=$(out)" "DESTDIR=" ];
-            };
+        dwm = {
+          enable = true;
+          package = pkgs.dwm.overrideAttrs {
+            src = ../../../home-manager/config/dwm;
+            preBuild = "cp config.h config.def.h";
+            makeFlags = ["PREFIX=$(out)"];
+            installFlags = ["PREFIX=$(out)" "DESTDIR="];
           };
+        };
       };
     };
   };
