@@ -12,7 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     xlibre-overlay.url = "git+https://codeberg.org/takagemacoed/xlibre-overlay?ref=dev-for-26.05";
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -25,7 +24,6 @@
   outputs = inputs @ {
     nixpkgs,
     nixos-hardware,
-    nix-cachyos-kernel,
     home-manager,
     thyx,
     ...
@@ -60,9 +58,6 @@
           ++ [
             inputs.gsr-ui-nix.nixosModules.default
             thyx.nixosModules.default
-            ({...}: {
-              nixpkgs.overlays = [nix-cachyos-kernel.overlays.pinned];
-            })
             home-manager.nixosModules.home-manager
             {
               home-manager = {
