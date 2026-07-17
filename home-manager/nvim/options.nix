@@ -12,7 +12,7 @@
       shiftwidth = 3;
       tabstop = 3;
       softtabstop = 3;
-      winborder = "rounded";
+      winborder = "single";
       expandtab = true;
 
       number = true;
