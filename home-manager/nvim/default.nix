@@ -19,7 +19,7 @@
       mapleader = " ";
     };
 
-    colorscheme = "zenbones";
+    colorscheme = "lackluster";
 
     highlight = {
       Normal = {bg = "none";};

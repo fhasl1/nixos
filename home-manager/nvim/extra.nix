@@ -1,11 +1,11 @@
 {pkgs, ...}: let
-  zenbones-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "zenbones-nvim";
+  lackluster-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "lackluster-nvim";
     src = pkgs.fetchFromGitHub {
-      owner = "zenbones-theme";
-      repo = "zenbones.nvim";
-      rev = "v4.12.0";
-      hash = "sha256-Bh+OW1qyOYSgl3WbYnQ3HLem+AKChqwGYfn04ifyfAw=";
+      owner = "slugbyte";
+      repo = "lackluster.nvim";
+      rev = "70dd682e564784893b984deb51dd5ddd263c8cc7";
+      hash = "sha256-OxeY+0Q07zD6FHa0BRhz/1k4HyJeB8/j+vrzXVSbe/4=";
     };
     doCheck = false;
   };
@@ -26,8 +26,7 @@ in {
       plenary-nvim
       mason-nvim
       mason-nvim-dap-nvim
-      zenbones-nvim
-      lush-nvim
+      lackluster-nvim
       nvim-colorizer-lua
     ];
 
