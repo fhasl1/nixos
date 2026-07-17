@@ -20,7 +20,12 @@
     tailscale.enable = true;
     fstrim.enable = true;
     flatpak.enable = true;
-
+    displayManager = {
+      ly = {
+        enable = true;
+        package = pkgs.ly;
+      };
+    };
     fwupd = {
       enable = true;
       daemonSettings.DisabledPlugins = ["test" "invalid" "bios"];

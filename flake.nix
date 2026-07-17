@@ -19,6 +19,10 @@
     };
     nixvim.url = "github:nix-community/nixvim";
     thyx.url = "github:rccyx/thyx";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -42,9 +46,11 @@
       (map (f: dir + "/${f}") nixFiles)
       ++ builtins.concatMap (d: collectModules (dir + "/${d}")) subdirs;
 
-    sharedModules = collectModules ./modules/shared ++ [
-      inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
-    ];
+    sharedModules =
+      collectModules ./modules/shared
+      ++ [
+        inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
+      ];
     amaltheaModules = collectModules ./modules/hosts/amalthea;
     artemisModules = collectModules ./modules/hosts/artemis;
   in {
@@ -84,6 +90,15 @@
           sharedModules
           ++ artemisModules
           ++ [
+            ({pkgs, ...}: {
+              nixpkgs.overlays = [(
+                final: prev: {
+                  throttled = prev.throttled.overrideAttrs (old: {
+                    pythonPath = (old.pythonPath or []) ++ [final.python3Packages.dbus-next];
+                  });
+                }
+              )];
+            })
             inputs.gsr-ui-nix.nixosModules.default
             nixos-hardware.nixosModules.lenovo-thinkpad-t480
             home-manager.nixosModules.home-manager
