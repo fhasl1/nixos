@@ -1,11 +1,11 @@
 {pkgs, ...}: let
-  zenbones-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "zenbones-nvim";
+  lackluster-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "lackluster-nvim";
     src = pkgs.fetchFromGitHub {
-      owner = "zenbones-theme";
-      repo = "zenbones.nvim";
-      rev = "v4.12.0";
-      hash = "sha256-Bh+OW1qyOYSgl3WbYnQ3HLem+AKChqwGYfn04ifyfAw=";
+      owner = "slugbyte";
+      repo = "lackluster.nvim";
+      rev = "70dd682e564784893b984deb51dd5ddd263c8cc7";
+      hash = "sha256-OxeY+0Q07zD6FHa0BRhz/1k4HyJeB8/j+vrzXVSbe/4=";
     };
     doCheck = false;
   };
@@ -26,8 +26,13 @@ in {
       plenary-nvim
       mason-nvim
       mason-nvim-dap-nvim
-      zenbones-nvim
-      lush-nvim
+      lackluster-nvim
+      nvim-cmp
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp-path
+      cmp-cmdline
+      luasnip
       nvim-colorizer-lua
     ];
 
@@ -48,7 +53,7 @@ in {
     extraConfigLua = ''
       -- LSP capabilities (Neovim 0.11 built-in API)
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+      capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
       vim.lsp.config("*", {
         capabilities = capabilities,
       })
@@ -67,6 +72,40 @@ in {
           "TabLineFill",
           "TabLineSel",
           "ColorColumn",
+          "Pmenu",
+          "PmenuSel",
+          "PmenuSbar",
+          "PmenuThumb",
+          "CmpItemMenu",
+          "CmpItemAbbr",
+          "CmpItemAbbrDeprecated",
+          "CmpItemAbbrMatch",
+          "CmpItemAbbrMatchFuzzy",
+          "CmpItemKind",
+          "CmpItemKindClass",
+          "CmpItemKindFunction",
+          "CmpItemKindInterface",
+          "CmpItemKindMethod",
+          "CmpItemKindProperty",
+          "CmpItemKindVariable",
+          "CmpItemKindKeyword",
+          "CmpItemKindModule",
+          "CmpItemKindOperator",
+          "CmpItemKindReference",
+          "CmpItemKindSnippet",
+          "CmpItemKindColor",
+          "CmpItemKindFile",
+          "CmpItemKindFolder",
+          "CmpItemKindEnum",
+          "CmpItemKindEnumMember",
+          "CmpItemKindConstant",
+          "CmpItemKindStruct",
+          "CmpItemKindEvent",
+          "CmpItemKindTypeParameter",
+          "CmpItemKindUnit",
+          "CmpItemKindValue",
+          "CmpDocumentation",
+          "CmpDocumentationBorder",
         }
         for _, g in ipairs(groups) do
           vim.api.nvim_set_hl(0, g, { bg = "none" })
@@ -106,6 +145,7 @@ in {
           "${pkgs.clang-tools}/bin/clangd",
           "--query-driver=/nix/store/*/bin/gcc*,/nix/store/*/bin/g++*,/nix/store/*/bin/clang*",
         },
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
       })
       vim.lsp.enable("clangd")
 
@@ -113,7 +153,7 @@ in {
       vim.lsp.config("nixd", {
         filetypes = { "nix" },
         cmd = { "nixd" },
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
         settings = {
           nixd = {
             nixpkgs = {

@@ -4,15 +4,13 @@
       splitright = true;
       splitbelow = true;
       signcolumn = "yes";
-      timeoutlen = 300;
-      updatetime = 50;
 
       smartindent = true;
       autoindent = true;
       shiftwidth = 3;
       tabstop = 3;
       softtabstop = 3;
-      winborder = "rounded";
+      winborder = "single";
       expandtab = true;
 
       number = true;

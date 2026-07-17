@@ -18,7 +18,20 @@
       };
       completion = {
         documentation = {auto_show = true;};
+        trigger = {
+          prefetch_on_insert = true;
+          show_on_keyword = true;
+          show_on_trigger_character = true;
+        };
+        list = {
+          auto_show = true;
+          selection = {
+            preselect = true;
+            auto_insert = true;
+          };
+        };
       };
+      sources.min_keyword_length = 0;
       cmdline = {
         keymap = {
           "<Tab>" = ["show" "accept"];

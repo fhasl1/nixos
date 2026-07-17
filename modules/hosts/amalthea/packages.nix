@@ -9,7 +9,6 @@
     gh
 
     # Game shits
-    osu-lazer-bin
     protonup-qt
 
     # Shits
@@ -18,6 +17,27 @@
     onlyoffice-desktopeditors
     localsend
     ffmpeg-full
-  ];
 
+    # Custom WM
+    (stdenv.mkDerivation rec {
+      name = "sxwm-1.8";
+      src = ../../../home-manager/config/sxwm;
+      nativeBuildInputs = [makeWrapper];
+      buildInputs = [libX11 libXinerama libXcursor];
+      makeFlags = ["PREFIX=$(out)"];
+      installFlags = ["PREFIX=$(out)" "DESTDIR="];
+      postInstall = ''
+        mkdir -p $out/share/xsessions
+        cat > $out/share/xsessions/sxwm.desktop <<EOF
+[Desktop Entry]
+Name=sxwm
+Comment=A simple X window manager
+Exec=sxwm
+TryExec=sxwm
+Type=Application
+DesktopNames=sxwm
+EOF
+      '';
+    })
+  ];
 }
