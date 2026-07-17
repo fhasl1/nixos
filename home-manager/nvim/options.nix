@@ -4,8 +4,6 @@
       splitright = true;
       splitbelow = true;
       signcolumn = "yes";
-      timeoutlen = 300;
-      updatetime = 10;
 
       smartindent = true;
       autoindent = true;

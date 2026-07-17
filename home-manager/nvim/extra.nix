@@ -66,6 +66,12 @@ in {
           "TabLineFill",
           "TabLineSel",
           "ColorColumn",
+          "BlinkCmpMenu",
+          "BlinkCmpMenuBorder",
+          "BlinkCmpDoc",
+          "BlinkCmpDocBorder",
+          "BlinkCmpScrollBarThumb",
+          "BlinkCmpScrollBarGutter",
         }
         for _, g in ipairs(groups) do
           vim.api.nvim_set_hl(0, g, { bg = "none" })
