@@ -1,6 +1,6 @@
 { ... }: {
   imports = [
-    ./blink-cmp.nix
+    ./cmp.nix
     ./conform.nix
     ./flash.nix
     ./lint.nix
