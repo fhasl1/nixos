@@ -1,0 +1,4 @@
+build/
+sxwm
+compile_flags.txt
+*.swp

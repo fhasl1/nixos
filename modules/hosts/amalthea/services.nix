@@ -44,6 +44,7 @@
             installFlags = ["PREFIX=$(out)" "DESTDIR="];
           };
         };
+        i3.enable = true;
       };
     };
   };
@@ -91,4 +92,8 @@
     menus.enable = true;
   };
   fonts.fontDir.enable = true;
+  services.xserver.windowManager.session = [{
+    name = "sxwm";
+    start = "exec sxwm";
+  }];
 }
