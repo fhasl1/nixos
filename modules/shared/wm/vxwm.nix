@@ -6,7 +6,7 @@ let
 
     src = inputs.vxwm;
 
-    nativeBuildInputs = with pkgs; [ pkg-config gmake ];
+    nativeBuildInputs = with pkgs; [ pkg-config gnumake ];
     buildInputs = with pkgs; [ libX11 libXinerama libXft fontconfig freetype ];
 
     makeFlags = [
