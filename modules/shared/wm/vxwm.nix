@@ -1,10 +1,10 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 let
   vxwm = pkgs.stdenv.mkDerivation rec {
     pname = "vxwm";
     version = "2.3";
 
-    src = inputs.vxwm;
+    src = ../../../home-manager/config/vxwm;
 
     nativeBuildInputs = with pkgs; [ pkg-config gnumake ];
     buildInputs = with pkgs; [ libX11 libXinerama libXft fontconfig freetype ];
