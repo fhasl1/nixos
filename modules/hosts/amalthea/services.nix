@@ -35,16 +35,15 @@
       autoRepeatInterval = 35;
       windowManager = {
         openbox.enable = true;
-        dwm = {
-          enable = true;
-          package = pkgs.dwm.overrideAttrs {
-            src = ../../../home-manager/config/dwm;
-            preBuild = "cp config.h config.def.h";
-            makeFlags = ["PREFIX=$(out)"];
-            installFlags = ["PREFIX=$(out)" "DESTDIR="];
-          };
-        };
-        i3.enable = true;
+        # dwm = {
+        #   enable = true;
+        #   package = pkgs.dwm.overrideAttrs {
+        #     src = ../../../home-manager/config/dwm;
+        #     preBuild = "cp config.h config.def.h";
+        #     makeFlags = ["PREFIX=$(out)"];
+        #     installFlags = ["PREFIX=$(out)" "DESTDIR="];
+        #   };
+        # };
       };
     };
   };
@@ -92,8 +91,14 @@
     menus.enable = true;
   };
   fonts.fontDir.enable = true;
-  services.xserver.windowManager.session = [{
-    name = "sxwm";
-    start = "exec sxwm";
-  }];
+  services.xserver.windowManager.session = [
+    {
+      name = "sxwm";
+      start = "exec sxwm";
+    }
+    {
+      name = "vxwm";
+      start = "exec vxwm";
+    }
+  ];
 }

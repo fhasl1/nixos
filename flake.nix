@@ -23,6 +23,10 @@
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vxwm = {
+      url = "git+https://codeberg.org/wh1tepearl/vxwm?ref=main";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
@@ -30,6 +34,7 @@
     nixos-hardware,
     home-manager,
     thyx,
+    vxwm,
     ...
   }: let
     # Recursively collect all .nix files (except default.nix) from a directory

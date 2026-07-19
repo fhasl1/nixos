@@ -347,6 +347,7 @@
         "nixvim": "nixvim",
         "noctalia": "noctalia",
         "thyx": "thyx",
+        "vxwm": "vxwm",
         "xlibre-overlay": "xlibre-overlay"
       }
     },
@@ -449,6 +450,23 @@
         "owner": "rccyx",
         "repo": "thyx",
         "type": "github"
+      }
+    },
+    "vxwm": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783203386,
+        "narHash": "sha256-YUDkr2J4tR59Nx9MdO28NkvE5xlDUAZ5Pnmd23nwcHE=",
+        "ref": "main",
+        "rev": "8b9f04c415a96c92fc36b7639cd1877903f3f0eb",
+        "revCount": 105,
+        "type": "git",
+        "url": "https://codeberg.org/wh1tepearl/vxwm"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://codeberg.org/wh1tepearl/vxwm"
       }
     },
     "xlibre-drivers-overlay-choice": {
