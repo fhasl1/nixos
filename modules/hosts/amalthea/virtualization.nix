@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   programs = {
     virt-manager = {
       enable = true;
@@ -8,6 +12,13 @@
   virtualisation = {
     libvirtd = {
       enable = true;
+    };
+    waydroid = {
+      enable = true;
+      package =
+        if config.networking.nftables.enable
+        then pkgs.waydroid-nftables
+        else pkgs.waydroid;
     };
     spiceUSBRedirection.enable = true;
   };

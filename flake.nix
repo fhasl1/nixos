@@ -23,10 +23,6 @@
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    vxwm = {
-      url = "git+https://codeberg.org/wh1tepearl/vxwm?ref=main";
-      flake = false;
-    };
   };
 
   outputs = inputs @ {
@@ -34,7 +30,6 @@
     nixos-hardware,
     home-manager,
     thyx,
-    vxwm,
     ...
   }: let
     # Recursively collect all .nix files (except default.nix) from a directory
@@ -96,13 +91,15 @@
           ++ artemisModules
           ++ [
             ({pkgs, ...}: {
-              nixpkgs.overlays = [(
-                final: prev: {
-                  throttled = prev.throttled.overrideAttrs (old: {
-                    pythonPath = (old.pythonPath or []) ++ [final.python3Packages.dbus-next];
-                  });
-                }
-              )];
+              nixpkgs.overlays = [
+                (
+                  final: prev: {
+                    throttled = prev.throttled.overrideAttrs (old: {
+                      pythonPath = (old.pythonPath or []) ++ [final.python3Packages.dbus-next];
+                    });
+                  }
+                )
+              ];
             })
             inputs.gsr-ui-nix.nixosModules.default
             nixos-hardware.nixosModules.lenovo-thinkpad-t480

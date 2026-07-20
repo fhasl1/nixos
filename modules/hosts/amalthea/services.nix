@@ -96,9 +96,6 @@
       name = "sxwm";
       start = "exec sxwm";
     }
-    {
-      name = "vxwm";
-      start = "exec vxwm";
-    }
   ];
+  programs.sway.enable = true;
 }

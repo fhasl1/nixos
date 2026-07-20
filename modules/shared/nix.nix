@@ -7,7 +7,6 @@
       ];
       auto-optimise-store = true;
       trusted-users = ["fhasl"];
-      access-tokens = ["github.com=ghp_xxx"];
       substituters = [
         "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
         "https://mirrors.ustc.edu.cn/nix-channels/store"

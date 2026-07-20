@@ -17,6 +17,7 @@
     onlyoffice-desktopeditors
     localsend
     ffmpeg-full
+    kdePackages.ark
 
     # Custom WM
     (stdenv.mkDerivation rec {
@@ -27,16 +28,16 @@
       makeFlags = ["PREFIX=$(out)"];
       installFlags = ["PREFIX=$(out)" "DESTDIR="];
       postInstall = ''
-        mkdir -p $out/share/xsessions
-        cat > $out/share/xsessions/sxwm.desktop <<EOF
-[Desktop Entry]
-Name=sxwm
-Comment=A simple X window manager
-Exec=sxwm
-TryExec=sxwm
-Type=Application
-DesktopNames=sxwm
-EOF
+                mkdir -p $out/share/xsessions
+                cat > $out/share/xsessions/sxwm.desktop <<EOF
+        [Desktop Entry]
+        Name=sxwm
+        Comment=A simple X window manager
+        Exec=sxwm
+        TryExec=sxwm
+        Type=Application
+        DesktopNames=sxwm
+        EOF
       '';
     })
   ];
