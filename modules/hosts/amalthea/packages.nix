@@ -10,6 +10,7 @@
 
     # Game shits
     protonup-qt
+    osu-lazer-bin
 
     # Shits
     zathuraPkgs.zathura_pdf_mupdf
