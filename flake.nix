@@ -18,7 +18,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim.url = "github:nix-community/nixvim";
-    thyx.url = "github:rccyx/thyx";
     noctalia = {
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +28,6 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
-    thyx,
     ...
   }: let
     # Recursively collect all .nix files (except default.nix) from a directory
@@ -63,7 +61,6 @@
           ++ amaltheaModules
           ++ [
             inputs.gsr-ui-nix.nixosModules.default
-            thyx.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager = {

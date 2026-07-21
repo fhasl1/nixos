@@ -1,5 +1,6 @@
 (setq inhibit-startup-message t)
 (setq visible-bell t)
+(global-visual-line-mode)
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -7,7 +8,7 @@
 (menu-bar-mode -1)
 
 (set-face-attribute 'default nil
-                    :font "IosevkaTerm Nerd Font"
+                    :font "JetBrainsMono Nerd Font"
                     :height 110)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -160,7 +161,14 @@
 (use-package lsp-ui
   :ensure t
   :hook (lsp-mode . lsp-ui-mode)
-  :commands lsp-ui-mode)
+  :commands lsp-ui-mode
+  :config
+  (setq lsp-ui-doc-enable t
+        lsp-ui-sideline-enable t
+        lsp-ui-sideline-show-hover t
+        lsp-ui-sideline-show-diagnostics t
+        lsp-ui-sideline-show-code-actions t
+        lsp-ui-peek-enable t))
 ;; if you are helm user
 (use-package helm-lsp
   :ensure t
@@ -178,25 +186,18 @@
   :hook (prog-mode . company-mode)
   :config
   (setq company-idle-delay 0.2
-        company-minimum-prefix-length 2))
+        company-minimum-prefix-length 2)
+  (setq company-backends '((company-capf company-dabbrev-code company-files))))
 
 (use-package dap-mode
   :ensure t)
 (setq lsp-modeline-code-actions-enable t)
-(setq company-format-margin-function #'company-vscode-icons-margin)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(all-the-icons all-the-icons-nerd-fonts apheleia auctex auto-compile
-		   cape command-log-mode company corfu counsel
-		   dap-mode doom-modeline doom-themes embark-consult
-		   evil general helm-lsp helpful lsp-ivy lsp-ui
-		   marginalia nerd-icons-ivy-rich nibelung-theme
-		   nix-mode orderless rainbow-delimiters smartparens
-		   tao-theme treesit-auto vertico)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
