@@ -13,5 +13,6 @@
   };
   environment.systemPackages = with pkgs; [
     nil
+    emacs-all-the-icons-fonts
   ];
 }
