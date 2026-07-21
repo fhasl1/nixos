@@ -11,4 +11,7 @@
       install = false;
     };
   };
+  environment.systemPackages = with pkgs; [
+    nil
+  ];
 }
