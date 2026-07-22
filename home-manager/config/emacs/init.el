@@ -12,7 +12,7 @@
   (package-refresh-contents))
 
 (use-package evil
-  :ensure t
+  
   :config
   (evil-mode 1)
   (setq evil-want-C-i-jump nil
@@ -21,7 +21,7 @@
         evil-want-integration t))
 
 (use-package evil-leader
-  :ensure t
+  
   :after evil
   :config
   (global-evil-leader-mode)
@@ -34,29 +34,29 @@
     "s" 'save-buffer))
 
 (use-package which-key
-  :ensure t
+  
   :config
   (which-key-mode)
   (setq which-key-idle-delay 0.3
         which-key-idle-secondary-delay 0.05))
 
 (use-package use-package
-  :ensure t
+  
   :config
   (setq use-package-always-ensure t))
 
 (use-package all-the-icons
-  :ensure t
+  
   :if (display-graphic-p)
   :config
   (all-the-icons-install-fonts '(:font "DejaVuSansMono" :scale 1.2)))
 
 (use-package nerd-icons
-  :ensure t
+  
   :if (display-graphic-p))
 
 (use-package company
-  :ensure t
+  
   :config
   (global-company-mode)
   (setq company-idle-delay 0.1
@@ -65,53 +65,61 @@
         company-show-numbers t))
 
 (use-package company-box
-  :ensure t
+  
   :after company
   :config
   (company-box-mode))
 
 (use-package company-quickhelp
-  :ensure t
+  
   :after company
   :config
   (company-quickhelp-mode 1)
   (setq company-quickhelp-delay 0.5))
 
 (use-package vertico
-  :ensure t
+  
   :config
   (vertico-mode)
   (setq vertico-count 15
         vertico-cycle t))
 
 (use-package orderless
-  :ensure t
+  
   :config
   (setq completion-styles '(orderless basic)
         completion-category-overrides nil))
 
 (use-package marginalia
-  :ensure t
+  
   :config
   (marginalia-mode))
 
 
 
-(use-package consult
-  :ensure t
+(use-package counsel
   :config
-  (global-set-key (kbd "M-x") 'consult-M-x)
-  (global-set-key (kbd "C-x b") 'consult-buffer)
-  (global-set-key (kbd "C-x C-f") 'consult-file)
-  (global-set-key (kbd "M-y") 'consult-yank-pop)
+  (global-set-key (kbd "M-x") 'counsel-M-x)
+  (global-set-key (kbd "C-x b") 'counsel-ibuffer)
+  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+  (global-set-key (kbd "M-y") 'counsel-yank-pop))
+
+(use-package ivy
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t
+        ivy-count-format "(%d/%d) "
+        ivy-height 15))
+
+(use-package consult
+  :config
   (consult-customize 'find-file '((preview . t))))
 
 (use-package consult-lsp
-  :ensure t
   :after lsp-mode)
 
 (use-package corfu
-  :ensure t
+  
   :after company
   :config
   (global-corfu-mode)
@@ -120,19 +128,19 @@
         corfu-cycle t))
 
 (use-package cape
-  :ensure t
+  
   :after company
   :config
   (add-hook 'company-completion-started-hook 'cape-company-on)
   (add-hook 'company-completion-finished-hook 'cape-company-off))
 
 (use-package marginalia
-  :ensure t
+  
   :config
   (marginalia-mode))
 
 (use-package lsp-mode
-  :ensure t
+  
   :commands lsp
   :hook ((python-mode . lsp)
          (typescript-mode . lsp)
@@ -151,7 +159,7 @@
   (add-hook 'lsp-mode-hook 'lsp-enable-which-key-integration))
 
 (use-package lsp-ui
-  :ensure t
+  
   :after lsp-mode
   :config
   (setq lsp-ui-doc-enable t
@@ -161,42 +169,42 @@
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
 (use-package flycheck
-  :ensure t
+  
   :init (global-flycheck-mode))
 
 (use-package flycheck-posframe
-  :ensure t
+  
   :after flycheck
   :if (display-graphic-p)
   :config
   (flycheck-posframe-mode))
 
 (use-package lsp-treemacs
-  :ensure t
+  
   :after lsp-mode)
 
 (use-package treemacs
-  :ensure t
+  
   :after lsp-treemacs
   :config
   (setq treemacs-is-never-other-window t)
   (global-set-key (kbd "C-x t") 'treemacs))
 
 (use-package projectile
-  :ensure t
+  
   :config
   (projectile-mode)
   (setq projectile-completion-system 'vertico
         projectile-indexing-method 'alien))
 
 (use-package magit
-  :ensure t
+  
   :config
   (global-set-key (kbd "C-x g") 'magit-status)
   (setq magit-completing-read-function 'completing-read))
 
 (use-package git-gutter
-  :ensure t
+  
   :config
   (global-git-gutter-mode)
   (setq git-gutter:update-interval 2
@@ -205,66 +213,66 @@
         git-gutter:deleted-sign "-"))
 
 (use-package nix-mode
-  :ensure t
+  
   :mode "\\.nix\\'"
   :config
   (add-hook 'nix-mode-hook 'lsp)
   (add-hook 'nix-mode-hook 'flycheck-mode))
 
 (use-package rustic
-  :ensure t
+  
   :hook (rust-mode . rustic-mode)
   :config
   (rustic-lsp-enable))
 
 (use-package lsp-treemacs
-  :ensure t
+  
   :after lsp-mode)
 
 (use-package dockerfile-mode
-  :ensure t
+  
   :mode "Dockerfile\\'")
 
 (use-package yaml-mode
-  :ensure t
+  
   :mode "\\.ya?ml\\'")
 
 (use-package json-mode
-  :ensure t
+  
   :mode "\\.json\\'")
 
 (use-package toml-mode
-  :ensure t
+  
   :mode "\\.toml\\'")
 
 (use-package sh-script
   :mode ("\\.sh\\'" . sh-mode))
 
 (use-package web-mode
-  :ensure t
+  
   :mode ("\\.html?\\'" "\\.jsx?\\'" "\\.tsx?\\'"))
 
 (use-package css-mode
   :mode "\\.css\\'")
 
 (use-package scss-mode
-  :ensure t
+  
   :mode "\\.scss\\'")
 
 (use-package typescript-mode
-  :ensure t
+  
   :mode "\\.ts\\'")
 
 (use-package js2-mode
-  :ensure t
+  
   :mode "\\.js\\'")
 
 (use-package lua-mode
-  :ensure t
+  
   :mode "\\.lua\\'")
 
 (use-package markdown-mode
-  :ensure t
+  
   :mode ("\\.md\\'" "\\.markdown\\'")
   :config
   (setq markdown-command "pandoc"))
@@ -280,7 +288,7 @@
   (global-set-key (kbd "C-c c") 'org-capture))
 
 (use-package doom-modeline
-  :ensure t
+  
   :config
   (doom-modeline-mode 1)
   (setq doom-modeline-height 25
@@ -293,23 +301,23 @@
         doom-modeline-persp-name t))
 
 (use-package all-the-icons-dired
-  :ensure t
+  
   :after dired
   :config
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
 (use-package nerd-icons-dired
-  :ensure t
+  
   :after dired
   :config
   (add-hook 'dired-mode-hook 'nerd-icons-dired-mode))
 
 (use-package all-the-icons-ivy
-  :ensure t
+  
   :after ivy)
 
 (use-package which-key-posframe
-  :ensure t
+  
   :after which-key
   :if (display-graphic-p)
   :config
