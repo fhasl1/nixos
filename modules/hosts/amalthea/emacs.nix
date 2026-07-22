@@ -15,6 +15,7 @@
     all-the-icons
     company
     company-box
+    consult
     counsel
     dap-mode
     doom-modeline
@@ -31,13 +32,13 @@
     marginalia
     nerd-icons
     nerd-icons-dired
-    nerd-icons-ivy-rich
     posframe
     rainbow-delimiters
     smartparens
     treemacs
     use-package
     which-key
+    which-key-posframe
     writegood-mode
     yaml-mode
     json-mode
@@ -51,5 +52,12 @@
     nix-mode
     auctex
     helm-lsp
+    consult
+    consult-lsp
+    corfu
+    cape
+    orderless
+    vertico
+    embark
   ]);
 }

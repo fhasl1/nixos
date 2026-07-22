@@ -95,10 +95,7 @@
   :config
   (marginalia-mode))
 
-(use-package embark
-  :ensure t
-  :config
-  (embark-dwim-mode))
+
 
 (use-package consult
   :ensure t
@@ -311,20 +308,12 @@
   :ensure t
   :after ivy)
 
-(use-package nerd-icons-ivy
-  :ensure t
-  :after ivy-rich)
-
-(use-package nerd-icons-ivy-rich
-  :ensure t
-  :after ivy-rich)
-
 (use-package which-key-posframe
   :ensure t
   :after which-key
   :if (display-graphic-p)
   :config
-  (which-key-posframe-setup))
+  (which-key-posframe-mode 1))
 
 (setq-default indent-tabs-mode nil
               tab-width 2
@@ -364,3 +353,15 @@
 (global-set-key (kbd "C-/") 'undo)
 
 (provide 'init)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
