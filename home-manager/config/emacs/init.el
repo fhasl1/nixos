@@ -11,6 +11,12 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
+(use-package doom-themes
+  :config
+  (load-theme 'doom-tomorrow-night t))
+
+(set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 115)
+
 (use-package evil
   
   :config
@@ -27,7 +33,7 @@
   (global-evil-leader-mode)
   (evil-leader/set-leader ",")
   (evil-leader/set-key
-    "f" 'find-file
+    "k" 'find-file
     "b" 'switch-buffer
     "g" 'magit-status
     "/" 'counsel-rg
@@ -49,7 +55,7 @@
   
   :if (display-graphic-p)
   :config
-  (all-the-icons-install-fonts '(:font "DejaVuSansMono" :scale 1.2)))
+  (all-the-icons-install-fonts '(:font "Iosevka Nerd Font" :scale 1.2)))
 
 (use-package nerd-icons
   
@@ -94,8 +100,6 @@
   
   :config
   (marginalia-mode))
-
-
 
 (use-package counsel
   :config
@@ -155,7 +159,8 @@
         lsp-idle-delay 0.5
         lsp-signature-auto-activate nil
         lsp-diagnostics-provider :flycheck
-        lsp-enable-indentation nil)
+        lsp-enable-indentation nil
+        lsp-language-id-configuration '((nix-mode . "nix")))
   (add-hook 'lsp-mode-hook 'lsp-enable-which-key-integration))
 
 (use-package lsp-ui

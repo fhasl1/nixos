@@ -11,7 +11,7 @@
       install = false;
     };
   };
-  environment.systemPackages = (with pkgs; [ emacs-all-the-icons-fonts ]) ++ (with pkgs.emacsPackages; [
+  environment.systemPackages = (with pkgs; [ emacs-all-the-icons-fonts nil ]) ++ (with pkgs.emacsPackages; [
     all-the-icons
     company
     company-box
