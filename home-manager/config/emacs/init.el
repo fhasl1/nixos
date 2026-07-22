@@ -1,206 +1,366 @@
 (setq inhibit-startup-message t)
 (setq visible-bell t)
-(global-visual-line-mode)
-
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(tooltip-mode -1)
-(menu-bar-mode -1)
-
-(set-face-attribute 'default nil
-                    :font "JetBrainsMono Nerd Font"
-                    :height 110)
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(setq use-package-always-ensure t)
 
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("elpa" . "https://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("gnu-devel" . "https://elpa.gnu.org/devel/"))
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
 (package-initialize)
+
 (unless package-archive-contents
   (package-refresh-contents))
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-(require 'use-package)
-;; (setq use-package-always-ensure t)
-(setq package-install-upgrade-built-in t)
-(column-number-mode)
-(global-display-line-numbers-mode t)
-
-(dolist (mode '(org-mode-hook
-		term-mode-hook
-		eshell-mode-hook
-		shell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
-(defun rune/evil-hook ()
-  (dolist (mode '(custom-mode
-		  eshell-mode
-		  git-rebase-mode
-		  erc-mode
-		  circe-server-mode
-		  circe-chat-mode
-		  circe-query-mode
-		  sauron-mode
-		  term-mode))
-    (add-to-list 'evil-emacs-state-modes mode)))
 (use-package evil
   :ensure t
-  :demand t
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
-  (setq evil-want-C-i-jump nil)
-  :hook (evil-mode . rune/evil-hook)
   :config
   (evil-mode 1)
-  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-  (evil-set-initial-state 'messages-buffer-mode 'normal)
-  (evil-set-initial-state 'dashboard-mode 'normal))
+  (setq evil-want-C-i-jump nil
+        evil-want-C-u-scroll t
+        evil-ex-substitute-global t
+        evil-want-integration t))
 
-(use-package doom-themes
+(use-package evil-leader
   :ensure t
-  :init (load-theme 'doom-tomorrow-night t))
-(use-package command-log-mode
-  :ensure t)
-(use-package ivy
-  :ensure t
-  :demand t
-  :diminish
-  :bind (("C-s" . swiper)
-	 :map ivy-minibuffer-map
-	 ("TAB" . ivy-alt-done)
-	 ("C-l" . ivy-alt-done)
-	 ("C-j" . ivy-next-line)
-	 ("C-k" . ivy-previous-line)
-	 :map ivy-switch-buffer-map
-	 ("C-k" . ivy-previous-line)
-	 ("C-l" . ivy-done)
-	 ("C-d" . ivy-switch-buffer-kill)
-	 :map ivy-reverse-i-search-map
-	 ("C-k" . ivy-previous-line)
-	 ("C-d" . ivy-reverse-i-search-kill))
+  :after evil
   :config
-  (ivy-mode 1))
-(use-package doom-modeline
-  :ensure t
-  :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-height 30)))
-(use-package rainbow-delimiters
-  :ensure t
-  :hook (prog-mode . rainbow-delimiters-mode))
+  (global-evil-leader-mode)
+  (evil-leader/set-leader ",")
+  (evil-leader/set-key
+    "f" 'find-file
+    "b" 'switch-buffer
+    "g" 'magit-status
+    "/" 'counsel-rg
+    "s" 'save-buffer))
+
 (use-package which-key
   :ensure t
-  :init (which-key-mode)
-  :diminish
   :config
-  (setq which-key-idle-delay 0.3))
-(use-package ivy-rich
+  (which-key-mode)
+  (setq which-key-idle-delay 0.3
+        which-key-idle-secondary-delay 0.05))
+
+(use-package use-package
   :ensure t
-  :after ivy
   :config
-  (ivy-rich-mode 1))
-(use-package nerd-icons-ivy-rich
-  :ensure t
-  :after ivy-rich
-  :config
-  (nerd-icons-ivy-rich-mode 1))
-(setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-(use-package counsel
-  :ensure t
-  :bind (("M-x" . counsel-M-x)
-	 ("C-x b" . counsel-ibuffer)
-	 ("C-x -" . counsel-find-file)
-	 :map minibuffer-local-map
-	 ("C-r" . 'counsel-minibuffer-history)))
-(use-package helpful
-  :ensure t
-  :custom
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
-  :bind
-  ([remap describe-function] . counsel-describe-function)
-  ([remap describe-command] . helpful-command)
-  ([remap describe-variable] . counsel-describe-variable)
-  ([remap describe-key] . helpful-key))
+  (setq use-package-always-ensure t))
+
 (use-package all-the-icons
-  :ensure t)
-(use-package smartparens
-  :ensure smartparens  ;; install the package
-  :hook (prog-mode text-mode markdown-mode) ;; add `smartparens-mode` to these hooks
+  :ensure t
+  :if (display-graphic-p)
   :config
-  ;; load default config
-  (require 'smartparens-config))
-(use-package nix-mode
-  :ensure t
-  :mode "\\.nix\\'")
+  (all-the-icons-install-fonts '(:font "DejaVuSansMono" :scale 1.2)))
 
-(use-package auctex
+(use-package nerd-icons
   :ensure t
-  :defer t)
-
-(use-package lsp-mode
-  :ensure t
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :hook ((python-mode . lsp)
-         (c-mode . lsp)
-         (c++-mode . lsp)
-         (sh-mode . lsp)
-         (css-mode . lsp)
-         (nix-mode . lsp)
-         (latex-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
-(use-package lsp-ui
-  :ensure t
-  :hook (lsp-mode . lsp-ui-mode)
-  :commands lsp-ui-mode
-  :config
-  (setq lsp-ui-doc-enable t
-        lsp-ui-sideline-enable t
-        lsp-ui-sideline-show-hover t
-        lsp-ui-sideline-show-diagnostics t
-        lsp-ui-sideline-show-code-actions t
-        lsp-ui-peek-enable t))
-;; if you are helm user
-(use-package helm-lsp
-  :ensure t
-  :commands helm-lsp-workspace-symbol)
-;; if you are ivy user
-(use-package lsp-ivy
-  :ensure t
-  :commands lsp-ivy-workspace-symbol)
-(use-package lsp-treemacs
-  :ensure t
-  :commands lsp-treemacs-errors-list)
+  :if (display-graphic-p))
 
 (use-package company
   :ensure t
-  :hook (prog-mode . company-mode)
   :config
-  (setq company-idle-delay 0.2
-        company-minimum-prefix-length 2)
-  (setq company-backends '((company-capf company-dabbrev-code company-files))))
+  (global-company-mode)
+  (setq company-idle-delay 0.1
+        company-minimum-prefix-length 1
+        company-tooltip-limit 10
+        company-show-numbers t))
 
-(use-package dap-mode
-  :ensure t)
-(setq lsp-modeline-code-actions-enable t)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(use-package company-box
+  :ensure t
+  :after company
+  :config
+  (company-box-mode))
+
+(use-package company-quickhelp
+  :ensure t
+  :after company
+  :config
+  (company-quickhelp-mode 1)
+  (setq company-quickhelp-delay 0.5))
+
+(use-package vertico
+  :ensure t
+  :config
+  (vertico-mode)
+  (setq vertico-count 15
+        vertico-cycle t))
+
+(use-package orderless
+  :ensure t
+  :config
+  (setq completion-styles '(orderless basic)
+        completion-category-overrides nil))
+
+(use-package marginalia
+  :ensure t
+  :config
+  (marginalia-mode))
+
+(use-package embark
+  :ensure t
+  :config
+  (embark-dwim-mode))
+
+(use-package consult
+  :ensure t
+  :config
+  (global-set-key (kbd "M-x") 'consult-M-x)
+  (global-set-key (kbd "C-x b") 'consult-buffer)
+  (global-set-key (kbd "C-x C-f") 'consult-file)
+  (global-set-key (kbd "M-y") 'consult-yank-pop)
+  (consult-customize 'find-file '((preview . t))))
+
+(use-package consult-lsp
+  :ensure t
+  :after lsp-mode)
+
+(use-package corfu
+  :ensure t
+  :after company
+  :config
+  (global-corfu-mode)
+  (setq corfu-auto t
+        corfu-auto-prefix 1
+        corfu-cycle t))
+
+(use-package cape
+  :ensure t
+  :after company
+  :config
+  (add-hook 'company-completion-started-hook 'cape-company-on)
+  (add-hook 'company-completion-finished-hook 'cape-company-off))
+
+(use-package marginalia
+  :ensure t
+  :config
+  (marginalia-mode))
+
+(use-package lsp-mode
+  :ensure t
+  :commands lsp
+  :hook ((python-mode . lsp)
+         (typescript-mode . lsp)
+         (go-mode . lsp)
+         (rust-mode . lsp)
+         (lua-mode . lsp)
+         (nix-mode . lsp))
+  :config
+  (setq lsp-keymap-prefix "C-c l"
+        lsp-enable-snippet nil
+        lsp-enable-completion-at-point t
+        lsp-idle-delay 0.5
+        lsp-signature-auto-activate nil
+        lsp-diagnostics-provider :flycheck
+        lsp-enable-indentation nil)
+  (add-hook 'lsp-mode-hook 'lsp-enable-which-key-integration))
+
+(use-package lsp-ui
+  :ensure t
+  :after lsp-mode
+  :config
+  (setq lsp-ui-doc-enable t
+        lsp-ui-doc-position 'bottom
+        lsp-ui-sideline-enable t
+        lsp-ui-peek-enable t)
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(use-package flycheck-posframe
+  :ensure t
+  :after flycheck
+  :if (display-graphic-p)
+  :config
+  (flycheck-posframe-mode))
+
+(use-package lsp-treemacs
+  :ensure t
+  :after lsp-mode)
+
+(use-package treemacs
+  :ensure t
+  :after lsp-treemacs
+  :config
+  (setq treemacs-is-never-other-window t)
+  (global-set-key (kbd "C-x t") 'treemacs))
+
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode)
+  (setq projectile-completion-system 'vertico
+        projectile-indexing-method 'alien))
+
+(use-package magit
+  :ensure t
+  :config
+  (global-set-key (kbd "C-x g") 'magit-status)
+  (setq magit-completing-read-function 'completing-read))
+
+(use-package git-gutter
+  :ensure t
+  :config
+  (global-git-gutter-mode)
+  (setq git-gutter:update-interval 2
+        git-gutter:modified-sign "~"
+        git-gutter:added-sign "+"
+        git-gutter:deleted-sign "-"))
+
+(use-package nix-mode
+  :ensure t
+  :mode "\\.nix\\'"
+  :config
+  (add-hook 'nix-mode-hook 'lsp)
+  (add-hook 'nix-mode-hook 'flycheck-mode))
+
+(use-package rustic
+  :ensure t
+  :hook (rust-mode . rustic-mode)
+  :config
+  (rustic-lsp-enable))
+
+(use-package lsp-treemacs
+  :ensure t
+  :after lsp-mode)
+
+(use-package dockerfile-mode
+  :ensure t
+  :mode "Dockerfile\\'")
+
+(use-package yaml-mode
+  :ensure t
+  :mode "\\.ya?ml\\'")
+
+(use-package json-mode
+  :ensure t
+  :mode "\\.json\\'")
+
+(use-package toml-mode
+  :ensure t
+  :mode "\\.toml\\'")
+
+(use-package sh-script
+  :mode ("\\.sh\\'" . sh-mode))
+
+(use-package web-mode
+  :ensure t
+  :mode ("\\.html?\\'" "\\.jsx?\\'" "\\.tsx?\\'"))
+
+(use-package css-mode
+  :mode "\\.css\\'")
+
+(use-package scss-mode
+  :ensure t
+  :mode "\\.scss\\'")
+
+(use-package typescript-mode
+  :ensure t
+  :mode "\\.ts\\'")
+
+(use-package js2-mode
+  :ensure t
+  :mode "\\.js\\'")
+
+(use-package lua-mode
+  :ensure t
+  :mode "\\.lua\\'")
+
+(use-package markdown-mode
+  :ensure t
+  :mode ("\\.md\\'" "\\.markdown\\'")
+  :config
+  (setq markdown-command "pandoc"))
+
+(use-package org
+  :ensure org-plus-contrib
+  :config
+  (setq org-startup-indented t
+        org-hide-leading-stars t
+        org-log-done 'time)
+  (global-set-key (kbd "C-c l") 'org-store-link)
+  (global-set-key (kbd "C-c a") 'org-agenda)
+  (global-set-key (kbd "C-c c") 'org-capture))
+
+(use-package doom-modeline
+  :ensure t
+  :config
+  (doom-modeline-mode 1)
+  (setq doom-modeline-height 25
+        doom-modeline-bar-width 2
+        doom-modeline-buffer-file-name-style 'truncate-with-project
+        doom-modeline-major-mode-color-icon t
+        doom-modeline-minor-modes t
+        doom-modeline-github t
+        doom-modeline-gitlab t
+        doom-modeline-persp-name t))
+
+(use-package all-the-icons-dired
+  :ensure t
+  :after dired
+  :config
+  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+
+(use-package nerd-icons-dired
+  :ensure t
+  :after dired
+  :config
+  (add-hook 'dired-mode-hook 'nerd-icons-dired-mode))
+
+(use-package all-the-icons-ivy
+  :ensure t
+  :after ivy)
+
+(use-package nerd-icons-ivy
+  :ensure t
+  :after ivy-rich)
+
+(use-package nerd-icons-ivy-rich
+  :ensure t
+  :after ivy-rich)
+
+(use-package which-key-posframe
+  :ensure t
+  :after which-key
+  :if (display-graphic-p)
+  :config
+  (which-key-posframe-setup))
+
+(setq-default indent-tabs-mode nil
+              tab-width 2
+              fill-column 100
+              x-select-enable-clipboard t
+              x-select-enable-primary t
+              save-place t
+              require-final-newline t
+              delete-old-versions -1
+              kept-new-versions 6
+              kept-old-versions 2
+              version-control t)
+
+(global-display-line-numbers-mode)
+(setq display-line-numbers-type 'relative
+      display-line-numbers-current-absolute t)
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x C-f") 'find-file)
+(global-set-key (kbd "C-x b") 'switch-to-buffer)
+
+(setq-default indent-tabs-mode nil)
+(setq tab-width 2)
+
+(setq frame-title-format '("%b" " %f"))
+
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
+
+(setq make-backup-files nil
+      auto-save-default nil)
+
+(setq initial-scratch-message nil)
+
+(global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "C-/") 'undo)
+
+(provide 'init)
