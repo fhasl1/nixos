@@ -50,6 +50,8 @@
     localsend
     kdePackages.kdenlive
     udiskie
+    libimobiledevice
+    ifuse
   ];
 
   nixpkgs.config.allowUnfree = true;
