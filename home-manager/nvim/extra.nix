@@ -49,6 +49,7 @@ in {
       shellcheck
       statix
       ripgrep
+      glibc
     ];
 
     extraConfigLua = ''

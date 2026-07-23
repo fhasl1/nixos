@@ -126,13 +126,6 @@
         corfu-auto-prefix 1
         corfu-cycle t))
 
-(use-package cape
-
-  :after company
-  :config
-  (add-hook 'company-completion-started-hook 'cape-company-on)
-  (add-hook 'company-completion-finished-hook 'cape-company-off))
-
 (use-package lsp-mode
 
   :commands lsp
@@ -153,13 +146,12 @@
         lsp-signature-auto-activate nil
         lsp-diagnostics-provider :flycheck
         lsp-enable-indentation nil
-        lsp-language-id-configuration '((nix-mode . "nix")))
+        lsp-language-id-configuration '((c-mode . "c")
+                                (c++-mode . "cpp")
+                                (objc-mode . "objective-c")
+                                (nix-mode . "nix")))
+  (setq lsp-clangd-args '("--query-driver=/run/current-system/sw/bin/gcc,/run/current-system/sw/bin/clang" "--clang-tidy" "--completion-style=detailed" "--header-insertion=iwyu"))
   (add-hook 'lsp-mode-hook 'lsp-enable-which-key-integration))
-
-(use-package clangd
-  :after lsp-mode
-  :config
-  (setq lsp-clangd-args '("--clang-tidy" "--completion-style=detailed" "--header-insertion=iwyu")))
 
 (use-package lsp-ui
 
