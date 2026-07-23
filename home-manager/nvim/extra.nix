@@ -44,6 +44,7 @@ in {
       nixd
       bash-language-server
       vscode-langservers-extracted
+      python312Packages.python-lsp-server
       alejandra
       shellcheck
       statix
