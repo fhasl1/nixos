@@ -1,6 +1,6 @@
 {...}: {
   programs.nixvim.plugins.blink-cmp = {
-    enable = true;
+    enable = false;
     settings = {
       keymap = {
         "<C-b>" = ["scroll_documentation_up" "fallback"];

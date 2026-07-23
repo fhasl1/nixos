@@ -151,6 +151,7 @@
                                 (objc-mode . "objective-c")
                                 (nix-mode . "nix")))
   (setq lsp-clangd-args '("--query-driver=/run/current-system/sw/bin/gcc,/run/current-system/sw/bin/clang" "--clang-tidy" "--completion-style=detailed" "--header-insertion=iwyu"))
+  (setq lsp-clangd-executable "/run/current-system/sw/bin/clangd")
   (add-hook 'lsp-mode-hook 'lsp-enable-which-key-integration))
 
 (use-package lsp-ui

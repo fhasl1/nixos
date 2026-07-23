@@ -44,7 +44,7 @@ in {
       nixd
       bash-language-server
       vscode-langservers-extracted
-      python312Packages.python-lsp-server
+      pyright
       alejandra
       shellcheck
       statix
@@ -106,16 +106,19 @@ in {
       })
       vim.lsp.enable("lua_ls")
 
-      -- clangd (use Nix-wrapped clangd for correct include paths on NixOS)
+      -- clangd (use system clangd with --query-driver for correct include paths on NixOS)
       vim.lsp.config("clangd", {
         filetypes = { "c", "cpp", "objc", "objcpp", "h" },
-        cmd = {
-          "${pkgs.clang-tools}/bin/clangd",
-          "--query-driver=/nix/store/*/bin/gcc*,/nix/store/*/bin/g++*,/nix/store/*/bin/clang*",
-        },
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        cmd = { "clangd", "--query-driver=/run/current-system/sw/bin/gcc,/run/current-system/sw/bin/clang" },
       })
       vim.lsp.enable("clangd")
+
+      -- pyright (Python)
+      vim.lsp.config("pyright", {
+        filetypes = { "python" },
+        cmd = { "pyright-langserver", "--stdio" },
+      })
+      vim.lsp.enable("pyright")
 
       -- nixd
       vim.lsp.config("nixd", {
