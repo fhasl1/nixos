@@ -16,7 +16,8 @@
     cargo
     julia
     gcc
-    clang
+     clang
+     clang-tools
 
     # WM tools
     rofi
