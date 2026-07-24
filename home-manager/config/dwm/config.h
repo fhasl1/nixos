@@ -95,8 +95,8 @@ static const char *dmenucmd[] = {
 static const char *termcmd[] = {"kitty", NULL};
 static const char *roficmd[] = {"rofi", "-show", "drun", NULL};
 static const char *scrotcmd[] = {
-    "scrot", "-s", "-e",
-    "xclip -selection clipboard -t image/png -i $f && mv $f ~/Pictures/", NULL};
+    "scrot", "-s", "-f", "-e",
+    "xclip -selection clipboard -t image/png -i \"$f\" && mv \"$f\" ~/Pictures/", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */

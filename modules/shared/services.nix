@@ -19,6 +19,16 @@
       Restart = "always";
     };
   };
+  systemd.user.services.omniroute = {
+    description = "OmniRoute AI Gateway";
+    after = ["network.target"];
+    wantedBy = ["default.target"];
+    serviceConfig = {
+      ExecStart = "%h/.npm-global/bin/omniroute";
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
+  };
   systemd.services.tailscaled.serviceConfig.Environment = [
     "TS_DEBUG_FIREWALL_MODE=nftables"
   ];

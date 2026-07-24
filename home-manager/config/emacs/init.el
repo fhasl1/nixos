@@ -17,18 +17,18 @@
                             (add-hook 'post-self-insert-hook
                                       'electric-indent-post-self-insert-function
                                       nil t)))
-(add-hook 'c-mode-common-hook (lambda ()
-                                (setq c-basic-offset 2)
-                                (c-set-offset 'substatement '+)
-                                (c-set-offset 'statement-block-intro '+)
-                                (c-set-offset 'brace-list-intro '+)
-                                (c-set-offset 'arglist-intro '+)
-                                (c-set-offset 'arglist-close '+)
-                                 (local-set-key (kbd "RET") 'newline-and-indent)))
-(defun my/fix-c-basic-offset ()
-  (when (derived-mode-p 'c-mode 'c++-mode)
-    (setq c-basic-offset 2)))
-(add-hook 'lsp-after-open-hook 'my/fix-c-basic-offset)
+(setq c-default-style "linux"
+      c-basic-offset 2)
+(defun my/debug-indent ()
+  (interactive)
+  (message "indent-line-function: %s, c-basic-offset: %s, syntax: %s"
+           indent-line-function c-basic-offset (c-guess-basic-syntax)))
+(add-hook 'lsp-after-open-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode)
+              (setq c-basic-offset 2)
+              (message "LSP opened: indent-line-function=%s c-basic-offset=%s"
+                       indent-line-function c-basic-offset))))
 
 (setq evil-want-C-i-jump nil
       evil-want-C-u-scroll t
