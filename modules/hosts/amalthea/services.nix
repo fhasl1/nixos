@@ -30,6 +30,9 @@
     xserver = {
       enable = true;
       videoDrivers = ["amdgpu"];
+      deviceSection = ''
+        Option "VariableRefresh" "true"
+      '';
       enableTearFree = true;
       autoRepeatDelay = 300;
       autoRepeatInterval = 35;

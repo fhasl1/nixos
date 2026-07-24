@@ -11,6 +11,14 @@
 
 (set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 115)
 
+(electric-indent-mode 1)
+(setq-default electric-indent-chars '(?\{ ?\} ?\( ?\) ?: ?\; ?\#))
+(add-hook 'prog-mode-hook (lambda ()
+  (setq-local electric-indent-mode t)
+  (add-hook 'post-self-insert-hook
+            'electric-indent-post-self-insert-function
+            nil t)))
+
 (use-package evil
 
   :config
@@ -18,7 +26,13 @@
   (setq evil-want-C-i-jump nil
         evil-want-C-u-scroll t
         evil-ex-substitute-global t
-        evil-want-integration t))
+        evil-want-integration t)
+  (defun my/indent-newline (&optional count)
+    (interactive "p")
+    (dotimes (_ count)
+      (newline nil nil)
+      (indent-according-to-mode)))
+  (evil-define-key 'insert 'global (kbd "RET") 'my/indent-newline))
 
 (use-package evil-leader
   :after evil
@@ -145,7 +159,7 @@
         lsp-idle-delay 0.5
         lsp-signature-auto-activate nil
         lsp-diagnostics-provider :flycheck
-        lsp-enable-indentation nil
+        lsp-enable-indentation t
         lsp-language-id-configuration '((c-mode . "c")
                                 (c++-mode . "cpp")
                                 (objc-mode . "objective-c")
@@ -317,7 +331,8 @@
 
 (use-package smartparens
   :config
-  (smartparens-global-mode 1))
+  (smartparens-global-mode 1)
+  (setq sp-autoindent nil))
 
 (use-package rainbow-delimiters
   :hook ((prog-mode . rainbow-delimiters-mode)))
@@ -393,7 +408,6 @@
       hlsearch t
       case-fold-search t)
 
-(electric-indent-mode 1)
 (global-hl-line-mode 1)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
