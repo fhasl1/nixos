@@ -12,30 +12,12 @@
 (set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 115)
 (electric-indent-mode 1)
 (setq-default electric-indent-chars '(?\{ ?\} ?\( ?\) ?: ?\; ?\#))
-(add-hook 'prog-mode-hook (lambda ()
-                            (setq-local electric-indent-mode t)
-                            (add-hook 'post-self-insert-hook
-                                      'electric-indent-post-self-insert-function
-                                      nil t)))
-(setq c-default-style "linux"
-      c-basic-offset 2)
-(defun my/debug-indent ()
-  (interactive)
-  (message "indent-line-function: %s, c-basic-offset: %s, syntax: %s"
-           indent-line-function c-basic-offset (c-guess-basic-syntax)))
-(add-hook 'lsp-after-open-hook
-          (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode)
-              (setq c-basic-offset 2)
-              (message "LSP opened: indent-line-function=%s c-basic-offset=%s"
-                       indent-line-function c-basic-offset))))
 
 (setq evil-want-C-i-jump nil
       evil-want-C-u-scroll t
       evil-ex-substitute-global t
       evil-want-integration t)
 (use-package evil
-
   :config
   (evil-mode 1)
   (evil-define-key 'insert 'global (kbd "RET") 'newline-and-indent))
@@ -50,7 +32,8 @@
     "b" 'switch-buffer
     "g" 'magit-status
     "/" 'counsel-rg
-    "s" 'save-buffer))
+    "s" 'save-buffer
+    "r" 'load-file))
 
 (use-package which-key
 
@@ -120,12 +103,7 @@
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
   (global-set-key (kbd "M-y") 'counsel-yank-pop))
 
-(use-package ivy
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t
-        ivy-count-format "(%d/%d) "
-        ivy-height 15))
+
 
 (use-package consult
   :config
@@ -163,14 +141,16 @@
         lsp-idle-delay 0.5
         lsp-signature-auto-activate nil
         lsp-diagnostics-provider :flycheck
-        lsp-enable-indentation t
+        lsp-enable-indentation nil
         lsp-language-id-configuration '((c-mode . "c")
                                         (c++-mode . "cpp")
                                         (objc-mode . "objective-c")
                                         (nix-mode . "nix")))
-  (setq lsp-clangd-args '("--query-driver=/run/current-system/sw/bin/gcc,/run/current-system/sw/bin/clang" "--clang-tidy" "--completion-style=detailed" "--header-insertion=iwyu"))
+  (setq lsp-clangd-args '("--query-driver=/run/current-system/sw/bin/gcc,/run/current-system/sw/bin/clang" "--clang-tidy" "--completion-style=detailed" "--header-insertion=iwyu" "--style=file"))
   (setq lsp-clangd-executable "/run/current-system/sw/bin/clangd")
-  (add-hook 'lsp-mode-hook 'lsp-enable-which-key-integration))
+   (add-hook 'c-mode-hook (lambda () (setq-local indent-line-function 'c-indent-line)))
+   (add-hook 'c++-mode-hook (lambda () (setq-local indent-line-function 'c-indent-line)))
+   (add-hook 'lsp-mode-hook 'lsp-enable-which-key-integration))
 
 (use-package lsp-ui
   :disabled
@@ -330,10 +310,10 @@
   :config
   (which-key-posframe-mode 1))
 
-;; (use-package smartparens
-;;   :config
-;;   (smartparens-global-mode 1)
-;;   (setq sp-autoindent nil))
+(use-package smartparens
+  :config
+  (smartparens-global-mode 1)
+  (setq sp-autoindent t))
 
 (use-package rainbow-delimiters
   :hook ((prog-mode . rainbow-delimiters-mode)))
@@ -452,5 +432,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-;; (global-aggressive-indent-mode 1)
-(put 'upcase-region 'disabled nil)
+

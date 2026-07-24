@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   users.users.fhasl = {
     isNormalUser = true;
     extraGroups = [
@@ -9,6 +7,7 @@
       "video"
       "input"
       "pipewire"
+      "docker"
     ];
     shell = pkgs.zsh;
     packages = with pkgs; [

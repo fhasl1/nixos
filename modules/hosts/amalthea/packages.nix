@@ -19,6 +19,7 @@
     localsend
     ffmpeg-full
     kdePackages.ark
+    winboat
 
     # Custom WM
     (stdenv.mkDerivation rec {
@@ -41,5 +42,8 @@
         EOF
       '';
     })
+  ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-40.10.5"
   ];
 }
