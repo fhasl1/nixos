@@ -7,6 +7,9 @@
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
+(dolist (dir load-path)
+  (when (string-match-p "elpa/" dir)
+    (add-to-list 'custom-theme-load-path dir)))
 (load-theme 'tao-yin t)
 
 (set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 115)
@@ -415,17 +418,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(aggressive-indent all-the-icons-dired all-the-icons-ivy all-the-icons-nerd-fonts apheleia auctex
-                       auto-compile cape command-log-mode company-box company-quickhelp consult-lsp
-                       corfu counsel dap-mode dockerfile-mode doom-modeline doom-themes
-                       embark-consult evil-leader flycheck-posframe general git-gutter
-                       greymatters-theme helm-lsp helpful js2-mode json-mode ligature lsp-ivy lsp-ui
-                       lua-mode magit marginalia modus-themes nerd-icons-dired nerd-icons-ivy-rich
-                       nibelung-theme nix-mode orderless org-plus-contrib projectile
-                       rainbow-delimiters rustic scss-mode smartparens tao-theme toml-mode
-                       treesit-auto typescript-mode undo-tree vertico web-mode which-key-posframe
-                       yaml-mode)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

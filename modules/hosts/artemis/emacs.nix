@@ -1,65 +1,52 @@
 {
   pkgs,
-  config,
   ...
 }: {
-  services = {
-    emacs = {
-      enable = true;
-      package = pkgs.emacs;
-      install = false;
-    };
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs;
+    install = false;
   };
+
   environment.systemPackages =
     (with pkgs; [emacs-all-the-icons-fonts nil])
     ++ (with pkgs.emacsPackages; [
       all-the-icons
-      company
-      company-box
       consult
       counsel
-      dap-mode
       doom-modeline
       doom-themes
+      embark
       evil
+      evil-leader
       flycheck
-      helm
-      ivy
-      ivy-rich
+      flycheck-posframe
+      git-gutter
+      json-mode
+      ligature
       lsp-mode
       lsp-treemacs
-      lsp-ui
-      lsp-ivy
+      lua-mode
       marginalia
+      markdown-mode
       nerd-icons
       nerd-icons-dired
+      nix-mode
+      orderless
       posframe
+      projectile
       rainbow-delimiters
       smartparens
+      tao-theme
+      toml-mode
       treemacs
+      typescript-mode
+      undo-tree
       use-package
+      vertico
+      web-mode
       which-key
       which-key-posframe
-      writegood-mode
       yaml-mode
-      json-mode
-      toml-mode
-      dockerfile-mode
-      lua-mode
-      rustic
-      typescript-mode
-      web-mode
-      markdown-mode
-      nix-mode
-      auctex
-      helm-lsp
-      consult
-      consult-lsp
-      corfu
-      cape
-      orderless
-      vertico
-      embark
-    tao-theme
     ]);
 }

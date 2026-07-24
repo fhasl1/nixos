@@ -1,0 +1,1 @@
+(("/home/fhasl/nixos/" ("home-manager/config/emacs/init.el" 1 1784904901)))
