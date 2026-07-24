@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: https:;">
+    <style>
+      body {
+        background-color: #000000;
+        color: #ffffff;
+        font-family:
+          IosevkaTerm Nerd Font,
+          monospace;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .links {
+        display: flex;
+        gap: 25px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 0.8em;
+      }
+      a:hover {
+        color: #888888;
+        text-decoration: underline;
+      }
+      #clock {
+        font-size: 1em;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: #ffffff;
+        margin-top: 10px;
+      }
+    </style>
+    <title>hi!</title>
+    <script>
+      function clock() {
+        const today = new Date();
+        const h = today.getHours();
+        const m = today.getMinutes();
+        const s = today.getSeconds();
+        const hour = h % 12 || 12;
+        const ampm = h < 12 ? "am" : "pm";
+        const time = `${hour}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s} ${ampm}`;
+        document.getElementById("time").textContent = time;
+      }
+      document.addEventListener("DOMContentLoaded", init);
+      window.addEventListener("load", init);
+      function init() {
+        clock();
+        setInterval(clock, 1000);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="links">
+      <a href="https://facebook.com">facebook</a>
+      <a href="https://osu.ppy.sh">osu!</a>
+      <a href="https://youtube.com">youtube</a>
+      <a href="https://reddit.com">reddit</a>
+    </div>
+    <div id="clock">
+      <h1 id="time"></h1>
+    </div>
+  </body>
+</html>

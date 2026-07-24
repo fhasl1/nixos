@@ -17,28 +17,21 @@
                             (add-hook 'post-self-insert-hook
                                       'electric-indent-post-self-insert-function
                                       nil t)))
-(add-hook 'c-mode-common-hook (lambda ()
-                                (setq c-basic-offset 2)
-                                (c-set-offset 'substatement '+)
-                                (c-set-offset 'statement-block-intro '+)
-                                (c-set-offset 'brace-list-intro '+)
-                                (c-set-offset 'arglist-intro '+)
-                                (c-set-offset 'arglist-close '+)
-                                 (local-set-key (kbd "RET") 'newline-and-indent)))
-(defun my/fix-c-basic-offset ()
-  (when (derived-mode-p 'c-mode 'c++-mode)
-    (setq c-basic-offset 2)))
-(add-hook 'lsp-after-open-hook 'my/fix-c-basic-offset)
 
-(setq evil-want-C-i-jump nil
-      evil-want-C-u-scroll t
-      evil-ex-substitute-global t
-      evil-want-integration t)
 (use-package evil
 
   :config
   (evil-mode 1)
-  (evil-define-key 'insert 'global (kbd "RET") 'newline-and-indent))
+  (setq evil-want-C-i-jump nil
+        evil-want-C-u-scroll t
+        evil-ex-substitute-global t
+        evil-want-integration t)
+  (defun my/indent-newline (&optional count)
+    (interactive "p")
+    (dotimes (_ count)
+      (newline nil nil)
+      (indent-according-to-mode)))
+  (evil-define-key 'insert 'global (kbd "RET") 'my/indent-newline))
 
 (use-package evil-leader
   :after evil
@@ -76,24 +69,27 @@
   :config
   (apheleia-global-mode +1))
 
-;; (use-package company
-;;   :config
-;;   (global-company-mode)
-;;   (setq company-idle-delay 0.1
-;;         company-minimum-prefix-length 1
-;;         company-tooltip-limit 10
-;;         company-show-numbers t))
+(use-package company
 
-;; (use-package company-box
-;;   :after company
-;;   :config
-;;   (company-box-mode))
+  :config
+  (global-company-mode)
+  (setq company-idle-delay 0.1
+        company-minimum-prefix-length 1
+        company-tooltip-limit 10
+        company-show-numbers t))
 
-;; (use-package company-quickhelp
-;;   :after company
-;;   :config
-;;   (company-quickhelp-mode 1)
-;;   (setq company-quickhelp-delay 0.5))
+(use-package company-box
+
+  :after company
+  :config
+  (company-box-mode))
+
+(use-package company-quickhelp
+
+  :after company
+  :config
+  (company-quickhelp-mode 1)
+  (setq company-quickhelp-delay 0.5))
 
 (use-package vertico
 
@@ -131,16 +127,17 @@
   :config
   (consult-customize 'find-file '((preview . t))))
 
-;; (use-package consult-lsp
-;;   :after lsp-mode)
+(use-package consult-lsp
+  :after lsp-mode)
 
-;; (use-package corfu
-;;   :after company
-;;   :config
-;;   (global-corfu-mode)
-;;   (setq corfu-auto t
-;;         corfu-auto-prefix 1
-;;         corfu-cycle t))
+(use-package corfu
+
+  :after company
+  :config
+  (global-corfu-mode)
+  (setq corfu-auto t
+        corfu-auto-prefix 1
+        corfu-cycle t))
 
 (use-package lsp-mode
 
@@ -158,8 +155,6 @@
   (setq lsp-keymap-prefix "C-c l"
         lsp-enable-snippet nil
         lsp-enable-completion-at-point t
-        lsp-enable-on-type-formatting nil
-        lsp-enable-formatting nil
         lsp-idle-delay 0.5
         lsp-signature-auto-activate nil
         lsp-diagnostics-provider :flycheck
@@ -173,7 +168,7 @@
   (add-hook 'lsp-mode-hook 'lsp-enable-which-key-integration))
 
 (use-package lsp-ui
-  :disabled
+
   :after lsp-mode
   :config
   (setq lsp-ui-doc-enable t
@@ -194,9 +189,11 @@
   (flycheck-posframe-mode))
 
 (use-package lsp-treemacs
+
   :after lsp-mode)
 
 (use-package treemacs
+
   :after lsp-treemacs
   :config
   (setq treemacs-is-never-other-window t)
@@ -231,10 +228,11 @@
   (add-hook 'nix-mode-hook 'lsp)
   (add-hook 'nix-mode-hook 'flycheck-mode))
 
-;; (use-package rustic
-;;   :hook (rust-mode . rustic-mode)
-;;   :config
-;;   (rustic-lsp-enable))
+(use-package rustic
+
+  :hook (rust-mode . rustic-mode)
+  :config
+  (rustic-lsp-enable))
 
 (use-package dockerfile-mode
 
@@ -330,25 +328,25 @@
   :config
   (which-key-posframe-mode 1))
 
-;; (use-package smartparens
-;;   :config
-;;   (smartparens-global-mode 1)
-;;   (setq sp-autoindent nil))
+(use-package smartparens
+  :config
+  (smartparens-global-mode 1)
+  (setq sp-autoindent nil))
 
 (use-package rainbow-delimiters
   :hook ((prog-mode . rainbow-delimiters-mode)))
 
-;; (use-package lsp-ivy
-;;   :after lsp-mode ivy
-;;   :bind (:map lsp-mode-map
-;;               ("C-c l s" . lsp-ivy-workspace-symbol)))
+(use-package lsp-ivy
+  :after lsp-mode ivy
+  :bind (:map lsp-mode-map
+              ("C-c l s" . lsp-ivy-workspace-symbol)))
 
-;; (use-package dap-mode
-;;   :after lsp-mode
-;;   :config
-;;   (dap-auto-configure-mode)
-;;   :bind (:map lsp-mode-map
-;;               ("C-c l d" . dap-hydra)))
+(use-package dap-mode
+  :after lsp-mode
+  :config
+  (dap-auto-configure-mode)
+  :bind (:map lsp-mode-map
+              ("C-c l d" . dap-hydra)))
 
 (use-package embark
   :bind
@@ -371,9 +369,9 @@
   :config
   (auto-compile-on-save-mode 1))
 
-;; (use-package treesit-auto
-;;   :config
-;;   (global-treesit-auto-mode))
+(use-package treesit-auto
+  :config
+  (global-treesit-auto-mode))
 
 (use-package undo-tree
   :config
@@ -388,7 +386,6 @@
 
 (setq-default indent-tabs-mode nil
               tab-width 2
-              c-basic-offset 2
               fill-column 100
               x-select-enable-clipboard t
               x-select-enable-primary t
@@ -452,5 +449,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-;; (global-aggressive-indent-mode 1)
-(put 'upcase-region 'disabled nil)
+(global-aggressive-indent-mode 1)
