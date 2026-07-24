@@ -59,5 +59,6 @@
     orderless
     vertico
     embark
+    tao-theme
   ]);
 }
