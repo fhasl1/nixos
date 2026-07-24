@@ -24,6 +24,9 @@
     username = "fhasl";
     homeDirectory = "/home/fhasl";
     stateVersion = "26.05";
+    sessionVariables = {
+      XDG_CONFIG_HOME = "/home/fhasl/.config";
+    };
     packages = with pkgs; [
       (pkgs.dmenu.overrideAttrs (_: {
         src = ./config/dmenu;

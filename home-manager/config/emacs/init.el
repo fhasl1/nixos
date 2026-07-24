@@ -7,6 +7,7 @@
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
+(setq warning-suppress-types '((package)))
 (dolist (dir load-path)
   (when (string-match-p "elpa/" dir)
     (add-to-list 'custom-theme-load-path dir)))
@@ -14,6 +15,7 @@
 
 (set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 115)
 (electric-indent-mode 1)
+(electric-pair-mode -1)
 (setq-default electric-indent-chars '(?\{ ?\} ?\( ?\) ?: ?\; ?\#))
 
 (setq evil-want-C-i-jump nil
@@ -115,13 +117,21 @@
 ;; (use-package consult-lsp
 ;;   :after lsp-mode)
 
-;; (use-package corfu
-;;   :after company
-;;   :config
-;;   (global-corfu-mode)
-;;   (setq corfu-auto t
-;;         corfu-auto-prefix 1
-;;         corfu-cycle t))
+(use-package corfu
+  :config
+  (global-corfu-mode)
+  (setq corfu-auto t
+        corfu-auto-prefix 1
+        corfu-auto-delay 0.1
+        corfu-cycle t
+        corfu-preselect 'prompt)
+  (define-key corfu-map (kbd "TAB") 'corfu-next)
+  (define-key corfu-map (kbd "<backtab>") 'corfu-previous))
+
+(use-package cape
+  :config
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev))
 
 (use-package lsp-mode
 

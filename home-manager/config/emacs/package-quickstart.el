@@ -11762,6 +11762,492 @@ Local bindings (`counsel-mode-map'):
 
 
 )
+(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/corfu-20260723.1400/corfu-autoloads.el")(load-true-file-name load-file-name))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(autoload 'corfu-mode "corfu" "\
+COmpletion in Region FUnction.
+
+This is a minor mode.  If called interactively, toggle the `Corfu mode'
+mode.  If the prefix argument is positive, enable the mode, and if it is
+zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate the variable `corfu-mode'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(put 'global-corfu-mode 'globalized-minor-mode t)
+(defvar global-corfu-mode nil "\
+Non-nil if Global Corfu mode is enabled.
+See the `global-corfu-mode' command
+for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `global-corfu-mode'.")
+(custom-autoload 'global-corfu-mode "corfu" nil)
+(autoload 'global-corfu-mode "corfu" "\
+Toggle Corfu mode in all buffers.
+With prefix ARG, enable Global Corfu mode if ARG is positive;
+otherwise, disable it.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.
+Enable the mode if ARG is nil, omitted, or is a positive number.
+Disable the mode if ARG is a negative number.
+
+Corfu mode is enabled in all buffers where `corfu--on' would do it.
+
+See `corfu-mode' for more information on Corfu mode.
+
+`global-corfu-modes' is used to control which modes this minor mode is
+used in.
+
+(fn &optional ARG)" t)
+(defvar global-corfu-modes t "\
+Which major modes `corfu-mode' is switched on in.
+This variable can be either t (all major modes), nil (no major modes),
+or a list of modes and (not modes) to switch use this minor mode or
+not.  For instance
+
+  (c-mode (not message-mode mail-mode) text-mode)
+
+means \"use this mode in all modes derived from `c-mode', don't use in
+modes derived from `message-mode' or `mail-mode', but do use in other
+modes derived from `text-mode'\".  An element with value t means \"use\"
+and nil means \"don't use\".  There's an implicit nil at the end of the
+list.")
+(custom-autoload 'global-corfu-modes "corfu" t)
+(register-definition-prefixes "corfu" '("corfu-" "global-corfu-minibuffer"))
+
+
+
+(register-definition-prefixes "corfu-auto" '("corfu-auto-"))
+
+
+
+(defvar corfu-echo-mode nil "\
+Non-nil if Corfu-Echo mode is enabled.
+See the `corfu-echo-mode' command
+for a description of this minor mode.")
+(custom-autoload 'corfu-echo-mode "corfu-echo" nil)
+(autoload 'corfu-echo-mode "corfu-echo" "\
+Show candidate documentation in echo area.
+
+This is a global minor mode.  If called interactively, toggle the
+`Corfu-Echo mode' mode.  If the prefix argument is positive, enable the
+mode, and if it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate `(default-value \\='corfu-echo-mode)'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "corfu-echo" '("corfu-echo-"))
+
+
+
+(defvar corfu-history-mode nil "\
+Non-nil if Corfu-History mode is enabled.
+See the `corfu-history-mode' command
+for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `corfu-history-mode'.")
+(custom-autoload 'corfu-history-mode "corfu-history" nil)
+(autoload 'corfu-history-mode "corfu-history" "\
+Save completion history and sort candidates by history.
+
+This is a global minor mode.  If called interactively, toggle the
+`Corfu-History mode' mode.  If the prefix argument is positive, enable
+the mode, and if it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate `(default-value \\='corfu-history-mode)'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "corfu-history" '("corfu-history"))
+
+
+
+(defvar corfu-indexed-mode nil "\
+Non-nil if Corfu-Indexed mode is enabled.
+See the `corfu-indexed-mode' command
+for a description of this minor mode.")
+(custom-autoload 'corfu-indexed-mode "corfu-indexed" nil)
+(autoload 'corfu-indexed-mode "corfu-indexed" "\
+Prefix candidates with indices.
+
+This is a global minor mode.  If called interactively, toggle the
+`Corfu-Indexed mode' mode.  If the prefix argument is positive, enable
+the mode, and if it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate `(default-value \\='corfu-indexed-mode)'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "corfu-indexed" '("corfu-indexed-"))
+
+
+
+(autoload 'corfu-info-documentation "corfu-info" "\
+Show documentation of current candidate.
+If called with a prefix ARG, the buffer is persistent.
+
+(fn &optional ARG)" t)
+(autoload 'corfu-info-location "corfu-info" "\
+Show location of current candidate.
+If called with a prefix ARG, the buffer is persistent.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "corfu-info" '("corfu-info--"))
+
+
+
+(defvar corfu-mouse-mode nil "\
+Non-nil if Corfu-Mouse mode is enabled.
+See the `corfu-mouse-mode' command
+for a description of this minor mode.")
+(custom-autoload 'corfu-mouse-mode "corfu-mouse" nil)
+(autoload 'corfu-mouse-mode "corfu-mouse" "\
+Mouse support, scrolling and clickable candidates.
+
+This is a global minor mode.  If called interactively, toggle the
+`Corfu-Mouse mode' mode.  If the prefix argument is positive, enable the
+mode, and if it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate `(default-value \\='corfu-mouse-mode)'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "corfu-mouse" '("corfu-mouse-"))
+
+
+
+(defvar corfu-popupinfo-mode nil "\
+Non-nil if Corfu-Popupinfo mode is enabled.
+See the `corfu-popupinfo-mode' command
+for a description of this minor mode.")
+(custom-autoload 'corfu-popupinfo-mode "corfu-popupinfo" nil)
+(autoload 'corfu-popupinfo-mode "corfu-popupinfo" "\
+Show candidate documentation in a popup.
+
+This is a global minor mode.  If called interactively, toggle the
+`Corfu-Popupinfo mode' mode.  If the prefix argument is positive, enable
+the mode, and if it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate `(default-value \\='corfu-popupinfo-mode)'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "corfu-popupinfo" '("corfu-popupinfo-"))
+
+
+
+(autoload 'corfu-quick-jump "corfu-quick" "\
+Jump to candidate using quick keys." t)
+(autoload 'corfu-quick-insert "corfu-quick" "\
+Insert candidate using quick keys." t)
+(autoload 'corfu-quick-complete "corfu-quick" "\
+Complete candidate using quick keys." t)
+(register-definition-prefixes "corfu-quick" '("corfu-quick"))
+
+
+(provide 'corfu-autoloads)
+
+
+)
+(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/cape-20260519.1021/cape-autoloads.el")(load-true-file-name load-file-name))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(autoload 'cape-history "cape" "\
+Complete from Eshell, Comint or minibuffer history.
+See also `consult-history' for a more flexible variant based on
+`completing-read'.  If INTERACTIVE is nil the function acts like a Capf.
+
+(fn &optional INTERACTIVE)" t)
+(autoload 'cape-file "cape" "\
+Complete file name at point.
+See the user option `cape-file-directory-must-exist'.
+If INTERACTIVE is nil the function acts like a Capf.
+
+(fn &optional INTERACTIVE)" t)
+(autoload 'cape-elisp-symbol "cape" "\
+Complete Elisp symbol at point.
+If INTERACTIVE is nil the function acts like a Capf.
+
+(fn &optional INTERACTIVE)" t)
+(autoload 'cape-elisp-block "cape" "\
+Complete Elisp in Org or Markdown code block.
+This Capf is particularly useful for literate Emacs configurations.
+If INTERACTIVE is nil the function acts like a Capf.
+
+(fn &optional INTERACTIVE)" t)
+(autoload 'cape-dabbrev "cape" "\
+Complete with Dabbrev at point.
+
+If INTERACTIVE is nil the function acts like a Capf.  In case you
+observe a performance issue with auto-completion and `cape-dabbrev'
+it is strongly recommended to disable scanning in other buffers.
+See the user option `cape-dabbrev-buffer-function'.
+
+(fn &optional INTERACTIVE)" t)
+(autoload 'cape-dict "cape" "\
+Complete word from dictionary at point.
+This completion function works best if the dictionary is sorted
+by frequency.  See the custom option `cape-dict-file'.  If
+INTERACTIVE is nil the function acts like a Capf.
+
+(fn &optional INTERACTIVE)" t)
+(autoload 'cape-abbrev "cape" "\
+Complete abbreviation at point.
+If INTERACTIVE is nil the function acts like a Capf.
+
+(fn &optional INTERACTIVE)" t)
+(autoload 'cape-line "cape" "\
+Complete current line from other lines.
+The buffers returned by `cape-line-buffer-function' are scanned for lines.
+If INTERACTIVE is nil the function acts like a Capf.
+
+(fn &optional INTERACTIVE)" t)
+(autoload 'cape-company-to-capf "cape" "\
+Convert Company BACKEND function to Capf.
+VALID is a function taking the old and new input string.  It should
+return nil if the cached candidates became invalid.  The default value
+for VALID is `string-prefix-p' such that the candidates are only fetched
+again if the input prefix changed.
+
+(fn BACKEND &optional VALID)")
+(autoload 'cape-interactive "cape" "\
+Complete interactively with the given CAPFS.
+
+(fn &rest CAPFS)")
+(autoload 'cape-capf-interactive "cape" "\
+Create interactive completion function from CAPF.
+
+(fn CAPF)")
+(autoload 'cape-wrap-super "cape" "\
+Call CAPFS and return merged completion result.
+The CAPFS list can contain the keyword `:with' to mark the Capfs
+afterwards as auxiliary.  One of the non-auxiliary Capfs before `:with'
+must return non-nil for the super Capf to set in and return a non-nil
+result.  Such behavior is useful when listing multiple super Capfs in
+the `completion-at-point-functions':
+
+  (setq completion-at-point-functions
+        (list (cape-capf-super \\='elisp-completion-at-point
+                               :with \\='tempel-complete)
+              (cape-capf-super \\='cape-dabbrev
+                               :with \\='tempel-complete)))
+
+See the dual `cape-wrap-choose' if you want to try multiple Capfs in
+turn.
+
+(fn &rest CAPFS)")
+(autoload 'cape-wrap-choose "cape" "\
+Call each of CAPFS in turn and return first non-nil result.
+Use `cape-wrap-choose' to create a single Capf from multiple Capfs.
+Usually you want to add multiple non-exclusive Capfs to the variable
+`completion-at-point-functions' directly instead.  See the dual
+`cape-wrap-super' if you want to merge multiple Capf results.
+
+(fn &rest CAPFS)")
+(autoload 'cape-wrap-debug "cape" "\
+Call CAPF and return a completion table which prints trace messages.
+If CAPF is an anonymous lambda, pass the Capf NAME explicitly for
+meaningful debugging output.
+
+(fn CAPF &optional NAME)")
+(autoload 'cape-wrap-buster "cape" "\
+Call CAPF and return a completion table with cache busting.
+This function can be used as an advice around an existing Capf.
+The cache is busted when the input changes.  The argument VALID
+can be a function taking the old and new input string.  It should
+return nil if the new input requires that the completion table is
+refreshed.  The default value for VALID is `equal', such that the
+completion table is refreshed on every input change.
+
+(fn CAPF &optional VALID)")
+(autoload 'cape-wrap-passthrough "cape" "\
+Call CAPF and make sure that no completion style filtering takes place.
+This function can be used as an advice around an existing Capf.
+
+(fn CAPF)")
+(autoload 'cape-wrap-properties "cape" "\
+Call CAPF and add completion PROPERTIES.
+Completion properties include :exclusive, :category,
+:annotation-function, :affixation-function, :display-sort-function,
+:company-kind, :company-doc-buffer, :company-docsig, :company-location,
+:company-deprecated and :company-prefix-length.
+
+(fn CAPF &rest PROPERTIES)")
+(autoload 'cape-wrap-nonexclusive "cape" "\
+Call CAPF and ensure that it is marked as non-exclusive.
+This function can be used as an advice around an existing Capf.
+
+(fn CAPF)")
+(autoload 'cape-wrap-sort "cape" "\
+Call CAPF and add SORT function as completion metadata.
+If the SORT argument is nil or not given, the completion UI will use
+its own default sorting algorithm.  This function can be used as an
+advice around an existing Capf.
+
+(fn CAPF &optional SORT)")
+(autoload 'cape-wrap-predicate "cape" "\
+Call CAPF and add an additional candidate PREDICATE.
+The PREDICATE is passed the candidate symbol or string.
+
+(fn CAPF PREDICATE)")
+(autoload 'cape-wrap-silent "cape" "\
+Call CAPF and silence it (no messages, no errors).
+This function can be used as an advice around an existing Capf.
+
+(fn CAPF)")
+(autoload 'cape-wrap-case-fold "cape" "\
+Call CAPF and return a case-insensitive completion table.
+If NOFOLD is non-nil return a case sensitive table instead.  This
+function can be used as an advice around an existing Capf.
+
+(fn CAPF &optional NOFOLD)")
+(autoload 'cape-wrap-noninterruptible "cape" "\
+Call CAPF and return a non-interruptible completion table.
+This function can be used as an advice around an existing Capf.
+
+(fn CAPF)")
+(autoload 'cape-wrap-prefix-length "cape" "\
+Call CAPF and ensure that prefix length is greater or equal than LENGTH.
+If the prefix is long enough, enforce auto completion.
+
+(fn CAPF LENGTH)")
+(autoload 'cape-wrap-inside-faces "cape" "\
+Call CAPF only if inside FACES.
+
+(fn CAPF &rest FACES)")
+(autoload 'cape-wrap-inside-code "cape" "\
+Call CAPF only if inside code, not inside a comment or string.
+This function can be used as an advice around an existing Capf.
+
+(fn CAPF)")
+(autoload 'cape-wrap-inside-comment "cape" "\
+Call CAPF only if inside comment.
+This function can be used as an advice around an existing Capf.
+
+(fn CAPF)")
+(autoload 'cape-wrap-inside-string "cape" "\
+Call CAPF only if inside string.
+This function can be used as an advice around an existing Capf.
+
+(fn CAPF)")
+(autoload 'cape-wrap-accept-all "cape" "\
+Call CAPF and return a completion table which accepts every input.
+This function can be used as an advice around an existing Capf.
+
+(fn CAPF)")
+(autoload 'cape-wrap-trigger "cape" "\
+Ensure that TRIGGER character occurs before point and then call CAPF.
+See also `corfu-auto-trigger'.
+Example:
+  (setq corfu-auto-trigger \"/\"
+        completion-at-point-functions
+        (list (cape-capf-trigger \\='cape-abbrev ?/)))
+
+(fn CAPF TRIGGER)")
+ (autoload 'cape-capf-accept-all "cape")
+ (autoload 'cape-capf-buster "cape")
+ (autoload 'cape-capf-case-fold "cape")
+ (autoload 'cape-capf-choose "cape")
+ (autoload 'cape-capf-debug "cape")
+ (autoload 'cape-capf-inside-code "cape")
+ (autoload 'cape-capf-inside-comment "cape")
+ (autoload 'cape-capf-inside-faces "cape")
+ (autoload 'cape-capf-inside-string "cape")
+ (autoload 'cape-capf-nonexclusive "cape")
+ (autoload 'cape-capf-noninterruptible "cape")
+ (autoload 'cape-capf-passthrough "cape")
+ (autoload 'cape-capf-predicate "cape")
+ (autoload 'cape-capf-prefix-length "cape")
+ (autoload 'cape-capf-properties "cape")
+ (autoload 'cape-capf-silent "cape")
+ (autoload 'cape-capf-sort "cape")
+ (autoload 'cape-capf-super "cape")
+ (autoload 'cape-capf-trigger "cape")
+ (autoload 'cape-prefix-map "cape" nil t 'keymap)
+(register-definition-prefixes "cape" '("cape-"))
+
+
+
+ (autoload 'cape-tex "cape-char" nil t)
+ (autoload 'cape-sgml "cape-char" nil t)
+ (autoload 'cape-rfc1345 "cape-char" nil t)
+ (autoload 'cape-emoji "cape-char" nil t)
+(register-definition-prefixes "cape-char" '("cape-char--"))
+
+
+
+(autoload 'cape-keyword "cape-keyword" "\
+Complete programming language keyword at point.
+See the variable `cape-keyword-list'.
+If INTERACTIVE is nil the function acts like a capf.
+
+(fn &optional INTERACTIVE)" t)
+(register-definition-prefixes "cape-keyword" '("cape-"))
+
+
+(provide 'cape-autoloads)
+
+
+)
 (let* ((load-file-name "/home/fhasl/.config/emacs/elpa/auto-compile-20260601.1449/auto-compile-autoloads.el")(load-true-file-name load-file-name))
 
 
@@ -12150,9 +12636,9 @@ disabled.
 		    lsp-treemacs ligature json-snatcher json-mode
 		    js2-mode elisp-refs helpful git-gutter flycheck
 		    flycheck-posframe embark consult embark-consult
-		    doom-modeline dockerfile-mode counsel auto-compile
-		    apheleia all-the-icons all-the-icons-ivy
-		    all-the-icons-dired)
+		    doom-modeline dockerfile-mode counsel corfu cape
+		    auto-compile apheleia all-the-icons
+		    all-the-icons-ivy all-the-icons-dired)
 	package-activated-list)))
 (progn
   (require 'info) (info-initialize)
