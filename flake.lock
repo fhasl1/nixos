@@ -287,26 +287,6 @@
         "type": "github"
       }
     },
-    "noctalia": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1784856007,
-        "narHash": "sha256-9k7sTfriKBr250UaWve8EgJ2V5FRM+xgwDYrZ6ldcrI=",
-        "owner": "noctalia-dev",
-        "repo": "noctalia",
-        "rev": "8ca2213ec5fc9eefcfddb5bb9a7ae82ef8a54212",
-        "type": "github"
-      },
-      "original": {
-        "owner": "noctalia-dev",
-        "repo": "noctalia",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "fcitx5-lotus": "fcitx5-lotus",
@@ -315,7 +295,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
-        "noctalia": "noctalia",
         "xlibre-overlay": "xlibre-overlay"
       }
     },

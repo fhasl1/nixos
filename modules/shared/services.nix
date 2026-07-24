@@ -8,7 +8,10 @@
       enable = true;
       package = pkgs.gnome.gvfs;
     };
-    usbmuxd.enable = true;
+    usbmuxd = {
+      enable = true;
+      package = pkgs.usbmuxd2;
+    };
   };
   systemd.user.services.startpage-server = {
     description = "Startpage HTTP Server";
