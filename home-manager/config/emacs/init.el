@@ -14,6 +14,7 @@
 (load-theme 'tao-yin t)
 
 (set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 115)
+(set-fontset-font t nil (font-spec :family "Symbols Nerd Font Mono") nil 'append)
 (electric-indent-mode 1)
 (electric-pair-mode -1)
 (setq-default electric-indent-chars '(?\{ ?\} ?\( ?\) ?: ?\; ?\#))
@@ -293,6 +294,7 @@
   (doom-modeline-mode 1)
   (setq doom-modeline-height 25
         doom-modeline-bar-width 2
+        doom-modeline-icon t
         doom-modeline-buffer-file-name-style 'truncate-with-project
         doom-modeline-major-mode-color-icon t
         doom-modeline-minor-modes t
