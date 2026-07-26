@@ -32,7 +32,7 @@
         src = ./config/dmenu;
         patches = [];
       }))
-      texliveMedium
+      (pkgs.texliveSmall.withPackages (ps: [ ps.enumitem ]))
       hunspell
       hunspellDicts.en_US
     ];
