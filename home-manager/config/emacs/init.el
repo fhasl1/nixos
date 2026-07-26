@@ -112,7 +112,8 @@
   :config
   (setq TeX-auto-save t
         TeX-parse-self t
-        preview-auto-cache-preamble t)
+        TeX-engine 'xetex
+        preview-auto-cache-preamble nil)
   (add-hook 'LaTeX-mode-hook #'LaTeX-preview-setup)
   (add-hook 'LaTeX-mode-hook 'visual-line-mode)
   (add-hook 'LaTeX-mode-hook 'flyspell-mode))
