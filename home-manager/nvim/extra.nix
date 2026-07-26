@@ -50,6 +50,8 @@ in {
       statix
       ripgrep
       glibc
+      texliveSmall
+      biber
     ];
 
     extraConfigLua = ''
