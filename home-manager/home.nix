@@ -33,6 +33,7 @@
         patches = [];
       }))
       (pkgs.texliveSmall.withPackages (ps: [ ps.enumitem ]))
+      ghostscript
       hunspell
       hunspellDicts.en_US
     ];
