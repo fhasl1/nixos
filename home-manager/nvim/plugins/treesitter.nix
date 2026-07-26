@@ -3,6 +3,9 @@
     enable = true;
     settings = {
       ensure_installed = [
+        "markdown"
+        "markdown_inline"
+        "latex"
         "lua"
         "vim"
         "vimdoc"

@@ -9,5 +9,6 @@
     ./opencode.nix
     ./treesitter.nix
     ./ui.nix
+    ./writing.nix
   ];
 }

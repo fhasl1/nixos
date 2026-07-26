@@ -113,7 +113,10 @@
   (setq TeX-auto-save t
         TeX-parse-self t
         TeX-engine 'xetex
-        preview-auto-cache-preamble nil)
+        preview-auto-cache-preamble nil
+        preview-transparent-color '(highlight :background)
+        preview-background-color "white"
+        preview-foreground-color "white")
   (add-hook 'LaTeX-mode-hook #'LaTeX-preview-setup)
   (add-hook 'LaTeX-mode-hook 'visual-line-mode)
   (add-hook 'LaTeX-mode-hook 'flyspell-mode))
