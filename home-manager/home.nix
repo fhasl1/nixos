@@ -32,6 +32,9 @@
         src = ./config/dmenu;
         patches = [];
       }))
+      texliveSmall
+      hunspell
+      hunspellDicts.en_US
     ];
   };
 }

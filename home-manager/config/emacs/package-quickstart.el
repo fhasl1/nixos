@@ -5894,6 +5894,43 @@ Match COMPONENT against the keywords in `orderless-kwd-alist'.
 
 
 )
+(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/olivetti-20260524.213/olivetti-autoloads.el")(load-true-file-name load-file-name))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(autoload 'olivetti-mode "olivetti" "\
+Olivetti provides a nice writing environment.
+
+Window margins are set to relative widths to accomodate a text
+body width set with `olivetti-body-width'.
+
+This is a minor mode.  If called interactively, toggle the `Olivetti
+mode' mode.  If the prefix argument is positive, enable the mode, and if
+it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate the variable `olivetti-mode'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "olivetti" '("olivetti-"))
+
+
+(provide 'olivetti-autoloads)
+
+
+)
 (let* ((load-file-name "/home/fhasl/.config/emacs/elpa/magit-section-20260722.2131/magit-section-autoloads.el")(load-true-file-name load-file-name))
 
 
@@ -6318,6 +6355,44 @@ disabled.
 
 
 (provide 'nerd-icons-dired-autoloads)
+
+
+)
+(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/mixed-pitch-20210304.1900/mixed-pitch-autoloads.el")(load-true-file-name load-file-name))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(autoload 'mixed-pitch-mode "mixed-pitch" "\
+Change the default face of the current buffer to a variable pitch, while keeping some faces fixed pitch.
+
+See the variable `mixed-pitch-fixed-pitch-faces' for a list of
+which faces remain fixed pitch. The height and pitch of faces is
+inherited from `variable-pitch' and `default'.
+
+This is a minor mode.  If called interactively, toggle the `Mixed-Pitch
+mode' mode.  If the prefix argument is positive, enable the mode, and if
+it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate the variable `mixed-pitch-mode'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "mixed-pitch" '("mixed-pitch-"))
+
+
+(provide 'mixed-pitch-autoloads)
 
 
 )
@@ -9644,6 +9719,55 @@ Get the installed version of tailwindcss language server." t)
 
 
 )
+(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/lsp-ui-20260512.1516/lsp-ui-autoloads.el")(load-true-file-name load-file-name))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(autoload 'lsp-ui-mode "lsp-ui" "\
+Toggle language server UI mode on or off.
+‘lsp-ui-mode’ is a minor mode that contains a series of useful UI
+integrations for ‘lsp-mode’.  With a prefix argument ARG, enable
+language server UI mode if ARG is positive, and disable it
+otherwise.  If called from Lisp, enable the mode if ARG is
+omitted or nil, and toggle it if ARG is ‘toggle’.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "lsp-ui" '("lsp-ui-"))
+
+
+
+(register-definition-prefixes "lsp-ui-doc" '("lsp-ui-doc-"))
+
+
+
+(register-definition-prefixes "lsp-ui-flycheck" '("lsp-ui-flycheck-"))
+
+
+
+(register-definition-prefixes "lsp-ui-imenu" '("lsp-ui-imenu" "overlay-priority"))
+
+
+
+(register-definition-prefixes "lsp-ui-peek" '("lsp-"))
+
+
+
+(register-definition-prefixes "lsp-ui-sideline" '("lsp-ui-sideline"))
+
+
+
+(register-definition-prefixes "lsp-ui-util" '("lsp-ui-util-"))
+
+
+(provide 'lsp-ui-autoloads)
+
+
+)
 (let* ((load-file-name "/home/fhasl/.config/emacs/elpa/lsp-treemacs-20260515.746/lsp-treemacs-autoloads.el")(load-true-file-name load-file-name))
 
 
@@ -12393,6 +12517,305 @@ disabled.
 
 
 )
+(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/auctex-14.1.2/auctex-autoloads.el")(load-true-file-name load-file-name))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(register-definition-prefixes "auctex" '("AUCTeX-version"))
+
+
+
+(autoload 'bib-cite-minor-mode "bib-cite" "\
+Toggle bib-cite mode.
+When bib-cite mode is enabled, citations, labels and refs are highlighted
+when the mouse is over them.  Clicking on these highlights with [mouse-2]
+runs `bib-find', and [mouse-3] runs `bib-display'.
+
+(fn ARG)" t)
+(autoload 'turn-on-bib-cite "bib-cite" "\
+Unconditionally turn on Bib Cite mode.")
+(register-definition-prefixes "bib-cite" '("LaTeX-find-label-hist-alist" "bib-" "create-alist-from-list" "member-cis" "psg-" "search-directory-tree"))
+
+
+
+(defalias 'context-mode #'ConTeXt-mode)
+(autoload 'ConTeXt-mode "context" "\
+Major mode in AUCTeX for editing ConTeXt files.
+
+Entering `ConTeXt-mode' calls the value of `text-mode-hook',
+then the value of `TeX-mode-hook', and then the value
+of `ConTeXt-mode-hook'.
+
+(fn)" t)
+(register-definition-prefixes "context" '("ConTeXt-" "TeX-ConTeXt-sentinel" "context-guess-current-interface"))
+
+
+
+(register-definition-prefixes "context-en" '("ConTeXt-"))
+
+
+
+(register-definition-prefixes "context-nl" '("ConTeXt-"))
+
+
+
+(autoload 'font-latex-setup "font-latex" "\
+Setup this buffer for LaTeX font-lock.  Usually called from a hook.")
+(register-definition-prefixes "font-latex" '("font-latex-"))
+
+
+
+(autoload 'BibTeX-auto-store "latex" "\
+This function should be called from `bibtex-mode-hook'.
+It will setup BibTeX to store keys in an auto file.")
+(add-to-list 'auto-mode-alist '("\\.drv\\'" . LaTeX-mode) t)
+(add-to-list 'auto-mode-alist '("\\.hva\\'" . LaTeX-mode))
+ (if (eq (symbol-function 'LaTeX-mode) 'latex-mode)
+    (defalias 'LaTeX-mode nil))
+(autoload 'LaTeX-mode "latex" "\
+Major mode in AUCTeX for editing LaTeX files.
+See info under AUCTeX for full documentation.
+
+Entering LaTeX mode calls the value of `text-mode-hook',
+then the value of `TeX-mode-hook', and then the value
+of `LaTeX-mode-hook'.
+
+(fn)" t)
+(put 'LaTeX-mode 'auctex-function-definition (symbol-function 'LaTeX-mode))
+(autoload 'docTeX-mode "latex" "\
+Major mode in AUCTeX for editing .dtx files derived from `LaTeX-mode'.
+Runs `LaTeX-mode', sets a few variables and
+runs the hooks in `docTeX-mode-hook'.
+
+(fn)" t)
+(register-definition-prefixes "latex" '("Bib" "LaTeX-" "TeX-" "docTeX-" "latex-math-mode"))
+
+
+
+(register-definition-prefixes "latex-flymake" '("LaTeX-"))
+
+
+
+(autoload 'multi-prompt "multi-prompt" "\
+Completing prompt for a list of strings.
+The first argument SEPARATOR should be the string (of length 1) to
+separate the elements in the list.  The second argument UNIQUE should
+be non-nil, if each element must be unique.  The remaining elements
+are the arguments to `completing-read'.  See that.
+
+(fn SEPARATOR UNIQUE PROMPT TABLE &optional MP-PREDICATE REQUIRE-MATCH INITIAL HISTORY)")
+(autoload 'multi-prompt-key-value "multi-prompt" "\
+Read multiple strings, with completion and key=value support.
+PROMPT is a string to prompt with, usually ending with a colon
+and a space.
+
+TABLE is an alist where each entry is a list.  The first element
+of each list is a string representing a key and the optional
+second element is a list with strings to be used as values for
+the key.  The second element can also be a variable returning a
+list of strings.
+
+See the documentation for `completing-read' for details on the
+other arguments: PREDICATE, REQUIRE-MATCH, INITIAL-INPUT, HIST,
+DEF, and INHERIT-INPUT-METHOD.
+
+The return value is the string as entered in the minibuffer.
+
+(fn PROMPT TABLE &optional PREDICATE REQUIRE-MATCH INITIAL-INPUT HIST DEF INHERIT-INPUT-METHOD)")
+(register-definition-prefixes "multi-prompt" '("multi-prompt-"))
+
+
+
+ (if (eq (symbol-function 'plain-TeX-mode) 'plain-tex-mode)
+    (defalias 'plain-TeX-mode nil))
+(autoload 'plain-TeX-mode "plain-tex" "\
+Major mode in AUCTeX for editing plain TeX files.
+See info under AUCTeX for documentation.
+
+Entering `plain-TeX-mode' calls the value of `text-mode-hook',
+then the value of `TeX-mode-hook', and then the value
+of `plain-TeX-mode-hook'.
+
+(fn)" t)
+(put 'plain-TeX-mode 'auctex-function-definition (symbol-function 'plain-TeX-mode))
+(autoload 'AmSTeX-mode "plain-tex" "\
+Major mode in AUCTeX for editing AmSTeX files.
+See info under AUCTeX for documentation.
+
+Entering `AmSTeX-mode' calls the value of `text-mode-hook', then
+the value of `TeX-mode-hook', `plain-TeX-mode-hook' and then the
+value of `AmSTeX-mode-hook'.
+
+(fn)" t)
+(defalias 'ams-tex-mode #'AmSTeX-mode)
+(register-definition-prefixes "plain-tex" '("AmSTeX-" "plain-TeX-"))
+
+
+
+(put 'preview-scale-function 'safe-local-variable (lambda (x) (and (numberp x) (<= 0.1 x 10))))
+(autoload 'desktop-buffer-preview "preview" "\
+Hook function for restoring persistent previews into a buffer.
+
+(fn FILE-NAME BUFFER-NAME MISC)")
+(add-to-list 'desktop-buffer-mode-handlers '(LaTeX-mode . desktop-buffer-preview))
+(autoload 'preview-install-styles "preview" "\
+Install the TeX style files into a permanent location DIR.
+This must be in the TeX search path.  If FORCE-OVERWRITE is greater
+than 1, files will get overwritten without query, if it is less
+than 1 or nil, the operation will fail.  The default of 1 for interactive
+use will query.
+
+Similarly FORCE-SAVE can be used for saving
+`preview-TeX-style-dir' to record the fact that the uninstalled
+files are no longer needed in the search path.
+
+(fn DIR &optional FORCE-OVERWRITE FORCE-SAVE)" t)
+(autoload 'LaTeX-preview-setup "preview" "\
+Hook function for embedding the preview package into AUCTeX.
+This is called by `LaTeX-mode-hook' and changes AUCTeX variables
+to add the preview functionality.")
+(autoload 'preview-report-bug "preview" "\
+Report a bug in the preview-latex package." t)
+(register-definition-prefixes "preview" '("TeX-" "desktop-buffer-preview-misc-data" "preview-"))
+
+
+
+(autoload 'TeX-tex-mode "tex" "\
+Call suitable AUCTeX major mode for editing TeX or LaTeX files.
+Tries to guess whether this file is for plain TeX or LaTeX.
+
+The algorithm is as follows:
+
+   1) If the file is empty or `TeX-force-default-mode' is not set to nil,
+      `TeX-default-mode' is chosen.
+   2) If non-commented out content matches with regular expression in
+      `TeX-format-list', use the associated major mode.  For example,
+      if \\documentclass or \\begin{, \\section{, \\part{ or \\chapter{ is
+      found, `LaTeX-mode' is selected.
+   3) Otherwise, use `TeX-default-mode'.
+
+By default, `TeX-format-list' has a fallback entry for
+`plain-TeX-mode', thus non-empty file which didn't match any
+other entries will enter `plain-TeX-mode'." t)
+ (if (eq (symbol-function 'TeX-mode) 'tex-mode)
+    (defalias 'TeX-mode nil))
+(put 'TeX-mode 'auctex-function-definition (symbol-function 'TeX-mode))
+(autoload 'TeX-auto-generate "tex" "\
+Generate style file for TEX and store it in AUTO.
+If TEX is a directory, generate style files for all files in the directory.
+
+(fn TEX AUTO)" t)
+(autoload 'TeX-auto-generate-global "tex" "\
+Create global auto directory for global TeX macro definitions." t)
+(autoload 'TeX-submit-bug-report "tex" "\
+Submit a bug report on AUCTeX via mail.
+
+Don't hesitate to report any problems or inaccurate documentation.
+
+If you don't have setup sending mail from Emacs, please copy the
+output buffer into your mail program, as it gives us important
+information about your AUCTeX version and AUCTeX configuration." t)
+(register-definition-prefixes "tex" '("Bib" "ConTeXt-" "LaTeX-" "TeX-" "docTeX-default-extension" "plain-TeX-auto-regexp-list" "tex-"))
+
+
+
+(autoload 'TeX-install-toolbar "tex-bar" "\
+Install toolbar buttons for TeX mode." t)
+(autoload 'LaTeX-install-toolbar "tex-bar" "\
+Install toolbar buttons for LaTeX mode." t)
+(register-definition-prefixes "tex-bar" '("TeX-bar-"))
+
+
+
+(autoload 'TeX-fold-mode "tex-fold" "\
+Minor mode for hiding and revealing macros and environments.
+
+Called interactively, with no prefix argument, toggle the mode.
+With universal prefix ARG (or if ARG is nil) turn mode on.
+With zero or negative ARG turn mode off.
+
+(fn &optional ARG)" t)
+(defalias 'tex-fold-mode #'TeX-fold-mode)
+(register-definition-prefixes "tex-fold" '("TeX-fold-"))
+
+
+
+(autoload 'tex-font-setup "tex-font" "\
+Setup font lock support for TeX.")
+(register-definition-prefixes "tex-font" '("tex-font-lock-"))
+
+
+
+(autoload 'Texinfo-mode "tex-info" "\
+Major mode in AUCTeX for editing Texinfo files.
+
+Entering Texinfo mode calls the value of `text-mode-hook' and then the
+value of `Texinfo-mode-hook'.
+
+(fn)" t)
+(register-definition-prefixes "tex-info" '("Texinfo-" "texinfo-environment-regexp"))
+
+
+
+(register-definition-prefixes "tex-ispell" '("TeX-ispell-"))
+
+
+
+(autoload 'japanese-plain-TeX-mode "tex-jp" "\
+Major mode in AUCTeX for editing Japanese plain TeX files.
+
+(fn)" t)
+(defalias 'japanese-plain-tex-mode #'japanese-plain-TeX-mode)
+(autoload 'japanese-LaTeX-mode "tex-jp" "\
+Major mode in AUCTeX for editing Japanese LaTeX files.
+
+(fn)" t)
+(defalias 'japanese-latex-mode #'japanese-LaTeX-mode)
+(register-definition-prefixes "tex-jp" '("TeX-japanese-process-" "japanese-"))
+
+
+
+ (require 'tex-site)
+(register-definition-prefixes "tex-site" '("TeX-" "preview-TeX-style-dir" "tex-site-unload-function"))
+
+
+
+(register-definition-prefixes "tex-style" '("LaTeX-" "TeX-TikZ-point-name-regexp"))
+
+
+
+(register-definition-prefixes "tex-wizard" '("TeX-wizard"))
+
+
+
+(autoload 'texmathp "texmathp" "\
+Determine if point is inside (La)TeX math mode.
+Returns t or nil.  Additional info is placed into `texmathp-why'.
+The functions assumes that you have (almost) syntactically correct (La)TeX in
+the buffer.
+See the variable `texmathp-tex-commands' about which commands are checked." t)
+(autoload 'texmathp-match-switch "texmathp" "\
+Search backward for any of the math switches.
+Limit searched to BOUND.
+
+(fn BOUND)")
+(register-definition-prefixes "texmathp" '("texmathp-"))
+
+
+
+ (autoload 'toolbarx-install-toolbar "toolbar-x")
+(register-definition-prefixes "toolbar-x" '("toolbarx-"))
+
+
+(provide 'auctex-autoloads)
+
+
+)
 (let* ((load-file-name "/home/fhasl/.config/emacs/elpa/apheleia-20260619.1935/apheleia-autoloads.el")(load-true-file-name load-file-name))
 
 
@@ -12630,21 +13053,23 @@ disabled.
 		    pfuture lv hydra ht cfrs treemacs transient
 		    toml-mode tao-theme ivy swiper spinner smartparens
 		    f shrink-path scss-mode rainbow-delimiters
-		    projectile org-plus-contrib orderless
+		    projectile org-plus-contrib orderless olivetti
 		    magit-section nix-mode nerd-icons nerd-icons-dired
-		    markdown-mode marginalia magit lua-mode lsp-mode
-		    lsp-treemacs ligature json-snatcher json-mode
-		    js2-mode elisp-refs helpful git-gutter flycheck
-		    flycheck-posframe embark consult embark-consult
-		    doom-modeline dockerfile-mode counsel corfu cape
-		    auto-compile apheleia all-the-icons
-		    all-the-icons-ivy all-the-icons-dired)
+		    mixed-pitch markdown-mode marginalia magit
+		    lua-mode lsp-mode lsp-ui lsp-treemacs ligature
+		    json-snatcher json-mode js2-mode elisp-refs
+		    helpful git-gutter flycheck flycheck-posframe
+		    embark consult embark-consult doom-modeline
+		    dockerfile-mode counsel corfu cape auto-compile
+		    auctex apheleia all-the-icons all-the-icons-ivy
+		    all-the-icons-dired)
 	package-activated-list)))
 (progn
   (require 'info) (info-initialize)
   (setq Info-directory-list
 	(append
-	 '("/home/fhasl/.config/emacs/elpa/embark-20260610.302"
+	 '("/home/fhasl/.config/emacs/elpa/auctex-14.1.2"
+	   "/home/fhasl/.config/emacs/elpa/embark-20260610.302"
 	   "/home/fhasl/.config/emacs/elpa/magit-20260722.2131"
 	   "/home/fhasl/.config/emacs/elpa/magit-section-20260722.2131"
 	   "/home/fhasl/.config/emacs/elpa/orderless-20260519.1029"

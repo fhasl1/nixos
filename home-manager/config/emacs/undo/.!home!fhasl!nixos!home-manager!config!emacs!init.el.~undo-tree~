@@ -1,0 +1,9 @@
+(undo-tree-save-format-version . 1)
+"7b5252b77f804b15405bbcfd44539ee19b159014"
+[nil nil nil nil (27238 8993 899275 263000) 0 nil]
+([nil nil ((#("115" 0 3 (fontified t)) . -912) (915 . 918) (#("115" 0 3 (fontified t)) . -772) (775 . 778) (#("115" 0 3 (fontified t)) . -668) (671 . 674) (#("115" 0 3 (fontified t)) . -586) (t 27238 8923 780615 239000) (589 . 592) (t 27238 8923 780615 239000)) nil (27238 8993 899271 336000) 0 nil])
+([nil current ((4660 . 4899) ("   (add-hook 'c-mode-hook (lambda () (setq-local indent-line-function 'c-indent-line)))
+   (add-hook 'c++-mode-hook (lambda () (setq-local indent-line-function 'c-indent-line)))
+   (add-hook 'lsp-mode-hook 'lsp-enable-which-key-integration))
+" . -4660) (undo-tree-id0 . -242) (t 27238 8993 898815 298000)) nil (27238 8993 960940 380000) 0 nil])
+nil
