@@ -52,6 +52,7 @@ in {
       glibc
       texliveSmall
       biber
+      python3Packages.pylatexenc
     ];
 
     extraConfigLua = ''
