@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  xdg.configFile."emacs/init.el".source = ../config/emacs/init.el;
+  xdg.configFile."emacs/init.el".source = ./init.el;
 }
