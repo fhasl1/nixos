@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./nvim
-    ./emacs
   ];
 
   programs = {

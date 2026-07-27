@@ -2420,6 +2420,366 @@ For details see `https://github.com/toml-lang/toml'.
 
 
 )
+(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/auctex-14.1.2/auctex-autoloads.el")(load-true-file-name load-file-name))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(register-definition-prefixes "auctex" '("AUCTeX-version"))
+
+
+
+(autoload 'bib-cite-minor-mode "bib-cite" "\
+Toggle bib-cite mode.
+When bib-cite mode is enabled, citations, labels and refs are highlighted
+when the mouse is over them.  Clicking on these highlights with [mouse-2]
+runs `bib-find', and [mouse-3] runs `bib-display'.
+
+(fn ARG)" t)
+(autoload 'turn-on-bib-cite "bib-cite" "\
+Unconditionally turn on Bib Cite mode.")
+(register-definition-prefixes "bib-cite" '("LaTeX-find-label-hist-alist" "bib-" "create-alist-from-list" "member-cis" "psg-" "search-directory-tree"))
+
+
+
+(defalias 'context-mode #'ConTeXt-mode)
+(autoload 'ConTeXt-mode "context" "\
+Major mode in AUCTeX for editing ConTeXt files.
+
+Entering `ConTeXt-mode' calls the value of `text-mode-hook',
+then the value of `TeX-mode-hook', and then the value
+of `ConTeXt-mode-hook'.
+
+(fn)" t)
+(register-definition-prefixes "context" '("ConTeXt-" "TeX-ConTeXt-sentinel" "context-guess-current-interface"))
+
+
+
+(register-definition-prefixes "context-en" '("ConTeXt-"))
+
+
+
+(register-definition-prefixes "context-nl" '("ConTeXt-"))
+
+
+
+(autoload 'font-latex-setup "font-latex" "\
+Setup this buffer for LaTeX font-lock.  Usually called from a hook.")
+(register-definition-prefixes "font-latex" '("font-latex-"))
+
+
+
+(autoload 'BibTeX-auto-store "latex" "\
+This function should be called from `bibtex-mode-hook'.
+It will setup BibTeX to store keys in an auto file.")
+(add-to-list 'auto-mode-alist '("\\.drv\\'" . LaTeX-mode) t)
+(add-to-list 'auto-mode-alist '("\\.hva\\'" . LaTeX-mode))
+ (if (eq (symbol-function 'LaTeX-mode) 'latex-mode)
+    (defalias 'LaTeX-mode nil))
+(autoload 'LaTeX-mode "latex" "\
+Major mode in AUCTeX for editing LaTeX files.
+See info under AUCTeX for full documentation.
+
+Entering LaTeX mode calls the value of `text-mode-hook',
+then the value of `TeX-mode-hook', and then the value
+of `LaTeX-mode-hook'.
+
+(fn)" t)
+(put 'LaTeX-mode 'auctex-function-definition (symbol-function 'LaTeX-mode))
+(autoload 'docTeX-mode "latex" "\
+Major mode in AUCTeX for editing .dtx files derived from `LaTeX-mode'.
+Runs `LaTeX-mode', sets a few variables and
+runs the hooks in `docTeX-mode-hook'.
+
+(fn)" t)
+(register-definition-prefixes "latex" '("Bib" "LaTeX-" "TeX-" "docTeX-" "latex-math-mode"))
+
+
+
+(register-definition-prefixes "latex-flymake" '("LaTeX-"))
+
+
+
+(autoload 'multi-prompt "multi-prompt" "\
+Completing prompt for a list of strings.
+The first argument SEPARATOR should be the string (of length 1) to
+separate the elements in the list.  The second argument UNIQUE should
+be non-nil, if each element must be unique.  The remaining elements
+are the arguments to `completing-read'.  See that.
+
+(fn SEPARATOR UNIQUE PROMPT TABLE &optional MP-PREDICATE REQUIRE-MATCH INITIAL HISTORY)")
+(autoload 'multi-prompt-key-value "multi-prompt" "\
+Read multiple strings, with completion and key=value support.
+PROMPT is a string to prompt with, usually ending with a colon
+and a space.
+
+TABLE is an alist where each entry is a list.  The first element
+of each list is a string representing a key and the optional
+second element is a list with strings to be used as values for
+the key.  The second element can also be a variable returning a
+list of strings.
+
+See the documentation for `completing-read' for details on the
+other arguments: PREDICATE, REQUIRE-MATCH, INITIAL-INPUT, HIST,
+DEF, and INHERIT-INPUT-METHOD.
+
+The return value is the string as entered in the minibuffer.
+
+(fn PROMPT TABLE &optional PREDICATE REQUIRE-MATCH INITIAL-INPUT HIST DEF INHERIT-INPUT-METHOD)")
+(register-definition-prefixes "multi-prompt" '("multi-prompt-"))
+
+
+
+ (if (eq (symbol-function 'plain-TeX-mode) 'plain-tex-mode)
+    (defalias 'plain-TeX-mode nil))
+(autoload 'plain-TeX-mode "plain-tex" "\
+Major mode in AUCTeX for editing plain TeX files.
+See info under AUCTeX for documentation.
+
+Entering `plain-TeX-mode' calls the value of `text-mode-hook',
+then the value of `TeX-mode-hook', and then the value
+of `plain-TeX-mode-hook'.
+
+(fn)" t)
+(put 'plain-TeX-mode 'auctex-function-definition (symbol-function 'plain-TeX-mode))
+(autoload 'AmSTeX-mode "plain-tex" "\
+Major mode in AUCTeX for editing AmSTeX files.
+See info under AUCTeX for documentation.
+
+Entering `AmSTeX-mode' calls the value of `text-mode-hook', then
+the value of `TeX-mode-hook', `plain-TeX-mode-hook' and then the
+value of `AmSTeX-mode-hook'.
+
+(fn)" t)
+(defalias 'ams-tex-mode #'AmSTeX-mode)
+(register-definition-prefixes "plain-tex" '("AmSTeX-" "plain-TeX-"))
+
+
+
+(put 'preview-scale-function 'safe-local-variable (lambda (x) (and (numberp x) (<= 0.1 x 10))))
+(autoload 'desktop-buffer-preview "preview" "\
+Hook function for restoring persistent previews into a buffer.
+
+(fn FILE-NAME BUFFER-NAME MISC)")
+(add-to-list 'desktop-buffer-mode-handlers '(LaTeX-mode . desktop-buffer-preview))
+(autoload 'preview-install-styles "preview" "\
+Install the TeX style files into a permanent location DIR.
+This must be in the TeX search path.  If FORCE-OVERWRITE is greater
+than 1, files will get overwritten without query, if it is less
+than 1 or nil, the operation will fail.  The default of 1 for interactive
+use will query.
+
+Similarly FORCE-SAVE can be used for saving
+`preview-TeX-style-dir' to record the fact that the uninstalled
+files are no longer needed in the search path.
+
+(fn DIR &optional FORCE-OVERWRITE FORCE-SAVE)" t)
+(autoload 'LaTeX-preview-setup "preview" "\
+Hook function for embedding the preview package into AUCTeX.
+This is called by `LaTeX-mode-hook' and changes AUCTeX variables
+to add the preview functionality.")
+(autoload 'preview-report-bug "preview" "\
+Report a bug in the preview-latex package." t)
+(register-definition-prefixes "preview" '("TeX-" "desktop-buffer-preview-misc-data" "preview-"))
+
+
+
+(autoload 'TeX-tex-mode "tex" "\
+Call suitable AUCTeX major mode for editing TeX or LaTeX files.
+Tries to guess whether this file is for plain TeX or LaTeX.
+
+The algorithm is as follows:
+
+   1) If the file is empty or `TeX-force-default-mode' is not set to nil,
+      `TeX-default-mode' is chosen.
+   2) If non-commented out content matches with regular expression in
+      `TeX-format-list', use the associated major mode.  For example,
+      if \\documentclass or \\begin{, \\section{, \\part{ or \\chapter{ is
+      found, `LaTeX-mode' is selected.
+   3) Otherwise, use `TeX-default-mode'.
+
+By default, `TeX-format-list' has a fallback entry for
+`plain-TeX-mode', thus non-empty file which didn't match any
+other entries will enter `plain-TeX-mode'." t)
+ (if (eq (symbol-function 'TeX-mode) 'tex-mode)
+    (defalias 'TeX-mode nil))
+(put 'TeX-mode 'auctex-function-definition (symbol-function 'TeX-mode))
+(autoload 'TeX-auto-generate "tex" "\
+Generate style file for TEX and store it in AUTO.
+If TEX is a directory, generate style files for all files in the directory.
+
+(fn TEX AUTO)" t)
+(autoload 'TeX-auto-generate-global "tex" "\
+Create global auto directory for global TeX macro definitions." t)
+(autoload 'TeX-submit-bug-report "tex" "\
+Submit a bug report on AUCTeX via mail.
+
+Don't hesitate to report any problems or inaccurate documentation.
+
+If you don't have setup sending mail from Emacs, please copy the
+output buffer into your mail program, as it gives us important
+information about your AUCTeX version and AUCTeX configuration." t)
+(register-definition-prefixes "tex" '("Bib" "ConTeXt-" "LaTeX-" "TeX-" "docTeX-default-extension" "plain-TeX-auto-regexp-list" "tex-"))
+
+
+
+(autoload 'TeX-install-toolbar "tex-bar" "\
+Install toolbar buttons for TeX mode." t)
+(autoload 'LaTeX-install-toolbar "tex-bar" "\
+Install toolbar buttons for LaTeX mode." t)
+(register-definition-prefixes "tex-bar" '("TeX-bar-"))
+
+
+
+(autoload 'TeX-fold-mode "tex-fold" "\
+Minor mode for hiding and revealing macros and environments.
+
+Called interactively, with no prefix argument, toggle the mode.
+With universal prefix ARG (or if ARG is nil) turn mode on.
+With zero or negative ARG turn mode off.
+
+(fn &optional ARG)" t)
+(defalias 'tex-fold-mode #'TeX-fold-mode)
+(register-definition-prefixes "tex-fold" '("TeX-fold-"))
+
+
+
+(autoload 'tex-font-setup "tex-font" "\
+Setup font lock support for TeX.")
+(register-definition-prefixes "tex-font" '("tex-font-lock-"))
+
+
+
+(autoload 'Texinfo-mode "tex-info" "\
+Major mode in AUCTeX for editing Texinfo files.
+
+Entering Texinfo mode calls the value of `text-mode-hook' and then the
+value of `Texinfo-mode-hook'.
+
+(fn)" t)
+(register-definition-prefixes "tex-info" '("Texinfo-" "texinfo-environment-regexp"))
+
+
+
+(register-definition-prefixes "tex-ispell" '("TeX-ispell-"))
+
+
+
+(autoload 'japanese-plain-TeX-mode "tex-jp" "\
+Major mode in AUCTeX for editing Japanese plain TeX files.
+
+(fn)" t)
+(defalias 'japanese-plain-tex-mode #'japanese-plain-TeX-mode)
+(autoload 'japanese-LaTeX-mode "tex-jp" "\
+Major mode in AUCTeX for editing Japanese LaTeX files.
+
+(fn)" t)
+(defalias 'japanese-latex-mode #'japanese-LaTeX-mode)
+(register-definition-prefixes "tex-jp" '("TeX-japanese-process-" "japanese-"))
+
+
+
+ (require 'tex-site)
+(register-definition-prefixes "tex-site" '("TeX-" "preview-TeX-style-dir" "tex-site-unload-function"))
+
+
+
+(register-definition-prefixes "tex-style" '("LaTeX-" "TeX-TikZ-point-name-regexp"))
+
+
+
+(register-definition-prefixes "tex-wizard" '("TeX-wizard"))
+
+
+
+(autoload 'texmathp "texmathp" "\
+Determine if point is inside (La)TeX math mode.
+Returns t or nil.  Additional info is placed into `texmathp-why'.
+The functions assumes that you have (almost) syntactically correct (La)TeX in
+the buffer.
+See the variable `texmathp-tex-commands' about which commands are checked." t)
+(autoload 'texmathp-match-switch "texmathp" "\
+Search backward for any of the math switches.
+Limit searched to BOUND.
+
+(fn BOUND)")
+(register-definition-prefixes "texmathp" '("texmathp-"))
+
+
+
+ (autoload 'toolbarx-install-toolbar "toolbar-x")
+(register-definition-prefixes "toolbar-x" '("toolbarx-"))
+
+
+(provide 'auctex-autoloads)
+
+
+)
+(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/texfrag-20240415.1043/texfrag-autoloads.el")(load-true-file-name load-file-name))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+:
+(autoload 'texfrag-mode "texfrag" "\
+Preview LaTeX fragments in current buffer with the help of the
+
+`preview' package.
+
+This is a minor mode.  If called interactively, toggle the `TeXfrag
+mode' mode.  If the prefix argument is positive, enable the mode, and if
+it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate the variable `texfrag-mode'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(put 'texfrag-global-mode 'globalized-minor-mode t)
+(defvar texfrag-global-mode nil "\
+Non-nil if Texfrag-Global mode is enabled.
+See the `texfrag-global-mode' command
+for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `texfrag-global-mode'.")
+(custom-autoload 'texfrag-global-mode "texfrag" nil)
+(autoload 'texfrag-global-mode "texfrag" "\
+Toggle Texfrag mode in all buffers.
+With prefix ARG, enable Texfrag-Global mode if ARG is positive;
+otherwise, disable it.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.
+Enable the mode if ARG is nil, omitted, or is a positive number.
+Disable the mode if ARG is a negative number.
+
+Texfrag mode is enabled in all buffers where `texfrag-global-mode-fun'
+would do it.
+
+See `texfrag-mode' for more information on Texfrag mode.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "texfrag" '("texfrag-"))
+
+
+(provide 'texfrag-autoloads)
+
+
+)
 (let* ((load-file-name "/home/fhasl/.config/emacs/elpa/tao-theme-20250717.347/tao-theme-autoloads.el")(load-true-file-name load-file-name))
 
 
@@ -5843,6 +6203,137 @@ the reports is done using the TaskJuggler GUI.
 
 
 (provide 'org-plus-contrib-autoloads)
+
+
+)
+(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/org-modern-20260722.1411/org-modern-autoloads.el")(load-true-file-name load-file-name))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(autoload 'org-modern-mode "org-modern" "\
+Modern looks for Org.
+
+This is a minor mode.  If called interactively, toggle the `Org-Modern
+mode' mode.  If the prefix argument is positive, enable the mode, and if
+it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate the variable `org-modern-mode'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(autoload 'org-modern-agenda "org-modern" "\
+Finalize Org agenda highlighting.")
+(put 'global-org-modern-mode 'globalized-minor-mode t)
+(defvar global-org-modern-mode nil "\
+Non-nil if Global Org-Modern mode is enabled.
+See the `global-org-modern-mode' command
+for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `global-org-modern-mode'.")
+(custom-autoload 'global-org-modern-mode "org-modern" nil)
+(autoload 'global-org-modern-mode "org-modern" "\
+Toggle Org-Modern mode in all buffers.
+With prefix ARG, enable Global Org-Modern mode if ARG is positive;
+otherwise, disable it.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.
+Enable the mode if ARG is nil, omitted, or is a positive number.
+Disable the mode if ARG is a negative number.
+
+Org-Modern mode is enabled in all buffers where `org-modern--on' would
+do it.
+
+See `org-modern-mode' for more information on Org-Modern mode.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "org-modern" '("org-modern-"))
+
+
+(provide 'org-modern-autoloads)
+
+
+)
+(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/org-fragtog-20220714.2146/org-fragtog-autoloads.el")(load-true-file-name load-file-name))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(autoload 'org-fragtog-mode "org-fragtog" "\
+A minor mode that automatically toggles Org mode LaTeX fragment previews.
+
+Fragment previews are disabled for editing when your cursor steps onto them,
+and re-enabled when the cursor leaves.
+
+This is a minor mode.  If called interactively, toggle the `Org-Fragtog
+mode' mode.  If the prefix argument is positive, enable the mode, and if
+it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate the variable `org-fragtog-mode'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "org-fragtog" '("org-fragtog-"))
+
+
+(provide 'org-fragtog-autoloads)
+
+
+)
+(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/org-appear-20260716.2120/org-appear-autoloads.el")(load-true-file-name load-file-name))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(autoload 'org-appear-mode "org-appear" "\
+A minor mode that automatically toggles elements in Org mode.
+
+This is a minor mode.  If called interactively, toggle the `Org-Appear
+mode' mode.  If the prefix argument is positive, enable the mode, and if
+it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate the variable `org-appear-mode'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "org-appear" '("org-appear-"))
+
+
+(provide 'org-appear-autoloads)
 
 
 )
@@ -11465,6 +11956,769 @@ A major mode to edit Dockerfiles.
 
 
 )
+(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/denote-4.2.3/denote-autoloads.el")(load-true-file-name load-file-name))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+ (put 'denote-directory 'safe-local-variable (lambda (val) (or (stringp val) (listp val) (eq val 'local) (eq val 'default-directory))))
+ (put 'denote-known-keywords 'safe-local-variable #'listp)
+ (put 'denote-infer-keywords 'safe-local-variable (lambda (val) (or val (null val))))
+(autoload 'denote-sort-files "denote" "\
+Returned sorted list of Denote FILES.
+
+With COMPONENT as a symbol among `denote-sort-components',
+sort files based on the corresponding file name component.
+
+With COMPONENT as the symbol of a function, use it to perform the
+sorting.  In this case, the function is called with two arguments, as
+described by `sort'.
+
+With COMPONENT as a nil value keep the original date-based
+sorting which relies on the identifier of each file name.
+
+With optional REVERSE as a non-nil value, reverse the sort order.
+
+(fn FILES COMPONENT &optional REVERSE)")
+(autoload 'denote-sort-dired "denote" "\
+Produce Dired buffer with sorted files from variable `denote-directory'.
+When called interactively, prompt for REGEXP and, depending on the value
+of the user option `denote-sort-dired-extra-prompts', also prompt for
+SORT-BY-COMPONENT, REVERSE, and EXCLUDE-REGEXP.
+
+1. REGEXP limits the list of Denote files to those matching the provided
+   regular expression.
+
+2. SORT-BY-COMPONENT sorts the files by their file name component (one
+   among `denote-sort-components').  If it is nil, sorting is performed
+   according to the user option `denote-sort-dired-default-sort-component',
+   falling back to the identifier.
+
+3. REVERSE is a boolean to reverse the order when it is a non-nil value.
+   If `denote-sort-dired-extra-prompts' is configured to skip this
+   prompt, then the sorting is done according to the user option
+   `denote-sort-dired-default-reverse-sort', falling back to
+   nil (i.e. no reverse sort).
+
+4. EXCLUDE-REGEXP excludes the files that match the given regular
+   expression.  This is done after REGEXP and OMIT-CURRENT have been
+   applied.
+
+5. Optional FILES is a list of file paths.  If it is provided,
+  REGEXP and EXCLUDE-REGEXP are applied to it.  In
+  interactive use, FILES is ignored.
+
+When called from Lisp, the mandatory arguments are (i) a string,(ii) a
+symbol among `denote-sort-components', (iii) a nil or non-nil value,
+and (iv) a string, respectively.
+
+(fn REGEXP SORT-BY-COMPONENT REVERSE EXCLUDE-REGEXP &optional FILES)" t)
+(autoload 'denote "denote" "\
+Create a new note with the appropriate metadata and file name.
+
+Run the `denote-after-new-note-hook' after creating the new note and
+return its path.  Before returning the path, determine what needs to be
+done to the buffer, in accordance with the user option `denote-kill-buffers'.
+
+When called interactively, the metadata and file name are prompted
+according to the value of `denote-prompts'.
+
+When called from Lisp, all arguments are optional.
+
+- TITLE is a string or a function returning a string.
+
+- KEYWORDS is a list of strings.  The list can be empty or the
+  value can be set to nil.
+
+- FILE-TYPE is a symbol among those described in the user option
+  `denote-file-type'.
+
+- DIRECTORY is a string representing the path to either the
+  value of the variable `denote-directory' or a subdirectory
+  thereof.  The subdirectory must exist: Denote will not create
+  it.  If DIRECTORY does not resolve to a valid path, the first
+  item in the variable `denote-directory' is used instead.
+
+- DATE is a string representing a date like 2022-06-30 or a date
+  and time like 2022-06-16 14:30.  A nil value or an empty string
+  is interpreted as the `current-time'.
+
+- IDENTIFIER is a string identifying the note.  It should have the
+  format of the variable `denote-date-identifier-format', like
+  20220630T1430000.
+
+- TEMPLATE is a symbol which represents the key of a cons cell in
+  the user option `denote-templates'.  The value of that key is
+  inserted to the newly created buffer after the front matter.
+
+- SIGNATURE is a string.
+
+(fn &optional TITLE KEYWORDS FILE-TYPE DIRECTORY DATE TEMPLATE SIGNATURE IDENTIFIER)" t)
+(autoload 'denote-type "denote" "\
+Create note while prompting for a file type.
+
+This is the equivalent of calling `denote' when `denote-prompts'
+has the `file-type' prompt appended to its existing prompts." t)
+(function-put 'denote-type 'interactive-only 't)
+(autoload 'denote-date "denote" "\
+Create note while prompting for a date.
+
+The date can be in YEAR-MONTH-DAY notation like 2022-06-30 or
+that plus the time: 2022-06-16 14:30.  When the user option
+`denote-date-prompt-use-org-read-date' is non-nil, the date
+prompt uses the more powerful Org+calendar system.
+
+This is the equivalent of calling `denote' when `denote-prompts'
+has the `date' prompt appended to its existing prompts." t)
+(function-put 'denote-date 'interactive-only 't)
+(autoload 'denote-subdirectory "denote" "\
+Create note while prompting for a subdirectory.
+
+Available candidates include the value of the variable
+`denote-directory' and any subdirectory thereof.
+
+This is the equivalent of calling `denote' when `denote-prompts'
+has the `subdirectory' prompt appended to its existing prompts." t)
+(function-put 'denote-subdirectory 'interactive-only 't)
+(autoload 'denote-template "denote" "\
+Create note while prompting for a template.
+
+Available candidates include the keys in the `denote-templates'
+alist.  The value of the selected key is inserted in the newly
+created note after the front matter.
+
+This is the equivalent of calling `denote' when `denote-prompts'
+has the `template' prompt appended to its existing prompts." t)
+(function-put 'denote-template 'interactive-only 't)
+(autoload 'denote-signature "denote" "\
+Create note while prompting for a file signature.
+
+This is the equivalent of calling `denote' when `denote-prompts'
+has the `signature' prompt appended to its existing prompts." t)
+(function-put 'denote-signature 'interactive-only 't)
+(autoload 'denote-region "denote" "\
+Call `denote' and insert therein the text of the active region.
+
+Note that, currently, `denote-save-buffers' and
+`denote-kill-buffers' are NOT respected.  The buffer is not
+saved or killed at the end of `denote-region'." t)
+(function-put 'denote-region 'interactive-only 't)
+(autoload 'denote-open-or-create "denote" "\
+Visit TARGET file in variable `denote-directory'.
+If file does not exist, invoke `denote' to create a file.  In that case,
+use the last input at the file prompt as the default value of the title
+prompt.
+
+(fn TARGET)" t)
+(autoload 'denote-open-or-create-with-command "denote" "\
+Like `denote-open-or-create' but use one of the `denote-commands-for-new-notes'." t)
+(function-put 'denote-open-or-create-with-command 'interactive-only 't)
+(autoload 'denote-rename-file "denote" "\
+Rename file and update existing front matter if appropriate.
+
+Always rename the file where it is located in the file system:
+never move it to another directory.
+
+If in Dired, consider FILE to be the one at point, else the
+current file, else prompt with minibuffer completion for one.
+When called from Lisp, FILE is a file system path represented as
+a string.
+
+If FILE has a Denote-compliant identifier, retain it while
+updating components of the file name referenced by the user
+option `denote-prompts'.  By default, these are the TITLE and
+KEYWORDS.  The SIGNATURE is another one.  When called from Lisp,
+TITLE and SIGNATURE are strings, while KEYWORDS is a list of
+strings.
+
+The IDENTIFIER is a string that has the format of variable
+`denote-date-identifier-format'.
+
+If there is no identifier, create a new identifier using
+`denote-get-identifier-function'.  By default, it creates a new
+identifier using the date parameter, the date of last modification or
+the `current-time'.
+
+In interactive use, and assuming `denote-prompts' includes a
+title entry, make the TITLE prompt have prefilled text in the
+minibuffer that consists of the current title of FILE.  The
+current title is either retrieved from the front matter (such as
+the #+title in Org) or from the file name.
+
+Do the same for the SIGNATURE prompt, subject to `denote-prompts',
+by prefilling the minibuffer with the current signature of FILE,
+if any.
+
+Same principle for the KEYWORDS prompt: convert the keywords in
+the file name into a comma-separated string and prefill the
+minibuffer with it (the KEYWORDS prompt accepts more than one
+keywords, each separated by a comma, else the `crm-separator').
+
+For all prompts, interpret an empty input as an instruction to
+remove that file name component.  For example, if a TITLE prompt
+is available and FILE is 20240211T093531--some-title__keyword1.org
+then rename FILE to 20240211T093531__keyword1.org.
+
+In interactive use, if there is no entry for a file name
+component in `denote-prompts', keep it as-is.
+
+When called from Lisp, the special symbol `keep-current' can be
+used for the TITLE, KEYWORDS, SIGNATURE, DATE, and IDENTIFIER
+parameters to keep them as-is.
+
+[ NOTE: Please check with your minibuffer user interface how to
+  provide an empty input.  The Emacs default setup accepts the
+  empty minibuffer contents as they are, though popular packages
+  like `vertico' use the first available completion candidate
+  instead.  For `vertico', the user must either move one up to
+  select the prompt and then type RET there with empty contents,
+  or use the command `vertico-exit-input' with empty contents.
+  That Vertico command is bound to M-RET as of this writing on
+  2024-02-13 08:08 +0200. ]
+
+As a final step, ask for confirmation, showing the difference
+between old and new file names.  Do not ask for confirmation if
+the user option `denote-rename-confirmations' does not contain
+the symbol `modify-file-name'.
+
+If FILE has front matter for TITLE and KEYWORDS, ask to rewrite
+their values in order to reflect the new input, unless
+`denote-rename-confirmations' lacks `rewrite-front-matter'.  When
+the `denote-save-buffers' is nil (the default), do not save the
+underlying buffer, thus giving the user the option to
+double-check the result, such as by invoking the command
+`diff-buffer-with-file'.  The rewrite of the TITLE and KEYWORDS
+in the front matter should not affect the rest of the front
+matter.
+
+If the file does not have front matter but is among the supported file
+types (per the user option `denote-file-type'), add front matter to the
+top of it and leave the buffer unsaved for further inspection.  Save the
+buffer if `denote-save-buffers' is non-nil.
+
+When `denote-kill-buffers' is t or `on-rename', kill the buffer
+if it was not already being visited before the rename operation.
+
+For the front matter of each file type, refer to the variables:
+
+- `denote-org-front-matter'
+- `denote-text-front-matter'
+- `denote-toml-front-matter'
+- `denote-yaml-front-matter'
+
+Construct the file name in accordance with the user option
+`denote-file-name-components-order'.
+
+Run the `denote-after-rename-file-hook' after renaming FILE.
+
+This command is intended to (i) rename Denote files, (ii) convert
+existing supported file types to Denote notes, and (ii) rename
+non-note files (e.g. PDF) that can benefit from Denote's
+file-naming scheme.
+
+For a version of this command that works with multiple files
+one-by-one, use `denote-dired-rename-files'.
+
+(fn FILE TITLE KEYWORDS SIGNATURE DATE IDENTIFIER)" t)
+(autoload 'denote-dired-rename-files "denote" "\
+Rename Dired marked files same way as `denote-rename-file'.
+Rename each file in sequence, making all the relevant prompts.
+Unlike `denote-rename-file', do not prompt for confirmation of
+the changes made to the file: perform them outright (same as
+setting `denote-rename-confirmations' to a nil value)." '(dired-mode))
+(function-put 'denote-dired-rename-files 'interactive-only 't)
+(autoload 'denote-dired-rename-marked-files-with-keywords "denote" "\
+Rename marked files in Dired to a Denote file name by writing keywords.
+
+Specifically, do the following:
+
+- retain the file's existing name and make it the TITLE field,
+  per Denote's file-naming scheme;
+
+- sluggify the TITLE, according to our conventions (check the
+  user option `denote-file-name-slug-functions');
+
+- prepend an identifier to the TITLE;
+
+- preserve the file's extension, if any;
+
+- prompt once for KEYWORDS and apply the user's input to the
+  corresponding field in the file name, rewriting any keywords
+  that may exist while removing keywords that do exist if
+  KEYWORDS is empty;
+
+- add or rewrite existing front matter to the underlying file, if it is
+  recognized as a Denote note (per the user option `denote-file-type'),
+  such that it includes the new keywords.
+
+Construct the file name in accordance with the user option
+`denote-file-name-components-order'.
+
+Run the `denote-after-rename-file-hook' after renaming is done.
+
+Also see the specialized commands to only add or remove keywords:
+
+- `denote-dired-rename-marked-files-add-keywords'.
+- `denote-dired-rename-marked-files-remove-keywords'." '(dired-mode))
+(function-put 'denote-dired-rename-marked-files-with-keywords 'interactive-only 't)
+(autoload 'denote-dired-rename-marked-files-add-keywords "denote" "\
+Like `denote-dired-rename-marked-files-with-keywords' to only add keywords." '(dired-mode))
+(function-put 'denote-dired-rename-marked-files-add-keywords 'interactive-only 't)
+(autoload 'denote-dired-rename-marked-files-remove-keywords "denote" "\
+Like `denote-dired-rename-marked-files-with-keywords' to only remove keywords." '(dired-mode))
+(function-put 'denote-dired-rename-marked-files-remove-keywords 'interactive-only 't)
+(autoload 'denote-rename-file-using-front-matter "denote" "\
+Rename FILE using its front matter as input.
+When called interactively, FILE is the variable `buffer-file-name' or
+the Dired file at point, which is subsequently inspected for the
+requisite front matter.  It is thus implied that the FILE has a file
+type that is supported by Denote, per the user option `denote-file-type'.
+
+The values of `denote-rename-confirmations',
+`denote-save-buffers' and `denote-kill-buffers' are respected.
+
+Only the front matter lines that appear in the front matter template (as
+defined in `denote-file-types') will be handled.
+
+To change the identifier (date) of the note with this command, the
+identifier line (if present) of the front matter must be modified.
+Modifying the date line has no effect.
+
+While this command generally does not modify the front matter, there are
+exceptions.  The value of the `date' line will follow that of the
+`identifier' line.  If they are both in the front matter template and
+the `date' line is missing, it will be added again.  Similarly, if they
+are both in the front matter template and the `date' line is present and
+the `identifier' line has been removed, the `date' line will be removed
+as well.  Also, if the keywords are out of order and
+`denote-sort-keywords' is non-nil, they will be sorted.  There will be a
+prompt for this if `denote-rename-confirmations' contains
+`rewrite-front-matter'.
+
+Construct the file name in accordance with the user option
+`denote-file-name-components-order'.
+
+(fn FILE)" t)
+(autoload 'denote-dired-rename-marked-files-using-front-matter "denote" "\
+Call `denote-rename-file-using-front-matter' over the Dired marked files.
+Refer to the documentation of that command for the technicalities.
+
+Marked files must count as notes for the purposes of Denote, which means
+that they at least have an identifier in their file name and use a
+supported file type, per the user option `denote-file-type'.  Files that
+do not meet this criterion are ignored because Denote cannot know if
+they have front matter and what that may be." '(dired-mode))
+(autoload 'denote-change-file-type-and-front-matter "denote" "\
+Change file type of FILE and add an appropriate front matter.
+
+If in Dired, consider FILE to be the one at point, else the
+current file, else prompt with minibuffer completion for one.
+
+Add a front matter in the format of the NEW-FILE-TYPE at the
+beginning of the file.
+
+Retrieve the title of FILE from a line starting with a title
+field in its front matter, depending on the previous file
+type (e.g.  #+title for Org).  The same process applies for
+keywords.
+
+As a final step, ask for confirmation, showing the difference
+between old and new file names.
+
+Important note: No attempt is made to modify any other elements
+of the file.  This needs to be done manually.
+
+Construct the file name in accordance with the user option
+`denote-file-name-components-order'.
+
+(fn FILE NEW-FILE-TYPE)" t)
+(autoload 'denote-dired-mode "denote" "\
+Fontify all Denote-style file names.
+
+Add this or `denote-dired-mode-in-directories' to
+`dired-mode-hook'.
+
+This is a minor mode.  If called interactively, toggle the `Denote-Dired
+mode' mode.  If the prefix argument is positive, enable the mode, and if
+it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate the variable `denote-dired-mode'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(autoload 'denote-dired-mode-in-directories "denote" "\
+Enable `denote-dired-mode' in `denote-dired-directories'.
+Add this function to `dired-mode-hook'.
+
+If `denote-dired-directories-include-subdirectories' is non-nil,
+also enable it in all subdirectories.")
+(autoload 'denote-link "denote" "\
+Create link to FILE note in variable `denote-directory' with DESCRIPTION.
+
+When called interactively, prompt for FILE using completion.  In this
+case, derive FILE-TYPE from the current buffer.  FILE-TYPE is used to
+determine the format of the link.
+
+Return the DESCRIPTION of the link in the format specified by
+`denote-link-description-format'.  The default is to return the text of
+the active region or the title of the note (plus the signature if
+present).
+
+With optional ID-ONLY as a non-nil argument, such as with a universal
+prefix (\\[universal-argument]), insert links with just the identifier
+and no further description.  In this case, the link format is always
+[[denote:IDENTIFIER]].
+
+If the DESCRIPTION is empty, format the link the same as with ID-ONLY.
+
+When called from Lisp, FILE is a string representing a full file system
+path.  FILE-TYPE is a symbol as described in the user option
+`denote-file-type'.  DESCRIPTION is a string.  Whether the caller treats
+the active region specially, is up to it.
+
+(fn FILE FILE-TYPE DESCRIPTION &optional ID-ONLY)" t)
+(autoload 'denote-find-link "denote" "\
+Use minibuffer completion to visit linked file.
+Also see `denote-find-backlink'." t)
+(function-put 'denote-find-link 'interactive-only 't)
+(autoload 'denote-link-after-creating "denote" "\
+Create new note in the background and link to it directly.
+
+Use `denote' interactively to produce the new note.  Its doc
+string explains which prompts will be used and under what
+conditions.
+
+With optional ID-ONLY as a prefix argument create a link that
+consists of just the identifier.  Else try to also include the
+file's title.  This has the same meaning as in `denote-link'.
+
+For a variant of this, see `denote-link-after-creating-with-command'.
+
+IMPORTANT NOTE: Normally, `denote' does not save the buffer it
+produces for the new note.  This is a safety precaution to not
+write to disk unless the user wants it (e.g. the user may choose
+to kill the buffer, thus cancelling the creation of the note).
+However, for this command the creation of the note happens in the
+background and the user may miss the step of saving their buffer.
+We thus have to save the buffer in order to (i) establish valid
+links, and (ii) retrieve whatever front matter from the target
+file.  Though see `denote-save-buffer-after-creation'.
+
+(fn &optional ID-ONLY)" t)
+(autoload 'denote-link-after-creating-with-command "denote" "\
+Like `denote-link-after-creating' but prompt for note-making COMMAND.
+Use this to, for example, call `denote-signature' so that the
+newly created note has a signature as part of its file name.
+
+Optional ID-ONLY has the same meaning as in the command
+`denote-link-after-creating'.
+
+(fn COMMAND &optional ID-ONLY)" t)
+(autoload 'denote-link-or-create "denote" "\
+Use `denote-link' on TARGET file, creating it if necessary.
+
+If TARGET file does not exist, call `denote-link-after-creating' which
+runs the `denote' command interactively to create the file.  The
+established link will then be targeting that new file.  In that case,
+use the last input at the file prompt as the default value of the title
+prompt.
+
+With optional ID-ONLY as a prefix argument create a link that
+consists of just the identifier.  Else try to also include the
+file's title.  This has the same meaning as in `denote-link'.
+
+(fn TARGET &optional ID-ONLY)" t)
+(autoload 'denote-link-or-create-with-command "denote" "\
+Like `denote-link-or-create' but prompt for a note-making command.
+Use this to, for example, call `denote-signature' when the target file
+does not exist, so that the newly created note has a signature as part
+of its file name.
+
+Optional ID-ONLY has the same meaning as in the command
+`denote-link-or-create'.
+
+(fn &optional ID-ONLY)" t)
+(function-put 'denote-link-or-create-with-command 'interactive-only 't)
+(autoload 'denote-grep "denote" "\
+Search QUERY in the content of Denote files.
+QUERY should be a regular expression accepted by `xref-search-program'.
+
+The files to search for are those returned by `denote-directory-files'
+with a non-nil TEXT-ONLY argument.
+
+Results are put in a buffer which allows folding and further
+filtering (see the manual for details).
+
+You can insert a link to a grep search in any note by using the command
+`denote-query-contents-link'.
+
+(fn QUERY)" t)
+(autoload 'denote-grep-marked-dired-files "denote" "\
+Do the equivalent of `denote-grep' for QUERY in marked Dired files.
+
+(fn QUERY)" t)
+(autoload 'denote-grep-files-referenced-in-region "denote" "\
+Perform `denote-grep' QUERY in files referenced between START and END.
+When called interactively, prompt for QUERY.  Also get START and END as
+the buffer positions that delimit the marked region.  When called from
+Lisp, QUERY is a string, while START and END are buffer positions, as
+integers.
+
+Find references to files by their identifier.  This includes links with
+just the identifier (as described in `denote-link' and related), links
+written by an Org dynamic block (see the `denote-org' package), or even
+file listings such as those of `dired' and the command-line `ls' program.
+
+(fn QUERY START END)" t)
+(autoload 'denote-backlinks "denote" "\
+Produce a buffer with backlinks to the current note.
+
+Show the names of files linking to the current file.
+
+Place the buffer below the current window or wherever the user option
+`denote-backlinks-display-buffer-action' specifies." t)
+(autoload 'denote-find-backlink "denote" "\
+Use minibuffer completion to visit backlink to current file.
+Visit the file itself, not the location where the link is.  For a
+context-sensitive operation, use `denote-find-backlink-with-location'.
+
+Alo see `denote-find-link'." t)
+(function-put 'denote-find-backlink 'interactive-only 't)
+(autoload 'denote-find-backlink-with-location "denote" "\
+Like `denote-find-backlink' but jump to the exact location of the link." t)
+(function-put 'denote-find-backlink-with-location 'interactive-only 't)
+(autoload 'denote-query-contents-link "denote" "\
+Insert query link for file contents.
+Prompt for QUERY or use the text of the active region.  When the user
+follows this link, place any matches in a separate buffer (using the
+built-in Xref mechanism).  This is the equivalent of a Unix grep command
+across the variable `denote-directory'.
+
+(fn QUERY)" t)
+(autoload 'denote-query-filenames-link "denote" "\
+Insert query link for file names.
+Prompt for QUERY or use the text of the active region.  When the user
+follows this link, place any matches in a separate buffer (using the
+built-in Dired mechanism).  This is the equivalent of a Unix find
+command across the variable `denote-directory'.
+
+(fn QUERY)" t)
+(autoload 'denote-fontify-links-mode "denote" "\
+Fontify Denote links in plain text buffers.
+
+Do so only when the current buffer is a Denote note and the major mode
+is not `org-mode' or `markdown-mode' (or any major mode derived
+therefrom).
+
+This is a minor mode.  If called interactively, toggle the
+`Denote-Fontify-Links mode' mode.  If the prefix argument is positive,
+enable the mode, and if it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate the variable `denote-fontify-links-mode'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(autoload 'denote-add-links "denote" "\
+Insert links to all files whose file name matches REGEXP.
+Use this command to reference multiple files at once.  Particularly
+useful for the creation of metanotes (read the manual for more on the
+matter).
+
+Optional ID-ONLY has the same meaning as in `denote-link': it
+inserts links with just the identifier.
+
+Also see `denote-link-to-all-files-with-contents'.
+
+(fn REGEXP &optional ID-ONLY)" t)
+(autoload 'denote-link-to-file-with-contents "denote" "\
+Link to a file whose contents match QUERY.
+This is similar to `denote-link', except that the file prompt is limited
+to files matching QUERY.  Optional ID-ONLY has the same meaning as in
+`denote-link'.
+
+(fn QUERY &optional ID-ONLY)" t)
+(autoload 'denote-link-to-all-files-with-contents "denote" "\
+Link to all files whose contents match QUERY.
+This is similar to `denote-add-links', except it searches inside file
+contents, not file names.  Optional ID-ONLY has the same meaning as in
+`denote-link' and `denote-add-links'.
+
+(fn QUERY &optional ID-ONLY)" t)
+(autoload 'denote-link-dired-marked-notes "denote" "\
+Insert Dired marked FILES as links in BUFFER.
+
+FILES conform with the Denote file-naming scheme, such that they can be
+linked to using the `denote:' link type.
+
+The BUFFER is one which visits a Denote note file.  If there are
+multiple BUFFER candidates in buffers, prompt with completion for
+one among them.  If there is none, throw an error.
+
+With optional ID-ONLY as a prefix argument, insert links with
+just the identifier (same principle as with `denote-link').
+
+This command is meant to be used from a Dired buffer.
+
+(fn FILES BUFFER &optional ID-ONLY)" '(dired-mode))
+(defvar denote-menu-bar-mode t "\
+Non-nil if Denote-Menu-Bar mode is enabled.
+See the `denote-menu-bar-mode' command
+for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `denote-menu-bar-mode'.")
+(custom-autoload 'denote-menu-bar-mode "denote" nil)
+(autoload 'denote-menu-bar-mode "denote" "\
+Show Denote menu bar.
+
+This is a global minor mode.  If called interactively, toggle the
+`Denote-Menu-Bar mode' mode.  If the prefix argument is positive, enable
+the mode, and if it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate `(default-value \\='denote-menu-bar-mode)'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(autoload 'denote-link-ol-follow "denote" "\
+Find file of type `denote:' matching LINK.
+LINK is the identifier of the note, optionally followed by a file search
+option akin to that of standard Org `file:' link types.  Read Info
+node `(org) Query Options'.
+
+If LINK is not an identifier, then it is not pointing to a file but to a
+query of file contents or file names (see the commands
+`denote-query-contents-link' and `denote-query-filenames-link').
+
+Uses the function `denote-directory' to establish the path to the file.
+
+(fn LINK)")
+(autoload 'denote-link-ol-complete "denote" "\
+Like `denote-link' but for Org integration.
+This lets the user complete a link through the `org-insert-link'
+interface by first selecting the `denote:' hyperlink type.")
+(autoload 'denote-link-ol-store "denote" "\
+Handler for `org-store-link' adding support for denote: links.
+Optional INTERACTIVE? is used internally by `org-store-link'.
+
+Also see the user option `denote-org-store-link-to-heading'.
+
+(fn &optional INTERACTIVE?)")
+(autoload 'denote-link-ol-export "denote" "\
+Export a `denote:' link from Org files.
+The LINK, DESCRIPTION, and FORMAT are handled by the export
+backend.
+
+(fn LINK DESCRIPTION FORMAT)")
+(autoload 'denote-link-preview-file "denote" "\
+Use `org-link-preview-file' for OVERLAY, LINK-TARGET, and LINK-DATA.
+Unless the LINK-TARGET has search options, then try to produce a preview.
+
+For more details, refer to the documentation of `org-link-set-parameters'.
+
+(fn OVERLAY LINK-TARGET LINK-DATA)")
+(eval-after-load 'org `(funcall ',(lambda nil (with-no-warnings (org-link-set-parameters "denote" :preview #'denote-link-preview-file :follow #'denote-link-ol-follow :face #'denote-get-link-face :help-echo #'denote-link-ol-help-echo :complete #'denote-link-ol-complete :store #'denote-link-ol-store :export #'denote-link-ol-export)))))
+(autoload 'denote-org-capture "denote" "\
+Create new note through `org-capture-templates'.
+Use this as a function that returns the path to the new file.
+The file is populated with Denote's front matter.  It can then be
+expanded with the usual specifiers or strings that
+`org-capture-templates' supports.
+
+This function obeys `denote-prompts', but it ignores `file-type',
+if present: it always sets the Org file extension for the created
+note to ensure that the capture process works as intended,
+especially for the desired output of the
+`denote-org-capture-specifiers' (which can include arbitrary
+text).
+
+Consult the manual for template samples.")
+(autoload 'denote-org-capture-with-prompts "denote" "\
+Like `denote-org-capture' but with optional prompt parameters.
+
+When called without arguments, do not prompt for anything.  Just
+return the front matter with title and keyword fields empty and
+the date and identifier fields specified.  Also make the file
+name consist of only the identifier plus the Org file name
+extension.
+
+Otherwise produce a minibuffer prompt for every non-nil value that
+corresponds to the TITLE, KEYWORDS, SUBDIRECTORY, DATE, TEMPLATE,
+SIGNATURE arguments.  The prompts are those used by the standard
+`denote' command and all of its utility commands.
+
+When returning the contents that fill in the Org capture
+template, the sequence is as follows: front matter, TEMPLATE, and
+then the value of the user option `denote-org-capture-specifiers'.
+
+Important note: in the case of SUBDIRECTORY actual subdirectories
+must exist---Denote does not create them.  Same principle for
+TEMPLATE as templates must exist and are specified in the user
+option `denote-templates'.
+
+(fn &optional TITLE KEYWORDS SUBDIRECTORY DATE TEMPLATE SIGNATURE)")
+(defvar denote-rename-buffer-mode nil "\
+Non-nil if Denote-Rename-Buffer mode is enabled.
+See the `denote-rename-buffer-mode' command
+for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `denote-rename-buffer-mode'.")
+(custom-autoload 'denote-rename-buffer-mode "denote" nil)
+(autoload 'denote-rename-buffer-mode "denote" "\
+Automatically rename Denote buffers to be easier to read.
+
+A buffer is renamed upon visiting the underlying file.  This
+means that existing buffers are not renamed until they are
+visited again in a new buffer (files are visited with the command
+`find-file' or related).
+
+This is a global minor mode.  If called interactively, toggle the
+`Denote-Rename-Buffer mode' mode.  If the prefix argument is positive,
+enable the mode, and if it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate `(default-value \\='denote-rename-buffer-mode)'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "denote" '("denote-"))
+
+
+(provide 'denote-autoloads)
+
+
+)
 (let* ((load-file-name "/home/fhasl/.config/emacs/elpa/counsel-20260214.1004/counsel-autoloads.el")(load-true-file-name load-file-name))
 
 
@@ -12126,6 +13380,134 @@ Complete candidate using quick keys." t)
 
 
 )
+(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/cdlatex-20241007.1623/cdlatex-autoloads.el")(load-true-file-name load-file-name))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(autoload 'turn-on-cdlatex "cdlatex" "\
+Turn on CDLaTeX minor mode.")
+(autoload 'cdlatex-mode "cdlatex" "\
+Minor mode for editing scientific LaTeX documents.
+
+Here is a list of features: \\<cdlatex-mode-map>
+
+                           KEYWORD COMMANDS
+                           ----------------
+
+Many CDLaTeX commands are activated with an abbrev-like
+mechanism.  When a keyword is typed followed \\[cdlatex-tab], the
+keyword is deleted from the buffer and a command is executed.
+You can get a full list of these commands with
+\\[cdlatex-command-help].  For example, when you type `fr<TAB>',
+CDLaTeX will insert \\frac{}{}.
+
+When inserting templates like \\='\\frac{}{}\\=', the cursor is
+positioned properly.  Use \\[cdlatex-tab] to move through
+templates.  \\[cdlatex-tab] also kills unnecessary braces around
+subscripts and superscripts at point.
+
+                     MATH CHARACTERS AND ACCENTS
+                     ---------------------------
+
+\\[cdlatex-math-symbol] followed by any character inserts a LaTeX
+math character
+      e.g. \\[cdlatex-math-symbol]e
+        => \\epsilon
+
+\\[cdlatex-math-symbol]\\[cdlatex-math-symbol] followed by any
+character inserts other LaTeX math character
+      e.g. \\[cdlatex-math-symbol]\\[cdlatex-math-symbol]e
+        => \\varepsilon
+\\[cdlatex-math-modify]  followed by character puts a math
+accent on a letter or symbol
+      e.g. \\[cdlatex-math-symbol]a\\[cdlatex-math-modify]~
+        => \\tilde{\\alpha}
+
+CDLaTeX is aware of the math environments in LaTeX and modifies
+the workings of some functions according to the current status.
+
+                             ONLINE HELP
+                             -----------
+
+After pressing \\[cdlatex-math-symbol] or
+\\[cdlatex-math-modify], CDLaTeX waits for a short time for the
+second character.  If that does not come, it will pop up a window
+displaying the available characters and their meanings.
+
+                             KEY BINDINGS
+                             ------------
+\\{cdlatex-mode-map}
+
+Under X, many functions will be available also in a menu on the menu bar.
+
+Entering `cdlatex-mode' calls the hook cdlatex-mode-hook.
+
+This is a minor mode.  If called interactively, toggle the `CDLatex
+mode' mode.  If the prefix argument is positive, enable the mode, and if
+it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate the variable `cdlatex-mode'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(autoload 'turn-on-cdlatex-electricindex "cdlatex" "\
+Turn on cdlatex-electricindex minor mode.")
+(autoload 'cdlatex-electricindex-mode "cdlatex" "\
+Minor mode for electric insertion of numbered indixes.
+
+cdlatex-electricindex is a minor mode supporting fast digit index
+insertation in LaTeX math. For example typing x 1 2 will insert
+x_{12}.
+
+To turn cdlatex-electricindex Minor Mode on and off in a
+particular buffer, use `M-x cdlatex-electricindex-mode'.
+
+To turn on cdlatex-electricindex Minor Mode for all LaTeX files,
+add one of the following lines to your .emacs file:
+
+    (add-hook 'latex-mode-hook #'turn-on-cdlatex-electricindex)
+
+This index insertion will only work when the cursor is in a LaTeX
+math environment, based on (texmathp). If texmathp is not
+available, math math-mode will be assumed.
+
+Entering `cdlatex-electricindex-mode' calls the hook
+`cdlatex-electricindex-mode-hook'.
+
+This is a minor mode.  If called interactively, toggle the
+`Cdlatex-Electricindex mode' mode.  If the prefix argument is positive,
+enable the mode, and if it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate the variable `cdlatex-electricindex-mode'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "cdlatex" '("cdlatex-"))
+
+
+(provide 'cdlatex-autoloads)
+
+
+)
 (let* ((load-file-name "/home/fhasl/.config/emacs/elpa/cape-20260519.1021/cape-autoloads.el")(load-true-file-name load-file-name))
 
 
@@ -12517,305 +13899,6 @@ disabled.
 
 
 )
-(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/auctex-14.1.2/auctex-autoloads.el")(load-true-file-name load-file-name))
-
-
-
-(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
-
-
-
-
-(register-definition-prefixes "auctex" '("AUCTeX-version"))
-
-
-
-(autoload 'bib-cite-minor-mode "bib-cite" "\
-Toggle bib-cite mode.
-When bib-cite mode is enabled, citations, labels and refs are highlighted
-when the mouse is over them.  Clicking on these highlights with [mouse-2]
-runs `bib-find', and [mouse-3] runs `bib-display'.
-
-(fn ARG)" t)
-(autoload 'turn-on-bib-cite "bib-cite" "\
-Unconditionally turn on Bib Cite mode.")
-(register-definition-prefixes "bib-cite" '("LaTeX-find-label-hist-alist" "bib-" "create-alist-from-list" "member-cis" "psg-" "search-directory-tree"))
-
-
-
-(defalias 'context-mode #'ConTeXt-mode)
-(autoload 'ConTeXt-mode "context" "\
-Major mode in AUCTeX for editing ConTeXt files.
-
-Entering `ConTeXt-mode' calls the value of `text-mode-hook',
-then the value of `TeX-mode-hook', and then the value
-of `ConTeXt-mode-hook'.
-
-(fn)" t)
-(register-definition-prefixes "context" '("ConTeXt-" "TeX-ConTeXt-sentinel" "context-guess-current-interface"))
-
-
-
-(register-definition-prefixes "context-en" '("ConTeXt-"))
-
-
-
-(register-definition-prefixes "context-nl" '("ConTeXt-"))
-
-
-
-(autoload 'font-latex-setup "font-latex" "\
-Setup this buffer for LaTeX font-lock.  Usually called from a hook.")
-(register-definition-prefixes "font-latex" '("font-latex-"))
-
-
-
-(autoload 'BibTeX-auto-store "latex" "\
-This function should be called from `bibtex-mode-hook'.
-It will setup BibTeX to store keys in an auto file.")
-(add-to-list 'auto-mode-alist '("\\.drv\\'" . LaTeX-mode) t)
-(add-to-list 'auto-mode-alist '("\\.hva\\'" . LaTeX-mode))
- (if (eq (symbol-function 'LaTeX-mode) 'latex-mode)
-    (defalias 'LaTeX-mode nil))
-(autoload 'LaTeX-mode "latex" "\
-Major mode in AUCTeX for editing LaTeX files.
-See info under AUCTeX for full documentation.
-
-Entering LaTeX mode calls the value of `text-mode-hook',
-then the value of `TeX-mode-hook', and then the value
-of `LaTeX-mode-hook'.
-
-(fn)" t)
-(put 'LaTeX-mode 'auctex-function-definition (symbol-function 'LaTeX-mode))
-(autoload 'docTeX-mode "latex" "\
-Major mode in AUCTeX for editing .dtx files derived from `LaTeX-mode'.
-Runs `LaTeX-mode', sets a few variables and
-runs the hooks in `docTeX-mode-hook'.
-
-(fn)" t)
-(register-definition-prefixes "latex" '("Bib" "LaTeX-" "TeX-" "docTeX-" "latex-math-mode"))
-
-
-
-(register-definition-prefixes "latex-flymake" '("LaTeX-"))
-
-
-
-(autoload 'multi-prompt "multi-prompt" "\
-Completing prompt for a list of strings.
-The first argument SEPARATOR should be the string (of length 1) to
-separate the elements in the list.  The second argument UNIQUE should
-be non-nil, if each element must be unique.  The remaining elements
-are the arguments to `completing-read'.  See that.
-
-(fn SEPARATOR UNIQUE PROMPT TABLE &optional MP-PREDICATE REQUIRE-MATCH INITIAL HISTORY)")
-(autoload 'multi-prompt-key-value "multi-prompt" "\
-Read multiple strings, with completion and key=value support.
-PROMPT is a string to prompt with, usually ending with a colon
-and a space.
-
-TABLE is an alist where each entry is a list.  The first element
-of each list is a string representing a key and the optional
-second element is a list with strings to be used as values for
-the key.  The second element can also be a variable returning a
-list of strings.
-
-See the documentation for `completing-read' for details on the
-other arguments: PREDICATE, REQUIRE-MATCH, INITIAL-INPUT, HIST,
-DEF, and INHERIT-INPUT-METHOD.
-
-The return value is the string as entered in the minibuffer.
-
-(fn PROMPT TABLE &optional PREDICATE REQUIRE-MATCH INITIAL-INPUT HIST DEF INHERIT-INPUT-METHOD)")
-(register-definition-prefixes "multi-prompt" '("multi-prompt-"))
-
-
-
- (if (eq (symbol-function 'plain-TeX-mode) 'plain-tex-mode)
-    (defalias 'plain-TeX-mode nil))
-(autoload 'plain-TeX-mode "plain-tex" "\
-Major mode in AUCTeX for editing plain TeX files.
-See info under AUCTeX for documentation.
-
-Entering `plain-TeX-mode' calls the value of `text-mode-hook',
-then the value of `TeX-mode-hook', and then the value
-of `plain-TeX-mode-hook'.
-
-(fn)" t)
-(put 'plain-TeX-mode 'auctex-function-definition (symbol-function 'plain-TeX-mode))
-(autoload 'AmSTeX-mode "plain-tex" "\
-Major mode in AUCTeX for editing AmSTeX files.
-See info under AUCTeX for documentation.
-
-Entering `AmSTeX-mode' calls the value of `text-mode-hook', then
-the value of `TeX-mode-hook', `plain-TeX-mode-hook' and then the
-value of `AmSTeX-mode-hook'.
-
-(fn)" t)
-(defalias 'ams-tex-mode #'AmSTeX-mode)
-(register-definition-prefixes "plain-tex" '("AmSTeX-" "plain-TeX-"))
-
-
-
-(put 'preview-scale-function 'safe-local-variable (lambda (x) (and (numberp x) (<= 0.1 x 10))))
-(autoload 'desktop-buffer-preview "preview" "\
-Hook function for restoring persistent previews into a buffer.
-
-(fn FILE-NAME BUFFER-NAME MISC)")
-(add-to-list 'desktop-buffer-mode-handlers '(LaTeX-mode . desktop-buffer-preview))
-(autoload 'preview-install-styles "preview" "\
-Install the TeX style files into a permanent location DIR.
-This must be in the TeX search path.  If FORCE-OVERWRITE is greater
-than 1, files will get overwritten without query, if it is less
-than 1 or nil, the operation will fail.  The default of 1 for interactive
-use will query.
-
-Similarly FORCE-SAVE can be used for saving
-`preview-TeX-style-dir' to record the fact that the uninstalled
-files are no longer needed in the search path.
-
-(fn DIR &optional FORCE-OVERWRITE FORCE-SAVE)" t)
-(autoload 'LaTeX-preview-setup "preview" "\
-Hook function for embedding the preview package into AUCTeX.
-This is called by `LaTeX-mode-hook' and changes AUCTeX variables
-to add the preview functionality.")
-(autoload 'preview-report-bug "preview" "\
-Report a bug in the preview-latex package." t)
-(register-definition-prefixes "preview" '("TeX-" "desktop-buffer-preview-misc-data" "preview-"))
-
-
-
-(autoload 'TeX-tex-mode "tex" "\
-Call suitable AUCTeX major mode for editing TeX or LaTeX files.
-Tries to guess whether this file is for plain TeX or LaTeX.
-
-The algorithm is as follows:
-
-   1) If the file is empty or `TeX-force-default-mode' is not set to nil,
-      `TeX-default-mode' is chosen.
-   2) If non-commented out content matches with regular expression in
-      `TeX-format-list', use the associated major mode.  For example,
-      if \\documentclass or \\begin{, \\section{, \\part{ or \\chapter{ is
-      found, `LaTeX-mode' is selected.
-   3) Otherwise, use `TeX-default-mode'.
-
-By default, `TeX-format-list' has a fallback entry for
-`plain-TeX-mode', thus non-empty file which didn't match any
-other entries will enter `plain-TeX-mode'." t)
- (if (eq (symbol-function 'TeX-mode) 'tex-mode)
-    (defalias 'TeX-mode nil))
-(put 'TeX-mode 'auctex-function-definition (symbol-function 'TeX-mode))
-(autoload 'TeX-auto-generate "tex" "\
-Generate style file for TEX and store it in AUTO.
-If TEX is a directory, generate style files for all files in the directory.
-
-(fn TEX AUTO)" t)
-(autoload 'TeX-auto-generate-global "tex" "\
-Create global auto directory for global TeX macro definitions." t)
-(autoload 'TeX-submit-bug-report "tex" "\
-Submit a bug report on AUCTeX via mail.
-
-Don't hesitate to report any problems or inaccurate documentation.
-
-If you don't have setup sending mail from Emacs, please copy the
-output buffer into your mail program, as it gives us important
-information about your AUCTeX version and AUCTeX configuration." t)
-(register-definition-prefixes "tex" '("Bib" "ConTeXt-" "LaTeX-" "TeX-" "docTeX-default-extension" "plain-TeX-auto-regexp-list" "tex-"))
-
-
-
-(autoload 'TeX-install-toolbar "tex-bar" "\
-Install toolbar buttons for TeX mode." t)
-(autoload 'LaTeX-install-toolbar "tex-bar" "\
-Install toolbar buttons for LaTeX mode." t)
-(register-definition-prefixes "tex-bar" '("TeX-bar-"))
-
-
-
-(autoload 'TeX-fold-mode "tex-fold" "\
-Minor mode for hiding and revealing macros and environments.
-
-Called interactively, with no prefix argument, toggle the mode.
-With universal prefix ARG (or if ARG is nil) turn mode on.
-With zero or negative ARG turn mode off.
-
-(fn &optional ARG)" t)
-(defalias 'tex-fold-mode #'TeX-fold-mode)
-(register-definition-prefixes "tex-fold" '("TeX-fold-"))
-
-
-
-(autoload 'tex-font-setup "tex-font" "\
-Setup font lock support for TeX.")
-(register-definition-prefixes "tex-font" '("tex-font-lock-"))
-
-
-
-(autoload 'Texinfo-mode "tex-info" "\
-Major mode in AUCTeX for editing Texinfo files.
-
-Entering Texinfo mode calls the value of `text-mode-hook' and then the
-value of `Texinfo-mode-hook'.
-
-(fn)" t)
-(register-definition-prefixes "tex-info" '("Texinfo-" "texinfo-environment-regexp"))
-
-
-
-(register-definition-prefixes "tex-ispell" '("TeX-ispell-"))
-
-
-
-(autoload 'japanese-plain-TeX-mode "tex-jp" "\
-Major mode in AUCTeX for editing Japanese plain TeX files.
-
-(fn)" t)
-(defalias 'japanese-plain-tex-mode #'japanese-plain-TeX-mode)
-(autoload 'japanese-LaTeX-mode "tex-jp" "\
-Major mode in AUCTeX for editing Japanese LaTeX files.
-
-(fn)" t)
-(defalias 'japanese-latex-mode #'japanese-LaTeX-mode)
-(register-definition-prefixes "tex-jp" '("TeX-japanese-process-" "japanese-"))
-
-
-
- (require 'tex-site)
-(register-definition-prefixes "tex-site" '("TeX-" "preview-TeX-style-dir" "tex-site-unload-function"))
-
-
-
-(register-definition-prefixes "tex-style" '("LaTeX-" "TeX-TikZ-point-name-regexp"))
-
-
-
-(register-definition-prefixes "tex-wizard" '("TeX-wizard"))
-
-
-
-(autoload 'texmathp "texmathp" "\
-Determine if point is inside (La)TeX math mode.
-Returns t or nil.  Additional info is placed into `texmathp-why'.
-The functions assumes that you have (almost) syntactically correct (La)TeX in
-the buffer.
-See the variable `texmathp-tex-commands' about which commands are checked." t)
-(autoload 'texmathp-match-switch "texmathp" "\
-Search backward for any of the math switches.
-Limit searched to BOUND.
-
-(fn BOUND)")
-(register-definition-prefixes "texmathp" '("texmathp-"))
-
-
-
- (autoload 'toolbarx-install-toolbar "toolbar-x")
-(register-definition-prefixes "toolbar-x" '("toolbarx-"))
-
-
-(provide 'auctex-autoloads)
-
-
-)
 (let* ((load-file-name "/home/fhasl/.config/emacs/elpa/apheleia-20260619.1935/apheleia-autoloads.el")(load-true-file-name load-file-name))
 
 
@@ -13051,30 +14134,32 @@ disabled.
 		    which-key-posframe web-mode vertico queue
 		    undo-tree typescript-mode dash s avy ace-window
 		    pfuture lv hydra ht cfrs treemacs transient
-		    toml-mode tao-theme ivy swiper spinner smartparens
-		    f shrink-path scss-mode rainbow-delimiters
-		    projectile org-plus-contrib orderless olivetti
-		    magit-section nix-mode nerd-icons nerd-icons-dired
-		    mixed-pitch markdown-mode marginalia magit
-		    lua-mode lsp-mode lsp-ui lsp-treemacs ligature
-		    json-snatcher json-mode js2-mode elisp-refs
-		    helpful git-gutter flycheck flycheck-posframe
-		    embark consult embark-consult doom-modeline
-		    dockerfile-mode counsel corfu cape auto-compile
-		    auctex apheleia all-the-icons all-the-icons-ivy
-		    all-the-icons-dired)
+		    toml-mode auctex texfrag tao-theme ivy swiper
+		    spinner smartparens f shrink-path scss-mode
+		    rainbow-delimiters projectile org-plus-contrib
+		    org-modern org-fragtog org-appear orderless
+		    olivetti magit-section nix-mode nerd-icons
+		    nerd-icons-dired mixed-pitch markdown-mode
+		    marginalia magit lua-mode lsp-mode lsp-ui
+		    lsp-treemacs ligature json-snatcher json-mode
+		    js2-mode elisp-refs helpful git-gutter flycheck
+		    flycheck-posframe embark consult embark-consult
+		    doom-modeline dockerfile-mode denote counsel corfu
+		    cdlatex cape auto-compile apheleia all-the-icons
+		    all-the-icons-ivy all-the-icons-dired)
 	package-activated-list)))
 (progn
   (require 'info) (info-initialize)
   (setq Info-directory-list
 	(append
-	 '("/home/fhasl/.config/emacs/elpa/auctex-14.1.2"
+	 '("/home/fhasl/.config/emacs/elpa/denote-4.2.3"
 	   "/home/fhasl/.config/emacs/elpa/embark-20260610.302"
 	   "/home/fhasl/.config/emacs/elpa/magit-20260722.2131"
 	   "/home/fhasl/.config/emacs/elpa/magit-section-20260722.2131"
 	   "/home/fhasl/.config/emacs/elpa/orderless-20260519.1029"
 	   "/home/fhasl/.config/emacs/elpa/org-plus-contrib-20210929"
 	   "/home/fhasl/.config/emacs/elpa/ivy-20260413.2102"
+	   "/home/fhasl/.config/emacs/elpa/auctex-14.1.2"
 	   "/home/fhasl/.config/emacs/elpa/transient-20260701.1255"
 	   "/home/fhasl/.config/emacs/elpa/dash-20260221.1346"
 	   "/home/fhasl/.config/emacs/elpa/with-editor-20260701.1252"
