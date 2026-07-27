@@ -50,6 +50,9 @@ in {
       statix
       ripgrep
       glibc
+      texliveSmall
+      biber
+      python3Packages.pylatexenc
     ];
 
     extraConfigLua = ''
