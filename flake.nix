@@ -56,6 +56,7 @@
           sharedModules
           ++ amaltheaModules
           ++ [
+            ({...}: {imports = [ ./hardware-configuration.nix ];})
             inputs.gsr-ui-nix.nixosModules.default
             home-manager.nixosModules.home-manager
             {
@@ -83,6 +84,7 @@
           sharedModules
           ++ artemisModules
           ++ [
+            ({...}: {imports = [ ./hardware-configuration.nix ];})
             ({pkgs, ...}: {
               nixpkgs.overlays = [
                 (

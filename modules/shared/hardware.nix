@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   hardware = {
     opentabletdriver.enable = true;
     uinput.enable = true;
@@ -10,9 +8,6 @@
     };
   };
   security.rtkit.enable = true;
-  environment.variables = {
-    RUSTICL_ENABLE = "radeonsi";
-  };
   zramSwap = {
     enable = true;
     memoryPercent = 50;
