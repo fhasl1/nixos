@@ -94,7 +94,6 @@
     menus.enable = true;
   };
   fonts.fontDir.enable = true;
-  fonts.packages = [ pkgs.inter ];
   services.xserver.windowManager.session = [
     {
       name = "sxwm";

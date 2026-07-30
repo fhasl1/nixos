@@ -72,6 +72,7 @@
       ubuntu-sans
       victor-mono
       zed-mono
+      pkgs.inter
     ];
   };
 
