@@ -7,7 +7,7 @@
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
-(setq warning-suppress-types '((package)))
+(setq warning-suppress-types '((package) (native-compiler)))
 (dolist (dir load-path)
   (when (string-match-p "elpa/" dir)
     (add-to-list 'custom-theme-load-path dir)))
@@ -35,7 +35,6 @@
   (evil-leader/set-key
     "-" 'counsel-find-file
     "b" 'switch-buffer
-    "g" 'magit-status
     "/" 'counsel-rg
     "s" 'save-buffer
     "r" 'load-file
@@ -43,7 +42,9 @@
     "N" 'denote-region
     "l" 'denote-link
     "B" 'denote-backlinks
-    "f" 'denote-grep))
+    "f" 'denote-grep
+    "d" 'denote-open-or-create
+    "D" 'denote-subdirectory))
 
 (use-package which-key
   :config
@@ -89,19 +90,9 @@
 
 (use-package corfu
   :config
-  (global-corfu-mode)
-  (setq corfu-auto t
-        corfu-auto-prefix 1
-        corfu-auto-delay 0.1
-        corfu-cycle t
-        corfu-preselect 'prompt)
-  (define-key corfu-map (kbd "TAB") 'corfu-next)
-  (define-key corfu-map (kbd "<backtab>") 'corfu-previous))
+  (global-corfu-mode -1))
 
-(use-package cape
-  :config
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+
 
 (use-package org
   :ensure org-plus-contrib
@@ -111,10 +102,21 @@
         org-log-done 'time
         org-hide-emphasis-markers t
         org-link-descriptive t
-        org-pretty-entities t)
+        org-pretty-entities t
+        org-startup-folded 'content
+        org-fontify-done-headline t
+        org-fontify-whole-heading-line t
+        org-fontify-quote-and-verse-blocks t
+        org-startup-with-inline-images t
+        org-image-actual-width '(600))
   (global-set-key (kbd "C-c l") 'org-store-link)
   (global-set-key (kbd "C-c a") 'org-agenda)
-  (global-set-key (kbd "C-c c") 'org-capture))
+  (global-set-key (kbd "C-c c") 'org-capture)
+  (global-set-key (kbd "C-c n") 'org-notes-capture-function))
+
+(defun org-notes-capture-function ()
+  (interactive)
+  (org-capture nil "n"))
 
 (use-package markdown-mode
   :mode ("\\.md\\'" "\\.markdown\\'")
@@ -159,7 +161,9 @@
         denote-known-keywords nil
         denote-infer-keywords t
         denote-sort-keywords t
-        denote-prompts '(title keywords)))
+        denote-prompts '(title keywords))
+  (denote-rename-buffer-mode 1)
+  (add-hook 'denote-after-new-note-hook #'denote-rename-file-using-front-matter))
 
 (use-package auctex
   :after denote
@@ -180,12 +184,14 @@
   (doom-modeline-mode 1)
   (setq doom-modeline-height 25
         doom-modeline-bar-width 2
-        doom-modeline-buffer-file-name-style 'truncate-with-project
+        doom-modeline-buffer-file-name-style 'auto
         doom-modeline-major-mode-color-icon t
-        doom-modeline-minor-modes t
-        doom-modeline-github t
-        doom-modeline-gitlab t
-        doom-modeline-persp-name t))
+        doom-modeline-minor-modes nil
+        doom-modeline-github nil
+        doom-modeline-gitlab nil
+        doom-modeline-persp-name nil
+        doom-modeline-lsp nil
+        doom-modeline-buffer-encoding nil))
 
 (use-package all-the-icons-dired
   :after dired
@@ -226,10 +232,7 @@
   ("C-h k" . helpful-key)
   ("C-h x" . helpful-command))
 
-(use-package magit
-  :config
-  (global-set-key (kbd "C-x g") 'magit-status)
-  (setq magit-completing-read-function 'completing-read))
+
 
 (setq-default indent-tabs-mode nil
               tab-width 2
@@ -243,18 +246,17 @@
               kept-old-versions 2
               version-control t
               scroll-margin 8
-              truncate-lines t)
+              truncate-lines nil
+              word-wrap t)
 
-(global-display-line-numbers-mode)
-(setq display-line-numbers-type 'relative
-      display-line-numbers-current-absolute t)
+(global-display-line-numbers-mode -1)
 
 (setq split-right t
       split-below t
       hlsearch t
       case-fold-search t)
 
-(global-hl-line-mode 1)
+(global-hl-line-mode -1)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x b") 'switch-to-buffer)
@@ -268,7 +270,9 @@
 (setq make-backup-files nil
       auto-save-default nil)
 
-(setq initial-scratch-message nil)
+(add-hook 'window-setup-hook
+          (lambda ()
+            (set-frame-parameter nil 'internal-border-width 20)))
 
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-/") 'undo)

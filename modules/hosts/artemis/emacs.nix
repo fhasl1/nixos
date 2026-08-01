@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   services.emacs = {
     enable = true;
     package = pkgs.emacs;
@@ -9,7 +6,7 @@
   };
 
   environment.systemPackages =
-    (with pkgs; [emacs-all-the-icons-fonts nil])
+    (with pkgs; [emacs-all-the-icons-fonts nil texlive.bin.dvipng])
     ++ (with pkgs.emacsPackages; [
       all-the-icons
       consult
