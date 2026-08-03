@@ -93,6 +93,9 @@
     cargo
     julia
     gcc
+    gnumake
+    bison
+    m4
      clang
      clang-tools
 
