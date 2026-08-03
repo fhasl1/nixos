@@ -7,7 +7,7 @@ cd "$DIR"
 HOST="${1:-$(hostnamectl hostname)}"
 
 git pull
-sudo nixos-rebuild switch --flake ".#$HOST" --impure "${@:2}"
+sudo nixos-rebuild switch --flake ".#$HOST" --impure "${@:2}" || exit 1
 
 git add -A
 if ! git diff --cached --quiet; then
