@@ -11,5 +11,6 @@
     btop
     easyeffects
     obsidian
+    zathura
   ];
 }

@@ -3410,6 +3410,42 @@ Special commands:
 
 
 )
+(let* ((load-file-name "/home/fhasl/.config/emacs/elpa/rainbow-mode-1.0.6/rainbow-mode-autoloads.el")(load-true-file-name load-file-name))
+
+
+
+(add-to-list 'load-path (or (and load-file-name (directory-file-name (file-name-directory load-file-name))) (car load-path)))
+
+
+
+
+(autoload 'rainbow-mode "rainbow-mode" "\
+Colorize strings that represent colors.
+
+This will fontify with colors the string like \"#aabbcc\" or \"blue\".
+
+This is a minor mode.  If called interactively, toggle the `Rainbow
+mode' mode.  If the prefix argument is positive, enable the mode, and if
+it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate the variable `rainbow-mode'.
+
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
+
+(fn &optional ARG)" t)
+(register-definition-prefixes "rainbow-mode" '("rainbow-"))
+
+
+(provide 'rainbow-mode-autoloads)
+
+
+)
 (let* ((load-file-name "/home/fhasl/.config/emacs/elpa/rainbow-delimiters-20210515.1254/rainbow-delimiters-autoloads.el")(load-true-file-name load-file-name))
 
 
@@ -14136,17 +14172,18 @@ disabled.
 		    pfuture lv hydra ht cfrs treemacs transient
 		    toml-mode auctex texfrag tao-theme ivy swiper
 		    spinner smartparens f shrink-path scss-mode
-		    rainbow-delimiters projectile org-plus-contrib
-		    org-modern org-fragtog org-appear orderless
-		    olivetti magit-section nix-mode nerd-icons
-		    nerd-icons-dired mixed-pitch markdown-mode
-		    marginalia magit lua-mode lsp-mode lsp-ui
-		    lsp-treemacs ligature json-snatcher json-mode
-		    js2-mode elisp-refs helpful git-gutter flycheck
-		    flycheck-posframe embark consult embark-consult
-		    doom-modeline dockerfile-mode denote counsel corfu
-		    cdlatex cape auto-compile apheleia all-the-icons
-		    all-the-icons-ivy all-the-icons-dired)
+		    rainbow-mode rainbow-delimiters projectile
+		    org-plus-contrib org-modern org-fragtog org-appear
+		    orderless olivetti magit-section nix-mode
+		    nerd-icons nerd-icons-dired mixed-pitch
+		    markdown-mode marginalia magit lua-mode lsp-mode
+		    lsp-ui lsp-treemacs ligature json-snatcher
+		    json-mode js2-mode elisp-refs helpful git-gutter
+		    flycheck flycheck-posframe embark consult
+		    embark-consult doom-modeline dockerfile-mode
+		    denote counsel corfu cdlatex cape auto-compile
+		    apheleia all-the-icons all-the-icons-ivy
+		    all-the-icons-dired)
 	package-activated-list)))
 (progn
   (require 'info) (info-initialize)

@@ -5,8 +5,7 @@
 (setq package-quickstart t)
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
+                         ("gnu" . "https://elpa.gnu.org/packages/")))
 (setq warning-suppress-types '((package) (native-compiler)))
 (dolist (dir load-path)
   (when (string-match-p "elpa/" dir)
@@ -14,9 +13,10 @@
 (load-theme 'tao-yin t)
 
 (set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 115)
-(electric-indent-mode 1)
+(set-face-attribute 'fixed-pitch nil :font "Iosevka Nerd Font" :height 115)
+(set-face-attribute 'variable-pitch nil :font "Iosevka Nerd Font" :height 115)
+(electric-indent-mode -1)
 (electric-pair-mode -1)
-(setq-default electric-indent-chars '(?\{ ?\} ?\( ?\) ?: ?\; ?\#))
 
 (setq evil-want-C-i-jump nil
       evil-want-C-u-scroll t
@@ -95,7 +95,6 @@
 
 
 (use-package org
-  :ensure org-plus-contrib
   :config
   (setq org-startup-indented t
         org-hide-leading-stars t
@@ -143,8 +142,14 @@
         org-appear-autoentities t
         org-appear-delay 0.2))
 
+(use-package rainbow-mode
+  :hook (org-mode markdown-mode))
+
 (use-package cdlatex
-  :hook (org-mode . cdlatex-mode))
+  :hook (org-mode . cdlatex-mode)
+  :config
+  (setq cdlatex-subsup-inside-brackets nil)
+  (define-key cdlatex-mode-map "_" nil))
 
 (use-package olivetti
   :hook ((org-mode markdown-mode) . olivetti-mode)

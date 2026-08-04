@@ -13,7 +13,7 @@
       };
     };
     thermald.enable = true;
-    thinkfan.enable = true;
+    thinkfan.enable = false;
   };
 
   services.logind.settings = {
