@@ -18,15 +18,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim.url = "github:nix-community/nixvim";
+    llama-cpp.url = "github:ggml-org/llama.cpp";
+    llama-cpp.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
     nixpkgs,
     nixos-hardware,
     home-manager,
+    llama-cpp,
     ...
   }: let
-    # Recursively collect all .nix files (except default.nix) from a directory
     collectModules = dir: let
       entries = builtins.readDir dir;
       nixFiles = builtins.sort builtins.lessThan (builtins.filter
@@ -51,7 +53,7 @@
     nixosConfigurations = {
       amalthea = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs llama-cpp;};
         modules =
           sharedModules
           ++ amaltheaModules
@@ -75,12 +77,13 @@
             inputs.xlibre-overlay.nixosModules.overlay-xlibre-xserver
             inputs.xlibre-overlay.nixosModules.overlay-xlibre-xf86-video-amdgpu
             {nixpkgs.config.rocmSupport = true;}
+            {nixpkgs.overlays = [llama-cpp.overlays.default];}
             {system.stateVersion = "26.11";}
           ];
       };
       artemis = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs llama-cpp;};
         modules =
           sharedModules
           ++ artemisModules
@@ -113,6 +116,7 @@
                 backupFileExtension = "backup";
               };
             }
+            {nixpkgs.overlays = [llama-cpp.overlays.default];}
             {system.stateVersion = "26.11";}
           ];
       };
