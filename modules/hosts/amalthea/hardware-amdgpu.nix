@@ -8,4 +8,5 @@
       ];
     };
   };
+  nixpkgs.config.rocmSupport = true;
 }
