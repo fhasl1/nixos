@@ -20,6 +20,7 @@
     ffmpeg-full
     kdePackages.ark
     winboat
+    codex
 
     # Custom WM
     (stdenv.mkDerivation rec {
