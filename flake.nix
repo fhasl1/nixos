@@ -74,6 +74,7 @@
             }
             inputs.xlibre-overlay.nixosModules.overlay-xlibre-xserver
             inputs.xlibre-overlay.nixosModules.overlay-xlibre-xf86-video-amdgpu
+            {nixpkgs.config.rocmSupport = true;}
             {system.stateVersion = "26.11";}
           ];
       };
