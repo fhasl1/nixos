@@ -1,15 +1,11 @@
 return {
 	{
-		"kdheepak/monochrome.nvim",
+		"slugbyte/lackluster.nvim",
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("monochrome")
-			vim.cmd([[
-				highlight Normal guibg=none
-				highlight NonText guibg=none
-				highlight Normal ctermbg=none
-				highlight NonText ctermbg=none
-			]])
+			vim.cmd.colorscheme("lackluster")
+			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NonText", { bg = "none" })
 		end,
 	},
 	{

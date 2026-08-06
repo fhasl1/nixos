@@ -20,6 +20,7 @@ vim.opt.showcmd = true
 vim.opt.wrap = false
 vim.opt.linebreak = true
 
+vim.opt.hidden = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.clipboard = "unnamedplus"
@@ -33,10 +34,12 @@ vim.opt.termguicolors = true
 vim.opt.undofile = true
 
 vim.opt.showmode = false
-vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.completeopt = "nosort,fuzzy,menuone,noselect"
+vim.opt.cmdheight = 0
+vim.opt.guicursor = ""
 
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_text = { source = false },
 	signs = true,
 	underline = true,
 	update_in_insert = false,
