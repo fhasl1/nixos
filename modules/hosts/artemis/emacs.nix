@@ -3,6 +3,7 @@
     enable = true;
     package = pkgs.emacs;
     install = false;
+    startWithGraphical = true;
   };
 
   environment.systemPackages =

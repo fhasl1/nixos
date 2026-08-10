@@ -1,6 +1,5 @@
 (setq inhibit-startup-message t)
 (setq visible-bell t)
-(setq use-package-always-ensure nil)
 
 (setq package-quickstart t)
 (require 'package)
@@ -12,9 +11,9 @@
     (add-to-list 'custom-theme-load-path dir)))
 (load-theme 'tao-yin t)
 
-(set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 115)
-(set-face-attribute 'fixed-pitch nil :font "Iosevka Nerd Font" :height 115)
-(set-face-attribute 'variable-pitch nil :font "Iosevka Nerd Font" :height 115)
+(set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 125 :weight 'semi-bold)
+(set-face-attribute 'fixed-pitch nil :font "Iosevka Nerd Font" :height 125 :weight 'semi-bold)
+(set-face-attribute 'variable-pitch nil :font "Iosevka Nerd Font" :height 125 :weight 'semi-bold)
 (electric-indent-mode -1)
 (electric-pair-mode -1)
 
@@ -54,7 +53,8 @@
 
 (use-package use-package
   :config
-  (setq use-package-always-ensure t))
+  (setq use-package-always-ensure t
+        use-package-always-defer t))
 
 (use-package all-the-icons
   :if (display-graphic-p))

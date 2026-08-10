@@ -58,7 +58,7 @@
           sharedModules
           ++ amaltheaModules
           ++ [
-            ({...}: {imports = [ /etc/nixos/hardware-configuration.nix ];})
+            ({...}: {imports = [/etc/nixos/hardware-configuration.nix];})
             inputs.gsr-ui-nix.nixosModules.default
             home-manager.nixosModules.home-manager
             {
@@ -88,7 +88,7 @@
           sharedModules
           ++ artemisModules
           ++ [
-            ({...}: {imports = [ /etc/nixos/hardware-configuration.nix ];})
+            ({...}: {imports = [/etc/nixos/hardware-configuration.nix];})
             ({pkgs, ...}: {
               nixpkgs.overlays = [
                 (
@@ -116,7 +116,6 @@
                 backupFileExtension = "backup";
               };
             }
-            {nixpkgs.overlays = [llama-cpp.overlays.default];}
             {system.stateVersion = "26.11";}
           ];
       };
