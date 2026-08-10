@@ -11,6 +11,7 @@
     (add-to-list 'custom-theme-load-path dir)))
 (load-theme 'tao-yin t)
 
+(add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font"))
 (set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 125 :weight 'semi-bold)
 (set-face-attribute 'fixed-pitch nil :font "Iosevka Nerd Font" :height 125 :weight 'semi-bold)
 (set-face-attribute 'variable-pitch nil :font "Iosevka Nerd Font" :height 125 :weight 'semi-bold)
@@ -112,6 +113,12 @@
   (global-set-key (kbd "C-c a") 'org-agenda)
   (global-set-key (kbd "C-c c") 'org-capture)
   (global-set-key (kbd "C-c n") 'org-notes-capture-function))
+
+(use-package ox-reveal
+  :after org
+  :config
+  (add-to-list 'org-export-backends 'reveal)
+  (global-set-key (kbd "C-c C-e R") 'org-reveal-export-to-html-and-browse))
 
 (defun org-notes-capture-function ()
   (interactive)
@@ -288,7 +295,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(all-the-icons-dired all-the-icons-ivy apheleia auto-compile cape cdlatex corfu counsel denote
+                         dockerfile-mode doom-modeline embark-consult evil-leader flycheck-posframe
+                         git-gutter helpful js2-mode json-mode ligature lsp-treemacs lsp-ui lua-mode
+                         magit marginalia mixed-pitch nerd-icons-dired nix-mode olivetti orderless
+                         org-appear org-fragtog org-modern org-plus-contrib org-reveal ox-reveal
+                         projectile rainbow-delimiters rainbow-mode scss-mode smartparens tao-theme
+                         texfrag toml-mode typescript-mode undo-tree vertico web-mode
+                         which-key-posframe yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

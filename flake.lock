@@ -8,11 +8,11 @@
         "snowfall-lib": "snowfall-lib"
       },
       "locked": {
-        "lastModified": 1783530184,
-        "narHash": "sha256-S5UlX+XxqfwOS2utfIp22BRBJVlA9W459BA6gCZPCjE=",
+        "lastModified": 1786210217,
+        "narHash": "sha256-573I2C5wAskpKySvcquvVJwhNNo2x/xhKN9DMBTVFj4=",
         "owner": "LotusInputMethod",
         "repo": "fcitx5-lotus",
-        "rev": "db89d0d60e667e2c092eccbd5602def8b0befcf9",
+        "rev": "1079b517897b5a8dbcf197a571b93ad91c5c5f8a",
         "type": "github"
       },
       "original": {
@@ -177,11 +177,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785531816,
-        "narHash": "sha256-vkMnV0JIyw+g/NmcfoajlGaAO+9a0ezia+FZohQJrik=",
+        "lastModified": 1786286733,
+        "narHash": "sha256-7dN93WKkEERgutPtTjK7SY3ZarO2LAU33A1+vKu+7cc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bf9ce9fec78f95f374e8dd3b503863a3ec128ebe",
+        "rev": "367f7ef80856d18438953d54dda235d42a46ba31",
         "type": "github"
       },
       "original": {
@@ -199,11 +199,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785909997,
-        "narHash": "sha256-nlIWfY2FEoB/Bdf/e6zxa8NBrwk1AlVadg+tLWnRnMo=",
+        "lastModified": 1786344806,
+        "narHash": "sha256-sB36Os5w7CbS9Do29j5YQoynBqbb0GqBoVNS+OoZBbA=",
         "owner": "ggml-org",
         "repo": "llama.cpp",
-        "rev": "e031d956797f9a10f704fa523fe5fd9b72e9015c",
+        "rev": "6ad4ab0ea0f12f5a5e8ed63ce37dd8cfd1afa723",
         "type": "github"
       },
       "original": {
@@ -275,11 +275,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1785571196,
-        "narHash": "sha256-KoTsyMQqnXQZq8deCEnu4QkyldkwH/bpMMhUcfMdGIw=",
+        "lastModified": 1786106723,
+        "narHash": "sha256-zDSUbpoeo/9ZmD2+wXnzxoo1+uhL8vxc0b8yuYMKYq0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "148bab9c1c3c53136ecb44a6ea356a0ed5b39b06",
+        "rev": "f13ff45afd1bb73e640eaa08a7066dbed07e3238",
         "type": "github"
       },
       "original": {
@@ -328,11 +328,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1785527278,
-        "narHash": "sha256-rYFSM491MFFA1V6oax5PngXbevGt6n0o8sKhwFoItE0=",
+        "lastModified": 1785763201,
+        "narHash": "sha256-wA373y/B9orM3HatLu9oS+Ke5lmdZyBl/bdjd2gLMq4=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "a19efae6c1afe426e8243d79f6dfbab186be6df8",
+        "rev": "c7be49306b23a952c0151cf4bbeacd944ed82f2a",
         "type": "github"
       },
       "original": {
@@ -428,11 +428,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1785401103,
-        "narHash": "sha256-zKgkIGnWcbJvjDvYKwiAV4hc3xvJL20jdR/t8LI/D54=",
+        "lastModified": 1785768669,
+        "narHash": "sha256-KPmK8Lj4NhrdzIuz67bV7/3sP1lirTQw3FoVjrGOB+0=",
         "ref": "dev-for-26.05",
-        "rev": "78766723a2f1d3b3964cff698383854cdd06ada3",
-        "revCount": 235,
+        "rev": "3c9798f7e261eb3be40dbd7e9407b6bdefe8c7e9",
+        "revCount": 236,
         "type": "git",
         "url": "https://codeberg.org/takagemacoed/xlibre-overlay"
       },
