@@ -48,6 +48,9 @@ in {
       alejandra
       shellcheck
       statix
+      sqls
+      sqlfluff
+      python3Packages.sqlparse
       ripgrep
       glibc
       texliveSmall
@@ -145,6 +148,12 @@ in {
         },
       })
       vim.lsp.enable("nixd")
+
+      -- sqls (SQL)
+      vim.lsp.config("sqls", {
+        filetypes = { "sql", "mysql", "postgresql" },
+      })
+      vim.lsp.enable("sqls")
 
       -- Mason
       require("mason").setup()

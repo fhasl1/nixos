@@ -17,6 +17,7 @@
         "html"
         "css"
         "json"
+        "sql"
       ];
       auto_install = true;
       highlight = { enable = true; };

@@ -9,6 +9,9 @@
         c = [ "clang-format" ];
         css = [ "prettier" ];
         bash = [ "prettier" ];
+        sql = [ "sqlformat" ];
+        mysql = [ "sqlformat" ];
+        postgresql = [ "sqlformat" ];
       };
     };
   };

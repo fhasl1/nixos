@@ -32,7 +32,10 @@
         src = ./config/dmenu;
         patches = [];
       }))
-      (pkgs.texliveSmall.withPackages (ps: [ ps.enumitem ]))
+      (pkgs.texliveSmall.withPackages (ps: [
+        ps.enumitem
+        ps.preview
+      ]))
       ghostscript
       hunspell
       hunspellDicts.en_US

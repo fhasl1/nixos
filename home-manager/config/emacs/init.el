@@ -15,6 +15,23 @@
 (set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 125 :weight 'semi-bold)
 (set-face-attribute 'fixed-pitch nil :font "Iosevka Nerd Font" :height 125 :weight 'semi-bold)
 (set-face-attribute 'variable-pitch nil :font "Iosevka Nerd Font" :height 125 :weight 'semi-bold)
+
+(use-package ligature
+  :demand t
+  :config
+  (ligature-set-ligatures 'prog-mode '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\" "{-" "::"
+                                      ":::" ":=" "!!" "!=" "!==" "-}" "----" "-->" "->" "->>"
+                                      "-<" "-<<" "-~" "#{" "#[" "##" "###" "####" "#(" "#?" "#_"
+                                      "#_(" ".-" ".=" ".." "..<" "..." "..<" "//" "///" "////"
+                                      "//>" "/==" "/>" "/*" "<!--" "<|" "<||" "<|||" "<->" "<-->"
+                                      "<----" "<=" "=>>" "==" "===" "==>" "=>" "=>>" "<=>" "==="
+                                      ">==" ">" ">>" ">=" "=>=" "||>" "|||>" "||-||" "|=" "||="
+                                      "||-=" "&&" "&&&" "&" "&&" "&&&" "|>" "||>" "|||>" "||-||"
+                                      "??" "???" "?:" "?=" "?!" "??" "???" "~@" "~~" "~=" "~~>"
+                                      "--" "---" "~>" "~>" ";;" ":::"))
+  (ligature-set-ligatures 'org-mode '("--" "---" "->" "=>" "<-" "<=>" "==" "::"))
+  (global-ligature-mode t))
+
 (electric-indent-mode -1)
 (electric-pair-mode -1)
 
@@ -64,21 +81,25 @@
   :if (display-graphic-p))
 
 (use-package vertico
+  :demand t
   :config
   (vertico-mode)
   (setq vertico-count 15
         vertico-cycle t))
 
 (use-package orderless
+  :demand t
   :config
   (setq completion-styles '(orderless basic)
         completion-category-overrides nil))
 
 (use-package marginalia
+  :demand t
   :config
   (marginalia-mode))
 
 (use-package counsel
+  :demand t
   :config
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x b") 'counsel-ibuffer)
@@ -86,6 +107,7 @@
   (global-set-key (kbd "M-y") 'counsel-yank-pop))
 
 (use-package consult
+  :demand t
   :config
   (consult-customize 'find-file '((preview . t))))
 
