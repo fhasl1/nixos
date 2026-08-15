@@ -295,15 +295,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(all-the-icons-dired all-the-icons-ivy apheleia auto-compile cape cdlatex corfu counsel denote
-                         dockerfile-mode doom-modeline embark-consult evil-leader flycheck-posframe
-                         git-gutter helpful js2-mode json-mode ligature lsp-treemacs lsp-ui lua-mode
-                         magit marginalia mixed-pitch nerd-icons-dired nix-mode olivetti orderless
-                         org-appear org-fragtog org-modern org-plus-contrib org-reveal ox-reveal
-                         projectile rainbow-delimiters rainbow-mode scss-mode smartparens tao-theme
-                         texfrag toml-mode typescript-mode undo-tree vertico web-mode
-                         which-key-posframe yaml-mode)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

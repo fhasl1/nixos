@@ -1,1 +1,4 @@
-/nix/store/mwk442vlwaj43rpj30idwkjbaqgq7q9y-home-manager-files/.config/nvim/init.lua
+require("config.options")
+require("config.keybinds")
+require("config.lazy")
+require("config.plugins")
