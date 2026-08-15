@@ -39,7 +39,6 @@
       ghostscript
       hunspell
       hunspellDicts.en_US
-      pkgs.llama-cpp
     ];
   };
 }

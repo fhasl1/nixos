@@ -18,15 +18,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim.url = "github:nix-community/nixvim";
-    llama-cpp.url = "github:ggml-org/llama.cpp";
-    llama-cpp.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
     nixpkgs,
     nixos-hardware,
     home-manager,
-    llama-cpp,
     ...
   }: let
     collectModules = dir: let
@@ -53,7 +50,7 @@
     nixosConfigurations = {
       amalthea = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs llama-cpp;};
+        specialArgs = {inherit inputs;};
         modules =
           sharedModules
           ++ amaltheaModules
@@ -77,13 +74,12 @@
             inputs.xlibre-overlay.nixosModules.overlay-xlibre-xserver
             inputs.xlibre-overlay.nixosModules.overlay-xlibre-xf86-video-amdgpu
             {nixpkgs.config.rocmSupport = true;}
-            {nixpkgs.overlays = [llama-cpp.overlays.default];}
             {system.stateVersion = "26.11";}
           ];
       };
       artemis = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs llama-cpp;};
+        specialArgs = {inherit inputs;};
         modules =
           sharedModules
           ++ artemisModules
