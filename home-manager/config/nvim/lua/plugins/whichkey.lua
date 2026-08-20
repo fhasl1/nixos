@@ -1,7 +1,1 @@
-return {
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		opts = {},
-	},
-}
+/nix/store/f5zcpxw1y352097nmirh35a6ymrknbx8-home-manager-files/.config/nvim/lua/plugins/whichkey.lua

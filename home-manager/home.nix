@@ -1,7 +1,5 @@
 {pkgs, ...}: {
-  imports = [
-    ./nvim
-  ];
+  imports = [];
 
   programs = {
     home-manager.enable = true;
@@ -26,6 +24,18 @@
     stateVersion = "26.05";
     sessionVariables = {
       XDG_CONFIG_HOME = "/home/fhasl/.config";
+    };
+    file = {
+      ".config/nvim/init.lua".source = ./config/nvim/init.lua;
+      ".config/nvim/lazy-lock.json".source = ./config/nvim/lazy-lock.json;
+      ".config/nvim/lua" = {
+        source = ./config/nvim/lua;
+        recursive = true;
+      };
+      ".config/nvim/queries" = {
+        source = ./config/nvim/queries;
+        recursive = true;
+      };
     };
     packages = with pkgs; [
       (pkgs.dmenu.overrideAttrs (_: {
