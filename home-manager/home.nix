@@ -3,6 +3,11 @@
 
   programs = {
     home-manager.enable = true;
+    neovim = {
+      enable = true;
+      vimAlias = true;
+      viAlias = true;
+    };
     git = {
       enable = true;
       settings = {
@@ -25,8 +30,11 @@
     sessionVariables = {
       XDG_CONFIG_HOME = "/home/fhasl/.config";
     };
+    shellAliases = {
+      vim = "nvim";
+      vi = "nvim";
+    };
     packages = with pkgs; [
-      neovim
       (pkgs.dmenu.overrideAttrs (_: {
         src = ./config/dmenu;
         patches = [];
