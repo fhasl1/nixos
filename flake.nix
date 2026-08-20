@@ -17,7 +17,7 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim.url = "github:nix-community/nixvim";
+    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = inputs @ {
@@ -46,6 +46,11 @@
       ];
     amaltheaModules = collectModules ./modules/hosts/amalthea;
     artemisModules = collectModules ./modules/hosts/artemis;
+
+    neovimOverlay = final: prev: {
+      neovim = inputs.neovim-nightly.packages.${prev.system}.neovim;
+      neovim-unwrapped = inputs.neovim-nightly.packages.${prev.system}.neovim;
+    };
   in {
     nixosConfigurations = {
       amalthea = nixpkgs.lib.nixosSystem {
@@ -58,12 +63,12 @@
             ({...}: {imports = [/etc/nixos/hardware-configuration.nix];})
             home-manager.nixosModules.home-manager
             {
+              nixpkgs.overlays = [ neovimOverlay ];
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.fhasl = {
                   imports = [
-                    inputs.nixvim.homeModules.nixvim
                     ./home-manager/home.nix
                   ];
                 };
@@ -86,6 +91,7 @@
             ({...}: {imports = [/etc/nixos/hardware-configuration.nix];})
             ({pkgs, ...}: {
               nixpkgs.overlays = [
+                neovimOverlay
                 (
                   final: prev: {
                     throttled = prev.throttled.overrideAttrs (old: {
@@ -104,7 +110,6 @@
                 useUserPackages = true;
                 users.fhasl = {
                   imports = [
-                    inputs.nixvim.homeModules.nixvim
                     ./home-manager/home.nix
                   ];
                 };
