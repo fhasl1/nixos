@@ -25,19 +25,8 @@
     sessionVariables = {
       XDG_CONFIG_HOME = "/home/fhasl/.config";
     };
-    file = {
-      ".config/nvim/init.lua".source = ./config/nvim/init.lua;
-      ".config/nvim/lazy-lock.json".source = ./config/nvim/lazy-lock.json;
-      ".config/nvim/lua" = {
-        source = ./config/nvim/lua;
-        recursive = true;
-      };
-      ".config/nvim/queries" = {
-        source = ./config/nvim/queries;
-        recursive = true;
-      };
-    };
     packages = with pkgs; [
+      neovim
       (pkgs.dmenu.overrideAttrs (_: {
         src = ./config/dmenu;
         patches = [];
@@ -49,6 +38,21 @@
       ghostscript
       hunspell
       hunspellDicts.en_US
+      stylua
+      clang-tools
+      prettier
+      lua-language-server
+      nixd
+      bash-language-server
+      vscode-langservers-extracted
+      pyright
+      alejandra
+      shellcheck
+      statix
+      sqls
+      sqlfluff
+      python3Packages.sqlparse
+      ripgrep
     ];
   };
 }
